@@ -9,6 +9,13 @@ app = Flask(__name__,
 			static_folder='static',
 			template_folder='templates')
 
+@app.route('/')
+def home():
+	return render_template('index.html')
+
+# To Run
+# cd web/
+# flask run
 
 # We do not have to use app.run. Use of flask run is a newer preferred method
 if __name__ == "__main__":
