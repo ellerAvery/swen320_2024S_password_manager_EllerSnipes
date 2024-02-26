@@ -1,18 +1,24 @@
 # password-manager
 
-Password Manager is based on passoword generator. It combines web interface that is built upon Flask and Docker in order to accept http request and return its encoded password.
+This project is a password manager for the class of Introduction to Software Testing.
 
 ## Getting started
 
+1. `make install`
+2. `make run`
+
 ### Folder structure
 
---> cmd (this is the password generator part)
---> web (this is the web part)
-    ------> static
-    ------> templates
-    ------> app.py (Flask entry point)
-    ------> run_flask.sh
---> Dockerfile
---> README.md
-
-
+- **crypto** (this is the password generator part, along with the encryption/decryption)
+- **web** (this is the web part)
+    - **accounts** (Holds the database for the accounts and allows the interaction of them)
+    - **core** (Holds the rest of the program other than the accounts)
+    - **templates** (Holds the HTML)
+        - **accounts**
+        - **core**
+    - **__init__**
+- **.env**
+- **config.py**
+- **manage.py**
+- **Dockerfile**
+- **README.md**
