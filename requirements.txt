@@ -1,2 +1,14 @@
-flask==2.2.2
-pyserial
+Flask>=2.2.5
+Jinja2==3.0.1
+MarkupSafe==2.1.5
+pyserial==3.5
+Werkzeug>=2.2.2
+itsdangerous==2.1.2
+click==8.1.7
+python-decouple
+Flask-Migrate
+Flask-SQLAlchemy
+Flask-Login
+Flask_wtf
+python-dotenv
+email_validator
