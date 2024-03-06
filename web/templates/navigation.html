@@ -20,19 +20,3 @@
       </div>
     </div>
   </header>
-
-  <script>
-    document.getElementById("Listbutton").addEventListener("click", function () {
-        fetch('/Maketable')
-            .then(response => {
-                if (response.ok) {
-                    console.log("Table populated successfully!");
-                } else {
-                    console.error("Failed to populate table.");
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-    });
-</script>
