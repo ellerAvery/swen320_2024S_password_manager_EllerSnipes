@@ -14,7 +14,7 @@ class LoginForm(FlaskForm):
         loginUser.email = email
         loginUser.password = password
 
-        for(User in users):
+        for User in users:
             if(loginUser.email == User.email and loginUser.password == User.password):
                 return True
         
@@ -46,7 +46,7 @@ class RegisterForm(FlaskForm):
             return False
 
     def userLenValid(self):
-        if(self.email.Length < 10 and self..Length > 5):
+        if(self.email.Length < 10 and self.email.Length > 5):
             return True
         else:
             self.email.errors.append("Invalid email length")
