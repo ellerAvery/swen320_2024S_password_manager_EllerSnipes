@@ -1,23 +1,18 @@
-# Where the accounts are being stored in.
-from flask_login import UserMixin
 from web import db
-from crypto.Cipher import Cipher
+from werkzeug.security import generate_password_hash, check_password_hash
 
-class User(UserMixin, db.Model):
-
-    __tablename__ = "users"
-
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String, unique=True, nullable=False)
-    password = db.Column(db.String, nullable=False)
-    token = db.Column(db.String, nullable=False)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128))
+    passkey = db.Column(db.String(128))
 
-    def __init__(self, email, password, token):
-        self.email = email
-        cipher = Cipher()
-        encText = cipher.encrypt(password)
-        self.password = encText
-        self.token = token
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
 
 
     def __repr__(self):

@@ -4,47 +4,51 @@ from web import db
 from web.accounts.models import User
 from .forms import LoginForm, RegisterForm
 
-accounts_bp = Blueprint("accounts", __name__)
+accounts_bp = Blueprint("accounts", __name__, url_prefix="/accounts")
 
 @accounts_bp.route("/register", methods=["GET", "POST"])
-def register():
+def account_register():
     if current_user.is_authenticated:
-        flash("You're account has been registered.", "info")
+        flash("You are already registered.", "info")
         return redirect(url_for("core.home"))
     form = RegisterForm(request.form)
     if form.validate_on_submit():
-        user = User(email=form.email.data, password=form.password.data, token=form.token.data)
+        if User.query.filter_by(email=form.email.data).first():
+            flash("Email already registered.", "warning")
+            return render_template("accounts/register.html", form=form)
+        
+        user = User(email=form.email.data)
+        user.set_password(form.password.data)  # Ensure this method hashes the password
+        user.token = form.token.data
         db.session.add(user)
         db.session.commit()
 
         login_user(user)
-        flash("Welcome!", "success")
+        flash("Welcome! Account created successfully.", "success")
         return redirect(url_for("core.home"))
-    
     return render_template("accounts/register.html", form=form)
 
 @accounts_bp.route("/login", methods=["GET", "POST"])
-def login():
+def account_login():
     if current_user.is_authenticated:
         flash("You are already logged in.", "info")
         return redirect(url_for("core.home"))
     form = LoginForm(request.form)
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        if user and user.check_password(form.password.data): # Add password check
+        if user and user.check_password(form.password.data):
             login_user(user)
             return redirect(url_for("core.home"))
         else:
-            flash("Invalid email and/or password.", "danger")
-            return render_template("accounts/login.html", form=form)
+            flash("Invalid email and/or password.", "error")
     return render_template("accounts/login.html", form=form)
-
 
 @accounts_bp.route("/logout")
 @login_required
-def logout():
+def account_logout():
     logout_user()
-    flash("You were logged out.", "success")
-    return redirect(url_for("accounts.login"))
+    flash("You have been logged out.", "success")
+    return redirect(url_for("accounts.account_login"))
+
 
 
