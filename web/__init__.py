@@ -1,19 +1,30 @@
+from decouple import config
 from flask import Flask
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from config import Config
 
-from .extensions import db, login_manager
+app = Flask(__name__)
+app.config.from_object(config("APP_SETTINGS"))
 
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object(Config)
+login_manager = LoginManager()
+login_manager.init_app(app)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
-    db.init_app(app)
-    login_manager.init_app(app)
+# Blueprints
+from web.accounts.views import accounts_bp
+from web.core.views import core_bp
 
-    from .accounts.views import accounts_bp
-    app.register_blueprint(accounts_bp, url_prefix='/accounts')
+app.register_blueprint(accounts_bp)
+app.register_blueprint(core_bp)
 
-    return app
+login_manager.login_view = "accounts.login"
+login_manager.login_message_category = "danger"
 
+
+from web.accounts.models import User
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.filter(User.id == int(user_id)).first()

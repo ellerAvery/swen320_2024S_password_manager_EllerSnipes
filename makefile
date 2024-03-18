@@ -1,7 +1,14 @@
-.PHONY: install run
+.PHONY: install run test setup
+.PHONY: migrate
 
 install:
 	pip install -r requirements.txt
 
+setup:
+	pip install -r requirements.txt && \
+	source .env && \
+	python -m flask db migrate && \
+	python -m flask db upgrade
+
 run:
-	dotenv run python3 manage.py run -p 8080
+	python -m dotenv run python manage.py run -p 8080
