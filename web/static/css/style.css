@@ -7,6 +7,7 @@
   right: 0px;
 }
 
+
 #state_info{
 	width: 360px;
 }
@@ -36,8 +37,19 @@
   text-align: center;
 }
 
+#rightButton {
+  position: fixed;
+  right: 975px; /* Adjust as needed */
+  width: 100px;
+}
+
+
 a {
   text-decoration: none;
+}
+
+.bg-custom-gray {
+  background-color: #cacaca; /* Replace with your desired gray color code */
 }
 
 /* #message_area {

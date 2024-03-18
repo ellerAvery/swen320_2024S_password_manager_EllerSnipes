@@ -1,13 +1,32 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
-from wtforms.validators import DataRequired, Length
-
+from wtforms import PasswordField, StringField
+from wtforms.validators import DataRequired, Email, Length
 from web.accounts.models import User
+
+
 class LoginForm(FlaskForm):
-    username = StringField('User', validators=[DataRequired(), User()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    username = StringField("Username", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
+
 
 class RegisterForm(FlaskForm):
-    username = StringField('User', validators=[DataRequired(), User()])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=8, max=20)])
-    token = StringField('Token', validators=[DataRequired(), Length(min=10, max=30)])
+    username = StringField("Username", validators=[DataRequired(), Length(min=5, max=10)])
+    password = PasswordField("Password", validators=[DataRequired(), Length(min=8, max=20)])
+    token = StringField("Passkey (Token)", validators=[DataRequired(), Length(min=10, max=30)])
+
+
+    def validate(self, extra_validators=None):
+        initial_validation = super(RegisterForm, self).validate(extra_validators=extra_validators)
+        if not initial_validation:
+            return False
+        user = User.query.filter_by(username=self.username.data).first()
+        if user:
+            self.username.errors.append("Username already registered")
+            return False
+        return True
+    
+class passwordForm(FlaskForm):
+    password = PasswordField("Password text", validators=[DataRequired()])
+
+class ChangePasswordForm(FlaskForm):
+    newPassword = PasswordField("New Password", validators=[DataRequired(), Length(min=8, max=20)])
