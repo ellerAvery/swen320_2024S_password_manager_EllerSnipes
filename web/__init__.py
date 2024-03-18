@@ -13,7 +13,7 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
     
-    from .accounts.routes import accounts_bp
+    from .accounts.views import accounts_bp
     app.register_blueprint(accounts_bp, url_prefix='/accounts')
     
     return app
