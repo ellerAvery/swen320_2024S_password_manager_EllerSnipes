@@ -4,7 +4,7 @@ from flask_login import login_required
 core_bp = Blueprint("core", __name__)
 
 # Starts the Flask app
-@core_bp.route("/")
+@core_bp.route('/')
 @login_required
 def home():
     return render_template("core/encrypt.html")

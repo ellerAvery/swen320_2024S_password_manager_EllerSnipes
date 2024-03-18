@@ -1,3 +1,4 @@
+from crypto.Cipher import Cipher
 from web import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -12,12 +13,10 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-
-
-
+    
     def __repr__(self):
         return f"<email {self.email}>"
     
     def check_password(self, password):
-        cipher = Cipher();
+        cipher = Cipher()
         return cipher.decrypt(self.password) == password

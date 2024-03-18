@@ -1,5 +1,6 @@
 import unittest
 from web.accounts.forms import RegisterForm
+from web.accounts.forms import passLenValid
 
 class TestMethods(unittest.TestCase):
     def test_PassLenLower(self):
