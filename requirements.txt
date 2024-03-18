@@ -12,3 +12,4 @@ Flask-Login
 Flask_wtf
 python-dotenv
 email_validator
+python-dotenv

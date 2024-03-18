@@ -7,13 +7,4 @@ core_bp = Blueprint("core", __name__)
 @core_bp.route('/')
 @login_required
 def home():
-    return render_template("core/encrypt.html")
-@core_bp.route("/list")
-def list():
-    return render_template("core/list.html")
-@core_bp.route("/encrypt")
-def encrypt():
-    return render_template("core/encrypt.html")
-@core_bp.route("/decrypt")
-def decrypt():
-    return render_template("core/decrypt.html")
+    return render_template("core/login.html")
