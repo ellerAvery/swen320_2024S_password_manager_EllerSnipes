@@ -1,8 +1,12 @@
-from flask import Blueprint, flash, redirect, render_template, request, url_for
-from flask_login import login_user, current_user, login_required, logout_user
-from web import db
+# web/accounts/views.py
+from urllib import request
+from flask import Blueprint, render_template, flash, redirect, url_for
+from flask_login import login_user, logout_user, current_user
 from web.accounts.models import User
+from ..extensions import db
 from .forms import LoginForm, RegisterForm
+from flask_login import login_required
+
 
 accounts_bp = Blueprint("accounts", __name__, url_prefix="/accounts")
 
