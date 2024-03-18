@@ -15,7 +15,7 @@ class User(db.Model):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return f"<email {self.email}>"
+        return f"<Username: {self.username}>"
     
     def check_password(self, password):
         cipher = Cipher()

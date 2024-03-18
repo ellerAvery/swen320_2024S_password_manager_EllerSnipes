@@ -11,10 +11,10 @@
         <h1 class="h3 mb-3 fw-normal text-center">Please register</h1>
 
         <div class="form-floating">
-          {{ form.email(placeholder="email", class="form-control mb-2") }}
-          {{ form.email.label }}
-            {% if form.email.errors %}
-              {% for error in form.email.errors %}
+          {{ form.user(placeholder="User", class="form-control mb-2") }}
+          {{ form.user.label }}
+            {% if form.user.errors %}
+              {% for error in form.user.errors %}
                 <div class="alert alert-danger" role="alert">
                   {{ error }}
                 </div>

@@ -16,12 +16,12 @@ def account_register():
         return redirect(url_for("core.home"))
     form = RegisterForm(request.form)
     if form.validate_on_submit():
-        if User.query.filter_by(email=form.email.data).first():
+        if User.query.filter_by(User=form.username.data).first():
             flash("Email already registered.", "warning")
             return render_template("accounts/register.html", form=form)
         
-        user = User(email=form.email.data)
-        user.set_password(form.password.data)  # Ensure this method hashes the password
+        user = User(User=form.username.data)
+        user.set_password(form.password.data) 
         user.token = form.token.data
         db.session.add(user)
         db.session.commit()
@@ -35,15 +35,15 @@ def account_register():
 def account_login():
     if current_user.is_authenticated:
         flash("You are already logged in.", "info")
-        return redirect(url_for("core.home"))
+        return redirect(url_for("accounts.navigation"))
     form = LoginForm(request.form)
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(User=form.username.data).first()
         if user and user.check_password(form.password.data):
             login_user(user)
-            return redirect(url_for("core.home"))
+            return redirect(url_for("accounts.navigation"))
         else:
-            flash("Invalid email and/or password.", "error")
+            flash("Invalid username and/or password.", "error")
     return render_template("accounts/login.html", form=form)
 
 @accounts_bp.route("/logout")
