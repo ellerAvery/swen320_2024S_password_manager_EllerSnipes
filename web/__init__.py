@@ -25,8 +25,8 @@ app.logger.setLevel(logging.DEBUG)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+#db = SQLAlchemy(app)
+# migrate = Migrate(app, db)
 
 # Blueprints
 from web.accounts.views import accounts_bp

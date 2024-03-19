@@ -7,7 +7,6 @@ itsdangerous==2.1.2
 click==8.1.7
 python-decouple
 Flask-Migrate
-Flask-SQLAlchemy
 Flask-Login
 Flask_wtf
 python-dotenv
