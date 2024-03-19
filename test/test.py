@@ -1,21 +1,42 @@
 import unittest
-from web.accounts.forms import RegisterForm
-from web.accounts.forms import passLenValid
+from web import app
 
-class TestMethods(unittest.TestCase):
-    def test_PassLenLower(self):
-        inputForm = RegisterForm()
-        inputPass = "1234"
+testUser = User()
+testUser.__init__(self, 'test', 'password', 'testPassKey')
 
-        inputForm.password = inputPass
+class TestLogin(unittest.TestCase):
+    def setUp(self):
+        app.config['TESTING'] = True
+        self.app = app.test_client()
+
+    def tearDown(self):
+        pass
+
+    def test_loginSuccessful(self):
+        response = self.app.post('/login', data=dict(username='test_user', password='password'), follow_redirects=True)
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_loginFailure(self):
+        response = self.app.post('/login', data=dict(username='test_user', password='wrong_password'), follow_redirects=True)
         
-        self.assertFalse(passLenValid(inputForm))
+        self.assertNotEqual(response.status_code, 200)
 
-    # def test_PassUpper(self):
-    #     inputForm = RegisterForm
-    #     inputPass = "123456789012345678901"
+class TestRegister(unittest.TestCase):
+    def setUp(self):
+        app.config['TESTING'] = True
+        self.app = app.test_client()
 
-    #     inputForm.password = inputPass
-    #     result = passLenValid(inputForm)
+    def tearDown(self):
+        pass
 
-    #     self.assertFalse(result)
+    def test_registerSuccessful(self):
+        response = self.app.post('/register', data=dict(username='user', password='password', key = 'passKeyLong'), follow_redirects=True)
+        
+        self.assertEqual(response.status_code, 200)
+
+    def test_registerFailure(self):
+        response = self.app.post('/register', data=dict(username='user', password='pass', key = 'passKey'), follow_redirects=True)
+        
+        self.assertNotEqual(response.status_code, 200)
+    
