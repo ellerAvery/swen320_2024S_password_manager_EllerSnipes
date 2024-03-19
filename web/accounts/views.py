@@ -1,8 +1,7 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import LoginManager, login_user, current_user, login_required, logout_user
-from user_management import add_user, get_user, update_user_password
+from user_management import add_user, get_user, save_users, check_password
 from .forms import LoginForm, RegisterForm, ChangePasswordForm  
-from crypto.Cipher import Cipher  # Check the correct import path
 
 accounts_bp = Blueprint('accounts', __name__)
 
@@ -23,7 +22,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user_info = get_user(form.username.data)
-        if user_info and Cipher().check_password(form.password.data, user_info['password']):
+        if user_info and check_password(form.username.data, form.password.data):
             # Implement login logic here, possibly using Flask-Login
             flash('Login successful!', 'success')
             return redirect(url_for('core.encrypt'))

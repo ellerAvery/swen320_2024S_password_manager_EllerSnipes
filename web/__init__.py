@@ -1,48 +1,38 @@
-from flask import Flask, request, redirect, url_for, render_template, flash
-from crypto.Cipher import Cipher
-import pickle
+import logging
+from logging.handlers import RotatingFileHandler
+from decouple import config
+from flask import Flask
+from flask_login import LoginManager
 
+# Initialize Flask app
 app = Flask(__name__)
-users = {}
+app.config.from_object(config("APP_SETTINGS"))
 
-def load_users():
-    global users
-    try:
-        with open('users.pickle', 'rb') as f:
-            users = pickle.load(f)
-    except FileNotFoundError:
-        pass
+# Setup logging
+file_handler = RotatingFileHandler('application.log', maxBytes=10240, backupCount=10)
+file_handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+app.logger.addHandler(file_handler)
+app.logger.setLevel(logging.DEBUG)
 
-def save_users():
-    with open('users.pickle', 'wb') as f:
-        pickle.dump(users, f)
+# Initialize Flask-Login
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "accounts.login"
+login_manager.login_message_category = "danger"
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        
-        if username in users:
-            flash('Username already taken. Please choose another one.')
-            return redirect(url_for('register'))
-        
-        cipher = Cipher()
-        encrypted_password = cipher.encrypt(password)
-        users[username] = encrypted_password
-        save_users()
-        flash('Registration successful!')
-        return redirect(url_for('login'))
-    
-    return render_template('register.html')
+# Import user management functions
+from .user_management import load_users
 
-@app.before_first_request
-def before_first_request():
-    load_users()
+# Register Flask-Login user loader callback using user_management functions
+@login_manager.user_loader
+def user_loader(user_id):
+    return load_users(user_id)
 
-@app.teardown_appcontext
-def teardown_appcontext(exception=None):
-    save_users()
+# Register blueprints
+from .accounts.views import accounts_bp
+from .core.views import core_bp
 
-if __name__ == '__main__':
-    app.run(debug=True)
+app.register_blueprint(accounts_bp)
+app.register_blueprint(core_bp)

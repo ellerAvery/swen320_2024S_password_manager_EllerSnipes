@@ -1,59 +1,52 @@
-# Assuming this is part of your user_management.py module
 import pickle
-from crypto.Cipher import Cipher
+from flask import current_app as app
+from crypto.Cipher import Cipher  # Assuming Cipher is correctly implemented
 
-# Initialize your users dictionary
+users_file = 'users.pickle'
 users = {}
 
-# Load users from a file
 def load_users():
     global users
     try:
-        with open('users.pickle', 'rb') as f:
+        with open(users_file, 'rb') as f:
             users = pickle.load(f)
     except FileNotFoundError:
-        pass  # Handle the file not being found (e.g., first run)
+        app.logger.info("Users file not found. Starting with an empty dictionary.")
 
-# Save users to a file
 def save_users():
-    with open('users.pickle', 'wb') as f:
+    with open(users_file, 'wb') as f:
         pickle.dump(users, f)
 
-# Add a new user
-def add_user(username, password, token):
+def add_users(username, password):
+    if username in users:
+        return False  # User already exists
     cipher = Cipher()
     encrypted_password = cipher.encrypt(password)
-    users[username] = {
-        'password': encrypted_password,
-        'token': token,
-        # Any other user info here
-    }
+    users[username] = {'password': encrypted_password}
     save_users()
+    return True
 
-# Check if password matches for a user
 def check_password(username, password):
     user = users.get(username)
-    if user:
-        cipher = Cipher()
-        return cipher.decrypt(user['password']) == password
-    return False
-
-# Update a user's password
-def set_password(username, new_password):
-    if username in users:
-        cipher = Cipher()
-        encrypted_password = cipher.encrypt(new_password)
-        users[username]['password'] = encrypted_password
-        save_users()
-        return True
-    return False
-
-# Encrypt a password (or any other text)
-def encrypt_password(password, key):
+    if not user:
+        return False
     cipher = Cipher()
-    return cipher.encrypt(password, key)
+    return cipher.decrypt(user['password']) == password
+def get_users(username):
+    """
+    Retrieve a user's information from the dictionary.
+    
+    :param username: The username of the user to retrieve.
+    :return: The user's information if found, or None if not found.
+    """
+    # Assuming `users` is the global dictionary containing user data
+    global users
+    
+    # Try to retrieve the user's information by username
+    user_info = users.get(username)
+    
+    # Return the user's information if found, else return None
+    return user_info if user_info else None
 
-# Decrypt a password (or any other text)
-def decrypt_password(encrypted_password):
-    cipher = Cipher()
-    return cipher.decrypt(encrypted_password)
+# Call load_users at application start
+load_users()
