@@ -1,3 +1,5 @@
+import logging
+from logging.handlers import RotatingFileHandler
 from decouple import config
 from flask import Flask
 from flask_migrate import Migrate
@@ -6,6 +8,20 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config.from_object(config("APP_SETTINGS"))
+
+# Create a file handler for logging
+file_handler = RotatingFileHandler('application.log', maxBytes=10240, backupCount=10)
+file_handler.setLevel(logging.DEBUG)
+
+# Create a logging format
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+
+# Add the file handler to the Flask app's logger
+app.logger.addHandler(file_handler)
+
+# Set the level for the app's logger
+app.logger.setLevel(logging.DEBUG)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -21,7 +37,6 @@ app.register_blueprint(core_bp)
 
 login_manager.login_view = "accounts.login"
 login_manager.login_message_category = "danger"
-
 
 from web.accounts.models import User
 
