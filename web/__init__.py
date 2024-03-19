@@ -1,45 +1,48 @@
-import logging
-from logging.handlers import RotatingFileHandler
-from decouple import config
-from flask import Flask
-from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
+from flask import Flask, request, redirect, url_for, render_template, flash
+from crypto.Cipher import Cipher
+import pickle
 
 app = Flask(__name__)
-app.config.from_object(config("APP_SETTINGS"))
+users = {}
 
-# Create a file handler for logging
-file_handler = RotatingFileHandler('application.log', maxBytes=10240, backupCount=10)
-file_handler.setLevel(logging.DEBUG)
+def load_users():
+    global users
+    try:
+        with open('users.pickle', 'rb') as f:
+            users = pickle.load(f)
+    except FileNotFoundError:
+        pass
 
-# Create a logging format
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-file_handler.setFormatter(formatter)
+def save_users():
+    with open('users.pickle', 'wb') as f:
+        pickle.dump(users, f)
 
-# Add the file handler to the Flask app's logger
-app.logger.addHandler(file_handler)
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        if username in users:
+            flash('Username already taken. Please choose another one.')
+            return redirect(url_for('register'))
+        
+        cipher = Cipher()
+        encrypted_password = cipher.encrypt(password)
+        users[username] = encrypted_password
+        save_users()
+        flash('Registration successful!')
+        return redirect(url_for('login'))
+    
+    return render_template('register.html')
 
-# Set the level for the app's logger
-app.logger.setLevel(logging.DEBUG)
+@app.before_first_request
+def before_first_request():
+    load_users()
 
-login_manager = LoginManager()
-login_manager.init_app(app)
-#db = SQLAlchemy(app)
-# migrate = Migrate(app, db)
+@app.teardown_appcontext
+def teardown_appcontext(exception=None):
+    save_users()
 
-# Blueprints
-from web.accounts.views import accounts_bp
-from web.core.views import core_bp
-
-app.register_blueprint(accounts_bp)
-app.register_blueprint(core_bp)
-
-login_manager.login_view = "accounts.login"
-login_manager.login_message_category = "danger"
-
-from web.accounts.models import User
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.filter(User.id == int(user_id)).first()
+if __name__ == '__main__':
+    app.run(debug=True)

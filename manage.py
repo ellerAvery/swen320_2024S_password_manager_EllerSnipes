@@ -5,7 +5,7 @@ from decouple import config
 import unittest
 
 # Initialize Migrate
-migrate = Migrate(app, db)
+#migrate = Migrate(app, db)
 
 cli = FlaskGroup(app)
 

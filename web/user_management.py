@@ -1,53 +1,59 @@
-# user_management.py
-
+# Assuming this is part of your user_management.py module
 import pickle
-from flask import current_app as app
 from crypto.Cipher import Cipher
 
-# Initialize or load the user dictionary
+# Initialize your users dictionary
+users = {}
+
+# Load users from a file
 def load_users():
-    """Load the user dictionary from a file."""
+    global users
     try:
         with open('users.pickle', 'rb') as f:
-            return pickle.load(f)
+            users = pickle.load(f)
     except FileNotFoundError:
-        app.logger.info("Users file not found. Starting with an empty dictionary.")
-        return {}
+        pass  # Handle the file not being found (e.g., first run)
 
-def save_users(users_dict):
-    """Save the user dictionary to a file."""
+# Save users to a file
+def save_users():
     with open('users.pickle', 'wb') as f:
-        pickle.dump(users_dict, f)
+        pickle.dump(users, f)
 
-def add_user(username, password, **kwargs):
-    """Add a user to the dictionary with encrypted password."""
-    users_dict = load_users()  # Define the users_dict variable
+# Add a new user
+def add_user(username, password, token):
     cipher = Cipher()
     encrypted_password = cipher.encrypt(password)
-    if username in users_dict:
-        raise ValueError("User already exists.")
-    users_dict[username] = {"password": encrypted_password, **kwargs}
-    save_users(users_dict)
-    
-def get_user(username):
-    """Retrieve a user's information."""
-    users_dict = load_users()
-    return users_dict.get(username, None)
+    users[username] = {
+        'password': encrypted_password,
+        'token': token,
+        # Any other user info here
+    }
+    save_users()
 
-def update_user(username, password):
-    """Update a user's password."""
-    users_dict = load_users()
-    if username not in users_dict:
-        return False  # User does not exist
-    users_dict[username]['password'] = password
-    save_users(users_dict)
-    return True
+# Check if password matches for a user
+def check_password(username, password):
+    user = users.get(username)
+    if user:
+        cipher = Cipher()
+        return cipher.decrypt(user['password']) == password
+    return False
 
-def remove_user(username):
-    """Remove a user from the dictionary."""
-    users_dict = load_users()
-    if username not in users_dict:
-        return False  # User does not exist
-    del users_dict[username]
-    save_users(users_dict)
-    return True
+# Update a user's password
+def set_password(username, new_password):
+    if username in users:
+        cipher = Cipher()
+        encrypted_password = cipher.encrypt(new_password)
+        users[username]['password'] = encrypted_password
+        save_users()
+        return True
+    return False
+
+# Encrypt a password (or any other text)
+def encrypt_password(password, key):
+    cipher = Cipher()
+    return cipher.encrypt(password, key)
+
+# Decrypt a password (or any other text)
+def decrypt_password(encrypted_password):
+    cipher = Cipher()
+    return cipher.decrypt(encrypted_password)

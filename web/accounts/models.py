@@ -37,7 +37,6 @@ class User(UserMixin, db.Model):
         encrypted_password = cipher.encrypt(new_password)
         self.encryptedPass = encrypted_password
         self.password = encrypted_password
-        db.session.commit()
         return self.password
     
     def encrypt_password(self, password, key):
