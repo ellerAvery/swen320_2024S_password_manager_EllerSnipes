@@ -1,53 +1,21 @@
 from flask_login import UserMixin
-from web import db
-from crypto.Cipher import Cipher
+from user_management import get_user, check_password
 
-class User(UserMixin, db.Model):
+class User(UserMixin):
+    def __init__(self, username):
+        user_info = get_user(username)
+        if user_info:
+            self.username = username
+            self.id = username  # Flask-Login requires an `id` attribute but you can use `username`
+            self.password_hash = user_info.get('password')
 
-    __tablename__ = "users"
+    @staticmethod
+    def check_password(username, password):
+        return check_password(username, password)
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, unique=True, nullable=False)
-    password = db.Column(db.String, nullable=False)
-    token = db.Column(db.String, nullable=False)
-    encryptedPass = db.Column(db.String, nullable=False)
-    key = db.Column(db.String, nullable=False)
-    # encryPassWithKey = db.Column(db.String, nullable=False)
-
-    def __init__(self, username, password, token):
-        self.username = username 
-        cipher = Cipher()
-        enc_text = cipher.encrypt(password)
-        key = cipher.encrypt(password)
-        self.password = enc_text
-        self.token = token
-        self.encryptedPass = enc_text
-        self.key = key
-        # self.encryPassWithKey = ''
-
-    def __repr__(self):
-        return f"<username {self.username}>" 
-
-    def check_password(self, password):
-        cipher = Cipher()
-        return cipher.decrypt(self.encryptedPass) == password
-
-    def set_password(self, new_password):
-        cipher = Cipher()
-        encrypted_password = cipher.encrypt(new_password)
-        self.encryptedPass = encrypted_password
-        self.password = encrypted_password
-        db.session.commit()
-        return self.password
-    
-    def encrypt_password(self, password, key):
-        cipher = Cipher()
-        encrypted = cipher.encrypt(password, key)
-        self.encryptedPass = encrypted
-        self.key = key
-        return encrypted
-
-    def decrypt_password(self, password):
-        cipher = Cipher()
-        decrypted = cipher.decrypt(password)
-        return decrypted
+    @staticmethod
+    def get(username):
+        user_info = get_user(username)
+        if user_info:
+            return User(username)
+        return None

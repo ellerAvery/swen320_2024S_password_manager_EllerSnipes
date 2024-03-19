@@ -1,53 +1,52 @@
-# user_management.py
-
 import pickle
 from flask import current_app as app
-from crypto.Cipher import Cipher
+from crypto.Cipher import Cipher  # Assuming Cipher is correctly implemented
 
-# Initialize or load the user dictionary
+users_file = 'users.pickle'
+users = {}
+
 def load_users():
-    """Load the user dictionary from a file."""
+    global users
     try:
-        with open('users.pickle', 'rb') as f:
-            return pickle.load(f)
+        with open(users_file, 'rb') as f:
+            users = pickle.load(f)
     except FileNotFoundError:
         app.logger.info("Users file not found. Starting with an empty dictionary.")
-        return {}
 
-def save_users(users_dict):
-    """Save the user dictionary to a file."""
-    with open('users.pickle', 'wb') as f:
-        pickle.dump(users_dict, f)
+def save_users():
+    with open(users_file, 'wb') as f:
+        pickle.dump(users, f)
 
-def add_user(username, password, **kwargs):
-    """Add a user to the dictionary with encrypted password."""
-    users_dict = load_users()  # Define the users_dict variable
+def add_users(username, password):
+    if username in users:
+        return False  # User already exists
     cipher = Cipher()
     encrypted_password = cipher.encrypt(password)
-    if username in users_dict:
-        raise ValueError("User already exists.")
-    users_dict[username] = {"password": encrypted_password, **kwargs}
-    save_users(users_dict)
+    users[username] = {'password': encrypted_password}
+    save_users()
+    return True
+
+def check_password(username, password):
+    user = users.get(username)
+    if not user:
+        return False
+    cipher = Cipher()
+    return cipher.decrypt(user['password']) == password
+def get_users(username):
+    """
+    Retrieve a user's information from the dictionary.
     
-def get_user(username):
-    """Retrieve a user's information."""
-    users_dict = load_users()
-    return users_dict.get(username, None)
+    :param username: The username of the user to retrieve.
+    :return: The user's information if found, or None if not found.
+    """
+    # Assuming `users` is the global dictionary containing user data
+    global users
+    
+    # Try to retrieve the user's information by username
+    user_info = users.get(username)
+    
+    # Return the user's information if found, else return None
+    return user_info if user_info else None
 
-def update_user(username, password):
-    """Update a user's password."""
-    users_dict = load_users()
-    if username not in users_dict:
-        return False  # User does not exist
-    users_dict[username]['password'] = password
-    save_users(users_dict)
-    return True
-
-def remove_user(username):
-    """Remove a user from the dictionary."""
-    users_dict = load_users()
-    if username not in users_dict:
-        return False  # User does not exist
-    del users_dict[username]
-    save_users(users_dict)
-    return True
+# Call load_users at application start
+load_users()
