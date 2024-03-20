@@ -8,19 +8,25 @@ class User(UserMixin):
             self.username = username
             self.id = username  # Flask-Login uses this attribute to keep track of the user
             self.password_hash = user_info.get('password')
-
+            
+    
+    # Static method to check if the provided password matches the stored password for the given username
     @staticmethod
     def check_password(username, password):
         # Ideally, this should verify a password against a hashed version
         return check_password(username, password)
-
-    @staticmethod
+    
+    # Static method to get a User object if the user exists
+    @staticmethod 
     def get(username):
+        # If the user exists, return a User object, otherwise return None
         user_info = get_users(username)
         if user_info:
             return User(username)
         return None
-
+# Define a user loader for Flask-Login
+# This function is used by Flask-Login to reload the user object from the user ID stored in the session
 @login_manager.user_loader
 def load_user(user_id):
+    # Get the User object using the static method get
     return User.get(user_id)

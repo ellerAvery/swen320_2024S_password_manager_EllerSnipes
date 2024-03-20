@@ -82,6 +82,5 @@ class TestUserManagement(unittest.TestCase):
             del users[cls.username]
         save_users()
         
-    
 if __name__ == '__main__':
     unittest.main()
