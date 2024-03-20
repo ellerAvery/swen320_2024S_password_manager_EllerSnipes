@@ -65,4 +65,4 @@ def update_password():
                 flash('There was an error updating your password.', 'danger')
         else:
             flash('Old password is incorrect.', 'danger')
-    return render_template('accounts/updatepass.html', form=form)
+    return render_template('accounts/update_password.html', form=form)
