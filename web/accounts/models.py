@@ -1,6 +1,7 @@
 from flask_login import UserMixin, login_manager
 from web.user_management import get_users, check_password
 
+
 class User(UserMixin):
     def __init__(self, username):
         user_info = get_users(username)
@@ -24,9 +25,3 @@ class User(UserMixin):
         if user_info:
             return User(username)
         return None
-# Define a user loader for Flask-Login
-# This function is used by Flask-Login to reload the user object from the user ID stored in the session
-@login_manager.user_loader
-def load_user(user_id):
-    # Get the User object using the static method get
-    return User.get(user_id)

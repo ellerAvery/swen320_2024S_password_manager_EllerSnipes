@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField
 from wtforms.validators import DataRequired, Length
-from web.user_management import get_users 
+
 
 # Import necessary modules from flask_wtf and wtforms
 
@@ -21,6 +21,7 @@ class RegisterForm(FlaskForm):
 
     # Define a custom validation method for the form
     def validate(self, extra_validators=None):
+        from web.user_management import get_users 
         # Perform initial validation
         initial_validation = super(RegisterForm, self).validate(extra_validators=extra_validators)
         # If initial validation fails, return False

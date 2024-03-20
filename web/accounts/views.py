@@ -4,12 +4,6 @@ from web.accounts.models import User
 from .forms import LoginForm, RegisterForm, ChangePasswordForm
 from web.user_management import add_users, get_users, check_password, encrypt_password, decrypt_password
 
-# Import necessary modules from flask and flask_login
-
-# Import User model and forms
-
-# Import user management functions
-
 # Create a Blueprint for accounts
 accounts_bp = Blueprint('accounts', __name__)
 
@@ -25,7 +19,7 @@ def register():
             return redirect(url_for('accounts.login'))
         else:
             flash('User already exists.', 'danger')
-    return render_template('register.html', form=form)
+    return render_template('accounts/register.html', form=form)
 
 # Route for user login
 @accounts_bp.route('/login', methods=['GET', 'POST'])
@@ -35,15 +29,15 @@ def login():
         # Check if user exists and password is correct
         user_info = get_users(form.username.data)
         if user_info and check_password(form.username.data, form.password.data):
-            # Create a user instance for Flask-Login
-            user = User()
-            user.id = form.username.data
+    # Pass the username to the User constructor
+            user = User(username=form.username.data)
+            user.id = form.username.data  # This line might be redundant if the id is set within the User constructor
             login_user(user)
             flash('Login successful!', 'success')
             return redirect(url_for('core.encrypt'))
         else:
             flash('Invalid username or password.', 'danger')
-    return render_template('login.html', form=form)
+    return render_template('accounts/login.html', form=form)
 
 # Route for user logout
 @accounts_bp.route('/logout')
@@ -71,4 +65,4 @@ def update_password():
                 flash('There was an error updating your password.', 'danger')
         else:
             flash('Old password is incorrect.', 'danger')
-    return render_template('updatepass.html', form=form)
+    return render_template('accounts/updatepass.html', form=form)
