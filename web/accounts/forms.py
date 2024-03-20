@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField
 from wtforms.validators import DataRequired, Length
-from web.user_management import get_user  
+from web.user_management import get_users 
 
 class LoginForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired()])
@@ -17,7 +17,7 @@ class RegisterForm(FlaskForm):
         initial_validation = super(RegisterForm, self).validate(extra_validators=extra_validators)
         if not initial_validation:
             return False
-        user = get_user(self.username.data)  # Using custom user management function
+        user = get_users(self.username.data)  # Using custom user management function
         if user:
             self.username.errors.append("Username already registered")
             return False

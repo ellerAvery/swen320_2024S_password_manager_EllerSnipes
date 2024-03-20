@@ -1,10 +1,12 @@
+from flask import Flask
+from flask_login import LoginManager, UserMixin
+from decouple import config
 import logging
 from logging.handlers import RotatingFileHandler
-from decouple import config
-from flask import Flask
-from flask_login import LoginManager
 
-# Initialize Flask app
+from web.accounts.models import User
+from .user_management import load_users, get_users  
+from crypto.Cipher import Cipher 
 app = Flask(__name__)
 app.config.from_object(config("APP_SETTINGS"))
 
@@ -22,15 +24,17 @@ login_manager.init_app(app)
 login_manager.login_view = "accounts.login"
 login_manager.login_message_category = "danger"
 
-# Import user management functions
-from .user_management import load_users
-
-# Register Flask-Login user loader callback using user_management functions
+# Define a user loader using a mock user class
 @login_manager.user_loader
 def user_loader(user_id):
-    return load_users(user_id)
+    user_info = get_users(user_id)
+    if user_info:
+        user = User()  # Assuming you have a User class that extends UserMixin
+        user.id = user_id
+        return user
+    return None
 
-# Register blueprints
+# Import and register blueprints after other imports to avoid circular dependencies
 from .accounts.views import accounts_bp
 from .core.views import core_bp
 

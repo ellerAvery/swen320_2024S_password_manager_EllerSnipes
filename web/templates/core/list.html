@@ -1,16 +1,32 @@
 {% extends "template.html" %}
+{% block custom_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom_styles.css') }}">
+{% endblock %}
+
 {% block content %}
-<style>
-    table, th, td {
-      border:1px solid black;
-    }
-</style>
-<table id="passwordTable" style="width:50%">
-    <tr>
-      <th>Key</th>
-      <th>Encrypted Password</th>
-    </tr>
-</table>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h2 class="text-center mb-4">List of Encrypted Passwords</h2>
+            <div class="d-grid gap-2 mb-4">
+                <button id="Listbutton" class="btn btn-primary">Load Encrypted Passwords</button>
+            </div>
+            <div class="table-responsive">
+                <table id="passwordTable" class="table">
+                    <thead class="table-light">
+                        <tr>
+                        <th scope="col">Key</th>
+                        <th scope="col">Encrypted Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be added here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -19,7 +35,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const tableBody = document.getElementById("passwordTable").querySelector("tbody");
-                    tableBody.innerHTML = "";
+                    tableBody.innerHTML = ""; // Clear existing rows
                     data.forEach(item => {
                         const row = document.createElement("tr");
                         const keyCell = document.createElement("td");
@@ -37,5 +53,4 @@
         });
     });
 </script>
-
 {% endblock %}

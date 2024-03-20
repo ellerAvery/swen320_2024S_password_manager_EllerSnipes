@@ -1,19 +1,16 @@
-<header class="p-3 text-bg-dark">
-  <div class="bg-custom-gray py-2 d-flex align-items-center">
-    <span class="fw-bold text-white ms-3">Password Manager</span>
-  </div>
+<header class="p-3 bg-dark text-white">
   <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <div class="text-end">
-        {% if current_user.is_authenticated %}
-        <a href="{{ url_for('accounts.updatepass') }}"><button type="button" class="btn btn-light border-0 mb-2 w-20 btn-sm">{{ current_user.username }}</button></a>
-        <a href="{{ url_for('core.encrypt') }}"><button type="button" class="btn btn-primary mb-2 w-20 btn-sm">Encrypt</button></a>
-        <a href="{{ url_for('core.decrypt') }}"><button type="button" class="btn btn-primary mb-2 w-20 btn-sm">Decrypt</button></a>
-        <a href="{{ url_for('core.list') }}"><button type="button" class="btn btn-primary mb-2 w-20 btn-sm">List</button></a>
-        <a href="{{ url_for('accounts.logout') }}"><button type="button" class="btn btn-primary mb-2 w-20 btn-sm">Logout</button></a>
-        {% else %}
-        {% endif %}
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      <span class="h5">Password Manager</span>
+      {% if current_user.is_authenticated %}
+      <div>
+        <a href="{{ url_for('accounts.updatepass') }}" class="btn btn-outline-light me-2 btn-sm">Update Password</a>
+        <a href="{{ url_for('core.encrypt') }}" class="btn btn-success me-2 btn-sm">Encrypt</a>
+        <a href="{{ url_for('core.decrypt') }}" class="btn btn-info me-2 btn-sm">Decrypt</a>
+        <a href="{{ url_for('core.list') }}" class="btn btn-warning me-2 btn-sm">List</a>
+        <a href="{{ url_for('accounts.logout') }}" class="btn btn-danger btn-sm">Logout</a>
       </div>
+      {% endif %}
     </div>
   </div>
 </header>

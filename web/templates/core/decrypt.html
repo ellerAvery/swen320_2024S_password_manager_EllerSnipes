@@ -1,24 +1,32 @@
 {% extends "template.html" %}
 
-{% block content %}
+{% block custom_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom_styles.css') }}">
+{% endblock %}
 
-<div class="row">
-  <div class="col-md-4">
-    <main class="form-signin w-100 m-auto">
-      <form role="form2" method="post" action="/decrypt">
-        <div class="form-floating">
-          <label for="encryptedTextD">Encrypted Text</label>
-          <input type="password" id="encryptedTextD" name="encryptedTextD" placeholder="Add text" class="form-control mb-2">
-          <button id="rightButton" class="btn btn-sm btn-primary" type="submit">Decrypt</button>
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <h2 class="text-center mb-4">Decrypt Your Text</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form role="form2" method="post" action="/decrypt">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="encryptedTextD" name="encryptedTextD" placeholder="Encrypted Text">
+                            <label for="encryptedTextD">Encrypted Text</label>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="submit">Decrypt</button>
+                        </div>
+                        <div class="form-floating mt-4">
+                            <input type="text" class="form-control" id="decryptedText" name="decryptedText" placeholder="Decrypted Text" value="{{ decrypted_text }}" disabled>
+                            <label for="decryptedText">Decrypted Text</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-          
-        <div class="form-floating">
-          <label for="password" style="margin-top: 12px">Decrypted Text</label>
-          <input type="text" id="decryptedText" name="password" class="form-control mb-4" value="{{ decrypted_text }}" disabled>
-        </div>
-      </form>
-    </main>
-  </div>
+    </div>
 </div>
-<div class="Decryption-page"></div>
 {% endblock %}

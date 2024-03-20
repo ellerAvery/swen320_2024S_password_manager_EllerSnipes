@@ -1,53 +1,61 @@
 {% extends "template.html" %}
 
+{% block custom_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom_styles.css') }}">
+{% endblock %}
+
 {% block content %}
-
-<div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <main class="form-signin w-100 m-auto">
-      <form role="form" method="post" action="">
-        {{ form.csrf_token }}
-        <h1 class="h3 mb-3 fw-normal text-center">Please register</h1>
-
-        <div class="form-floating">
-          {{ form.username.label }}
-          {{ form.username(placeholder="username", class="form-control mb-2") }}
-            {% if form.username.errors %}
-              {% for error in form.username.errors %}
-                <div class="alert alert-danger" role="alert">
-                  {{ error }}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2 class="mb-0">Register Now</h2>
                 </div>
-              {% endfor %}
-            {% endif %}
-        </div>
-        <div class="form-floating">
-          {{ form.password.label }}
-          {{ form.password(placeholder="password", class="form-control mb-2") }}
-            {% if form.password.errors %}
-              {% for error in form.password.errors %}
-                <div class="alert alert-danger" role="alert">
-                  {{ error }}
+                <div class="card-body p-4">
+                    <form role="form" method="post" action="" novalidate>
+                        {{ form.csrf_token }}
+                        <div class="form-floating mb-3">
+                            {{ form.username.label(class="form-label") }}
+                            {{ form.username(class="form-control", placeholder="Username") }}
+                            {% if form.username.errors %}
+                                <div class="alert alert-warning mt-2">
+                                    {% for error in form.username.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-floating mb-3">
+                            {{ form.password.label(class="form-label") }}
+                            {{ form.password(class="form-control", placeholder="Password") }}
+                            {% if form.password.errors %}
+                                <div class="alert alert-warning mt-2">
+                                    {% for error in form.password.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="form-floating mb-4">
+                            {{ form.token.label(class="form-label") }}
+                            {{ form.token(class="form-control", placeholder="Passkey") }}
+                            {% if form.token.errors %}
+                                <div class="alert alert-warning mt-2">
+                                    {% for error in form.token.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 btn-lg mb-2">Register</button>
+                        <div class="text-center">
+                            <a href="{{ url_for('accounts.login') }}" class="text-muted">Already have an account? Sign in</a>
+                        </div>
+                    </form>
                 </div>
-              {% endfor %}
-            {% endif %}
+            </div>
         </div>
-        <div class="form-floating">
-          {{ form.token.label }}
-          {{ form.token(placeholder="passkey", class="form-control mb-2") }}
-            {% if form.token.errors %}
-              {% for error in form.token.errors %}
-                <div class="alert alert-danger" role="alert">
-                  {{ error }}
-                </div>
-              {% endfor %}
-            {% endif %}
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
-      </form>
-    </main>
-  </div>
-  <div class="col-md-4"></div>
+    </div>
 </div>
-
 {% endblock %}

@@ -1,6 +1,7 @@
 import pickle
 from flask import current_app as app
-from crypto.Cipher import Cipher  
+from crypto.Cipher import Cipher  # Assuming Cipher is correctly implemented
+
 users_file = 'users.pickle'
 users = {}
 
@@ -16,36 +17,42 @@ def save_users():
     with open(users_file, 'wb') as f:
         pickle.dump(users, f)
 
-def add_users(username, password):
+def add_users(username, password, token):
     if username in users:
         return False  # User already exists
-    cipher = Cipher()
-    encrypted_password = cipher.encrypt(password)
-    users[username] = {'password': encrypted_password}
+    users[username] = {'password': encrypt_password(password), 'token': token}
     save_users()
     return True
 
-def check_password(username, password):
-    user = users.get(username)
-    if not user:
-        return False
-    cipher = Cipher()
-    return cipher.decrypt(user['password']) == password
 def get_users(username):
-    """
-    Retrieve a user's information from the dictionary.
-    
-    :param username: The username of the user to retrieve.
-    :return: The user's information if found, or None if not found.
-    """
-    # Assuming `users` is the global dictionary containing user data
-    global users
-    
-    # Try to retrieve the user's information by username
-    user_info = users.get(username)
-    
-    # Return the user's information if found, else return None
-    return user_info if user_info else None
+    """Retrieve a user's information."""
+    return users.get(username)
 
-# Call load_users at application start
+def update_user_password(username, new_password):
+    """Update a user's password."""
+    user = get_users(username)
+    if user:
+        users[username]['password'] = encrypt_password(new_password)
+        save_users()
+        return True
+    return False
+
+def check_password(username, password):
+    """Check if the provided password matches the stored password."""
+    user = get_users(username)
+    if user:
+        return password == decrypt_password(user['password'])
+    return False
+
+def encrypt_password(password):
+    """Encrypt a plaintext password."""
+    cipher = Cipher()
+    return cipher.encrypt(password)
+
+def decrypt_password(encrypted_password):
+    """Decrypt an encrypted password."""
+    cipher = Cipher()
+    return cipher.decrypt(encrypted_password)
+
+# Load users at application start
 load_users()

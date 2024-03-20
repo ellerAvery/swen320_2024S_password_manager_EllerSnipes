@@ -1,0 +1,95 @@
+.container {
+  padding-top: 50px;
+}
+
+.card-header {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 10px 0;
+}
+
+
+.close-btn {
+  position: absolute;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff2600;
+  top: 0px;
+  right: 0px;
+}
+
+#state_info {
+	width: 360px;
+}
+
+.co1x {
+	width: 480px;
+	padding: 15px;
+	margin: 15px;
+}
+
+#file-upload-form {
+	padding: 15px;
+}
+
+#startmove {
+	padding-top: 15px;
+}
+
+#detectinput {
+	padding-top: 15px;
+	padding-right: 15px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#rightButton {
+  position: fixed;
+  right: 975px;
+  width: 100px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bg-custom-gray {
+  background-color: #cacaca;
+}
+
+body {
+  background-color: #f0f2f5;
+}
+
+.card {
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.form-control, .btn {
+  border-radius: 20px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+
