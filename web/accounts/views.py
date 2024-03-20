@@ -1,7 +1,7 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import LoginManager, login_user, current_user, login_required, logout_user
 from crypto.Cipher import Cipher
-from user_management import add_user, get_user, save_users, check_password
+from web.user_management import add_user, get_user, save_users, check_password
 from .forms import LoginForm, RegisterForm, ChangePasswordForm  
 
 accounts_bp = Blueprint('accounts', __name__)

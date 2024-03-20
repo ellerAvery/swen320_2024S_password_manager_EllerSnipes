@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from user_management import get_user, check_password
+from web.user_management import get_user, check_password
 
 class User(UserMixin):
     def __init__(self, username):

@@ -9,3 +9,10 @@ setup:
 
 run:
 	python -m dotenv run python manage.py run -p 8080
+
+test:
+	python manage.py test
+
+coverage:
+	coverage run -m unittest discover -v && \
+	coverage report -m

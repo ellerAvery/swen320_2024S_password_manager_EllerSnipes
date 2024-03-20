@@ -1,7 +1,7 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from flask_login import login_required, current_user
+from flask_login import login_required
 from web.user_management import encrypt_password, decrypt_password
-from web import login_manager
+
 
 core_bp = Blueprint("core", __name__)
 
