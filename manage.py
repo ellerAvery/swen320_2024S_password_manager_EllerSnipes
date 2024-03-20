@@ -1,5 +1,5 @@
 from flask.cli import FlaskGroup
-from web import app  # Ensure 'web' is your Flask app's package
+from flask import app  # Ensure 'web' is your Flask app's package
 import unittest
 
 cli = FlaskGroup(app)
