@@ -92,4 +92,76 @@ body {
   border-color: #004085;
 }
 
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
 
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.navbar {
+  background-color: #f8f9fa;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  color: #007bff;
+}
+
+.nav-link {
+  color: #007bff;
+}
+
+.nav-link:hover {
+  color: #0056b3;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+
+.header {
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.header h1 {
+  font-size: 30px;
+  color: #007bff;
+}
+
+.main-content {
+  margin-top: 100px; /* Adjust this value based on the height of your header */
+}
+
+.sidebar {
+  background-color: #f0f2f5;
+  width: 200px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  color: #007bff;
+}
+
+.sidebar a:hover {
+  background-color: #cacaca;
+  color: #0056b3;
+}
