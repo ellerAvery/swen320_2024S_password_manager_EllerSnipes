@@ -1,7 +1,6 @@
 import pickle
 from flask import current_app as app
-from crypto.Cipher import Cipher  # Assuming Cipher is correctly implemented
-
+from crypto.Cipher import Cipher  
 users_file = 'users.pickle'
 users = {}
 
