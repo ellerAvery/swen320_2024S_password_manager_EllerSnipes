@@ -1,8 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField
 from wtforms.validators import DataRequired, Length
-from web.user_management import get_user  # Adjusted import to use custom user management
-
+from web.user_management import get_user  
 
 class LoginForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired()])
