@@ -1,12 +1,11 @@
 from flask import Flask
-from flask_login import LoginManager, UserMixin
+from flask_login import LoginManager
 from decouple import config
 import logging
 from logging.handlers import RotatingFileHandler
-
 from web.accounts.models import User
-from .user_management import load_users, get_users  
-from crypto.Cipher import Cipher 
+from .user_management import load_users, get_users, save_users, add_users
+
 app = Flask(__name__)
 app.config.from_object(config("APP_SETTINGS"))
 
@@ -14,6 +13,8 @@ app.config.from_object(config("APP_SETTINGS"))
 file_handler = RotatingFileHandler('application.log', maxBytes=10240, backupCount=10)
 file_handler.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+from flask_login import LoginManager
+
 file_handler.setFormatter(formatter)
 app.logger.addHandler(file_handler)
 app.logger.setLevel(logging.DEBUG)

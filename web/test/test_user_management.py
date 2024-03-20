@@ -1,6 +1,5 @@
 import unittest
-from web.user_management import add_users, get_users, check_password, encrypt_password, decrypt_password, load_users, save_users
-from crypto.Cipher import Cipher
+from web.user_management import add_users, get_users, check_password, encrypt_password, decrypt_password, load_users, save_users, update_user_password
 
 class TestUserManagement(unittest.TestCase):
     @classmethod
@@ -48,6 +47,33 @@ class TestUserManagement(unittest.TestCase):
         decrypted = decrypt_password(encrypted)
         self.assertEqual(self.password, decrypted)
 
+    def test_update_user_password(self):
+        """Test updating a user's password."""
+        new_password = "new_secure_password"
+        update_user_password(self.username, new_password)
+        self.assertTrue(check_password(self.username, new_password))
+
+    def test_save_users(self):
+        """Test saving the users to file."""
+        save_users()
+        # Assert that the users file exists and is not empty
+
+    def test_load_users(self):
+        """Test loading the users from file."""
+        # Create a temporary users file with some test data
+        # Call load_users()
+        # Assert that the users dictionary is populated correctly
+
+    def test_get_users_all(self):
+        """Test retrieving all users."""
+        all_users = get_users()
+        # Assert that all_users is a dictionary and contains the expected users
+
+    def test_get_users_invalid(self):
+        """Test retrieving a user with an invalid username."""
+        user_info = get_users("invalid_username")
+        self.assertIsNone(user_info)
+
     @classmethod
     def tearDownClass(cls):
         # Clean up: remove the test user
@@ -55,6 +81,7 @@ class TestUserManagement(unittest.TestCase):
         if cls.username in users:
             del users[cls.username]
         save_users()
-
+        
+    
 if __name__ == '__main__':
     unittest.main()

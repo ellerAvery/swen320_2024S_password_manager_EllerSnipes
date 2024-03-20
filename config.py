@@ -8,6 +8,7 @@ class Config(object):
     WTF_CSRF_ENABLED = True
     DEBUG_TB_ENABLED = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False
+    EXHORT_PYTHON_VIRTUAL_ENV=True
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
