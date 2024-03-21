@@ -35,23 +35,23 @@ class TestUserManagement(unittest.TestCase):
 
     def test_check_password_correct(self):
         """Test checking a correct password for a user."""
-        self.assertTrue(check_password(self.username, self.password))
+        self.assertTrue(check_password(cls.username, cls.password))
 
     def test_check_password_incorrect(self):
         """Test checking an incorrect password for a user."""
-        self.assertFalse(check_password(self.username, "wrong_password"))
+        self.assertFalse(check_password(cls.username, "wrong_password"))
 
     def test_encrypt_decrypt_password(self):
         """Test the encryption and decryption of a password."""
-        encrypted = encrypt_password(self.password)
+        encrypted = encrypt_password(cls.password)
         decrypted = decrypt_password(encrypted)
-        self.assertEqual(self.password, decrypted)
+        self.assertEqual(cls.password, decrypted)
 
     def test_update_user_password(self):
         """Test updating a user's password."""
         new_password = "new_secure_password"
-        update_user_password(self.username, new_password)
-        self.assertTrue(check_password(self.username, new_password))
+        update_user_password(cls.username, new_password)
+        self.assertTrue(check_password(cls.username, new_password))
 
     def test_save_users(self):
         """Test saving the users to file."""

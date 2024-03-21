@@ -2,7 +2,7 @@ from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import logout_user, login_required, current_user, login_user
 from web.accounts.models import User
 from .forms import LoginForm, RegisterForm, ChangePasswordForm
-from web.user_management import add_users, get_users, check_password, encrypt_password, decrypt_password
+from web.user_management import add_users, get_users, check_password, encrypt_password, decrypt_password, update_user_password
 
 # Create a Blueprint for accounts
 accounts_bp = Blueprint('accounts', __name__)
@@ -57,7 +57,7 @@ def update_password():
         user_info = get_users(current_user.username)
         if user_info and check_password(current_user.username, form.old_password.data):
             # Attempt to update password
-            success = update_password(current_user.username, encrypt_password(form.new_password.data))
+            success = update_user_password(current_user.username, form.new_password.data)
             if success:
                 flash('Your password has been updated!', 'success')
                 return redirect(url_for('accounts.login'))

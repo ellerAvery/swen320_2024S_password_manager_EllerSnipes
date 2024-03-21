@@ -33,6 +33,18 @@ class RegisterForm(FlaskForm):
         if user:
             self.username.errors.append("Username already registered")
             return False
+        
+        # If the password, passkey, or username are invalid length, return False
+        if self.username.data.__len__() < 8 or self.username.data.__len__() > 20:
+            self.username.errors.append("Invalid username length")
+            return False
+        if self.password.data.__len__() < 8 or self.password.data.__len__() > 20:
+            self.password.errors.append("Invalid password length")
+            return False
+        if self.token.data.__len__() < 8 or self.token.data.__len__() > 20:
+            self.passkey.errors.append("Invalid passkey length")
+            return False
+        
         # If all checks pass, return True
         return True
 
