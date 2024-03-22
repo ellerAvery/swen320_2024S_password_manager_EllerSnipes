@@ -15,9 +15,9 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
     # Define fields for username, password, and token. All are required fields.
     # Username must be between 5 and 10 characters, password between 8 and 20, and token between 10 and 30.
-    username = StringField("Username", validators=[DataRequired(), Length(min=5, max=10)])
-    password = PasswordField("Password", validators=[DataRequired(), Length(min=8, max=20)])
-    token = StringField("Passkey (Token)", validators=[DataRequired(), Length(min=10, max=30)])
+    username = StringField("Username", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    token = StringField("Passkey (Token)", validators=[DataRequired()])
 
     # Define a custom validation method for the form
     def validate(self, extra_validators=None):
@@ -53,4 +53,4 @@ class ChangePasswordForm(FlaskForm):
     # Define fields for old password and new password, both are required fields
     # New password must be between 8 and 20 characters
     old_password = PasswordField("Old Password", validators=[DataRequired()])
-    new_password = PasswordField("New Password", validators=[DataRequired(), Length(min=8, max=20)])
+    new_password = PasswordField("New Password", validators=[DataRequired()])
