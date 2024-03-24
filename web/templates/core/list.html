@@ -1,4 +1,5 @@
 {% extends "template.html" %}
+
 {% block custom_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/custom_style.css') }}">
 {% endblock %}
@@ -15,8 +16,8 @@
                 <table id="passwordTable" class="table">
                     <thead class="table-light">
                         <tr>
-                        <th scope="col">Key</th>
-                        <th scope="col">Encrypted Password</th>
+                            <th scope="col">Key</th>
+                            <th scope="col">Encrypted Password</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,28 +30,43 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("Listbutton").addEventListener("click", function () {
-            fetch('/Maketable')
-                .then(response => response.json())
-                .then(data => {
-                    const tableBody = document.getElementById("passwordTable").querySelector("tbody");
-                    tableBody.innerHTML = ""; // Clear existing rows
-                    data.forEach(item => {
-                        const row = document.createElement("tr");
-                        const keyCell = document.createElement("td");
-                        keyCell.textContent = item.key;
-                        row.appendChild(keyCell);
-                        const encryptedPasswordCell = document.createElement("td");
-                        encryptedPasswordCell.textContent = item.encrypted_password;
-                        row.appendChild(encryptedPasswordCell);
-                        tableBody.appendChild(row);
-                    });
-                })
-                .catch(error => {
-                    console.error("Error:", error);
+    document.getElementById("Listbutton").addEventListener("click", function () {
+        // Optionally add loading feedback here
+        var listButton = document.getElementById("Listbutton");
+        listButton.textContent = 'Loading...';
+        listButton.disabled = true;
+
+        fetch('/Maketable')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const tableBody = document.getElementById("passwordTable").querySelector("tbody");
+                tableBody.innerHTML = ""; // Clear existing rows
+                data.forEach(item => {
+                    const row = document.createElement("tr");
+                    const keyCell = document.createElement("td");
+                    keyCell.textContent = item.key;
+                    row.appendChild(keyCell);
+                    const encryptedPasswordCell = document.createElement("td");
+                    encryptedPasswordCell.textContent = item.encrypted_password;
+                    row.appendChild(encryptedPasswordCell);
+                    tableBody.appendChild(row);
                 });
-        });
+                // Restore the button text
+                listButton.textContent = 'Load Encrypted Passwords';
+                listButton.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Display an error message or handle errors as needed
+                // Restore the button text
+                listButton.textContent = 'Load Encrypted Passwords';
+                listButton.disabled = false;
+            });
     });
 </script>
 {% endblock %}

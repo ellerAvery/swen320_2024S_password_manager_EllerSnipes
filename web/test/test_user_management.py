@@ -3,80 +3,78 @@ from web.user_management import add_users, get_users, check_password, encrypt_pa
 
 class TestUserManagement(unittest.TestCase):
 
-    @classmethod
-    def test_add_users(cli):
-        """Test adding a new user to the system."""
-        cli. new_username = "new_user"
-        cli.new_password = "new_password"
-        cli.new_token = "new_token123"
-        cli.invalid_username = "nonexistent_user"
-
-        # Preparing the environment
+    def setUp(self):
+        """Set up test variables."""
+        self.new_username = "new_user"
+        self.new_password = "new_password"
+        self.new_token = "new_token123"
+        self.invalid_username = "nonexistent_user"
         load_users()  # Make sure users are loaded from file
-        result = add_users(cli.new_username, cli.new_password, cli.new_token)
-        cli.assertTrue(result)
 
-    def test_get_users(cli):
+    def test_add_users(self):
+        """Test adding a new user to the system."""
+        result = add_users(self.new_username, self.new_password, self.new_token)
+        self.assertTrue(result)
+
+    def test_get_users(self):
         """Test retrieving an existing user."""
-        user_info = get_users(cli.new_username)
-        cli.assertIsNotNone(user_info)
-        cli.assertIn('password', user_info)
-        cli.assertIn('token', user_info)
+        user_info = get_users(self.new_username)
+        self.assertIsNotNone(user_info)
+        self.assertIn('password', user_info)
+        self.assertIn('token', user_info)
 
-    def test_get_users_nonexistent(cli):
+    def test_get_users_nonexistent(self):
         """Test retrieving a user that does not exist."""
-        user_info = get_users(cli.invalid_username)
-        cli.assertIsNone(user_info)
+        user_info = get_users(self.invalid_username)
+        self.assertIsNone(user_info)
 
-    def test_check_password_correct(cli):
+    def test_check_password_correct(self):
         """Test checking a correct password for a user."""
-        cli.assertTrue(check_password(cli.new_username, cli.new_password ))
+        self.assertTrue(check_password(self.new_username, self.new_password ))
 
-    def test_check_password_incorrect(cli):
+    def test_check_password_incorrect(self):
         """Test checking an incorrect password for a user."""
-        cli.assertFalse(check_password(cli.invalid_username, "wrong_password"))
+        self.assertFalse(check_password(self.invalid_username, "wrong_password"))
 
-    def test_encrypt_decrypt_password(cli):
+    def test_encrypt_decrypt_password(self):
         """Test the encryption and decryption of a password."""
-        encrypted = encrypt_password(cli.new_password)
+        encrypted = encrypt_password(self.new_password)
         decrypted = decrypt_password(encrypted)
-        cli.assertEqual(cli.new_password, decrypted)
+        self.assertEqual(self.new_password, decrypted)
 
-    def test_update_user_password(cli):
+    def test_update_user_password(self):
         """Test updating a user's password."""
         new_password = "new_secure_password"
-        update_user_password(cli.new_username, new_password)
-        cli.assertTrue(check_password(cli.new_username, new_password))
+        update_user_password(self.new_username, new_password)
+        self.assertTrue(check_password(self.new_username, new_password))
 
-    def test_save_users(cli):
+    def test_save_users(self):
         """Test saving the users to file."""
         save_users()
         # Assert that the users file exists and is not empty
 
-    def test_load_users(cli):
+    def test_load_users(self):
         """Test loading the users from file."""
         # Create a temporary users file with some test data
         # Call load_users()
         # Assert that the users dictionary is populated correctly
 
-    def test_get_users_all(cli):
+    def test_get_users_all(self):
         """Test retrieving all users."""
-        cli.all_users = get_users()
+        self.all_users = get_users()
         # Assert that all_users is a dictionary and contains the expected users
 
-    def test_get_users_invalid(cli):
+    def test_get_users_invalid(self):
         """Test retrieving a user with an invalid username."""
         user_info = get_users("invalid_username")
-        cli.assertIsNone(user_info)
+        self.assertIsNone(user_info)
 
     @classmethod
     def tearDownClass(cls):
-        # Clean up: remove the test user
-        cls.username = "new_user"
         users = get_users()  # Assuming get_users can also return the full users dict
-        if cls.username in users:
-            del users[cls.username]
+        if "new_user" in users:
+            del users["new_user"]
         save_users()
-        
+
 if __name__ == '__main__':
     unittest.main()
