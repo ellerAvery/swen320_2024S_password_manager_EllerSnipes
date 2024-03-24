@@ -14,3 +14,5 @@ email_validator
 Flask-Testing
 coverage
 Flask-User==1.0.2.2
+bootstrap
+flask-bootstrap

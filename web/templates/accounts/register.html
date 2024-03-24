@@ -18,35 +18,29 @@
                         <div class="form-floating mb-3">
                             {{ form.username.label(class="form-label") }}
                             {{ form.username(class="form-control", placeholder="Username") }}
-                            {% if form.username.errors %}
-                                <div class="alert alert-warning mt-2">
-                                    {% for error in form.username.errors %}
-                                        {{ error }}
-                                    {% endfor %}
+                            {% for error in form.username.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ error }}
                                 </div>
-                            {% endif %}
+                            {% endfor %}
                         </div>
                         <div class="form-floating mb-3">
                             {{ form.password.label(class="form-label") }}
                             {{ form.password(class="form-control", placeholder="Password") }}
-                            {% if form.password.errors %}
-                                <div class="alert alert-warning mt-2">
-                                    {% for error in form.password.errors %}
-                                        {{ error }}
-                                    {% endfor %}
+                            {% for error in form.password.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ error }}
                                 </div>
-                            {% endif %}
+                            {% endfor %}
                         </div>
                         <div class="form-floating mb-4">
                             {{ form.token.label(class="form-label") }}
-                            {{ form.token(class="form-control", placeholder="Passkey") }}
-                            {% if form.token.errors %}
-                                <div class="alert alert-warning mt-2">
-                                    {% for error in form.token.errors %}
-                                        {{ error }}
-                                    {% endfor %}
+                            {{ form.token(class="form-control", placeholder="Passkey (Token)") }}
+                            {% for error in form.token.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ error }}
                                 </div>
-                            {% endif %}
+                            {% endfor %}
                         </div>
                         <button type="submit" class="btn btn-primary w-100 btn-lg mb-2">Register</button>
                         <div class="text-center">

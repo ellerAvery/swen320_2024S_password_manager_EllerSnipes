@@ -34,8 +34,6 @@
                             {% endif %}
                         </div>
                         <button type="submit" class="btn btn-primary w-100 mb-2">Login</button>
-                        <div class="text-center">
-                            <a href="{{ url_for('accounts.register') }}" class="btn btn-secondary w-100">Register</a>
                         </div>
                     </form>
                 </div>
@@ -44,3 +42,19 @@
     </div>
 </div>
 {% endblock %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+    
+        togglePassword.addEventListener("click", function(e) {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            // toggle the icon
+            this.classList.toggle('bi-eye');
+        });
+    });
+    </script>
+    

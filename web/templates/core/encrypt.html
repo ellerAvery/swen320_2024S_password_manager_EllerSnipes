@@ -11,23 +11,18 @@
             <h2 class="text-center mb-4">Encrypt Your Text</h2>
             <div class="card">
                 <div class="card-body">
-                    <form id="form1" method="post" action="/encrypt">
+                    <form method="post" action="/encrypt">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="passwordTextE" name="passwordTextE" placeholder="Password Text">
+                            <textarea class="form-control" id="passwordTextE" name="passwordTextE" placeholder="Password Text" style="height: 100px;"></textarea>
                             <label for="passwordTextE">Password Text</label>
                         </div>
                         <div class="d-grid gap-2">
                             <button class="btn btn-primary" type="submit">Encrypt</button>
                         </div>
                         <div class="form-floating mt-4">
-                            <input type="text" class="form-control" id="encryptedText" name="encryptedText" placeholder="Encrypted Text" value="{{ encrypted_text }}" disabled>
+                            <textarea class="form-control" id="encryptedText" name="encryptedText" placeholder="Encrypted Text" style="height: 100px;" disabled>{{ encrypted_text }}</textarea>
                             <label for="encryptedText">Encrypted Text</label>
-                        </div>
-                    </form>
-                    <form class="mt-4" method="post" action="">
-                        <div class="input-group">
-                            <input type="text" id="key" name="key" class="form-control" placeholder="Key or Tag">
-                            <button class="btn btn-outline-secondary" type="submit">Save</button>
+                            <button type="button" class="btn btn-outline-secondary mt-2" onclick="copyToClipboard('#encryptedText')">Copy</button>
                         </div>
                     </form>
                 </div>
@@ -35,4 +30,17 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block js %}
+<script>
+function copyToClipboard(elementSelector) {
+    var $temp = $("<textarea>");
+    $("body").append($temp);
+    $temp.val($(elementSelector).val()).select();
+    document.execCommand("copy");
+    $temp.remove();
+    alert("Copied to clipboard!"); // Or use Bootstrap Toast for better feedback
+}
+</script>
 {% endblock %}
