@@ -64,7 +64,8 @@ def encrypt_password(password):
 def decrypt_password(encrypted_password):
     """Decrypts an encrypted password."""
     cipher = Cipher()
-    return cipher.decrypt(encrypted_password)
+    decrypted_password = cipher.decrypt(encrypted_password)
+    return decrypted_password
 
 def all_users():
     """

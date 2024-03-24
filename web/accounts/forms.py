@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField
-from wtforms.validators import DataRequired, Length
+from wtforms.validators import DataRequired
 
 
 # Import necessary modules from flask_wtf and wtforms
@@ -44,7 +44,6 @@ class RegisterForm(FlaskForm):
         if self.token.data.__len__() < 8 or self.token.data.__len__() > 20:
             self.passkey.errors.append("Invalid passkey length")
             return False
-        
         # If all checks pass, return True
         return True
 

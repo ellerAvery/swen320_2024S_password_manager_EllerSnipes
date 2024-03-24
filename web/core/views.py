@@ -1,7 +1,7 @@
 from flask import Blueprint, flash, redirect, render_template, request, session, url_for
 from flask_login import login_required
 from crypto.Cipher import Cipher
-from web.user_management import encrypt_password, decrypt_password
+from web.user_management import decrypt_password, encrypt_password
 # Create a Blueprint object for the core part of the application
 core_bp = Blueprint("core", __name__)
 
