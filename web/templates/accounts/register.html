@@ -5,44 +5,56 @@
 {% endblock %}
 
 {% block content %}
+<div class="alert alert-info border-left-4" role="alert">
+    <strong>Note:</strong> This application uses Python dictionaries for data storage, meaning all information is stored in memory. To clear session data without restarting the app, consider using an <strong>Incognito Window</strong> or <strong>Private Browsing Mode</strong>. This approach is ideal for testing or demonstration purposes.
+</div>
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8">
-            <div class="card shadow-lg">
+        <div class="col-md-6">
+            <div class="card">
                 <div class="card-header bg-primary text-white text-center">
-                    <h2 class="mb-0">Register Now</h2>
+                    <h4 class="mb-0">Register Now</h4>
                 </div>
-                <div class="card-body p-4">
-                    <form role="form" method="post" action="" novalidate>
+                <div class="card-body">
+                    <form role="form" method="post" action="">
                         {{ form.csrf_token }}
-                        <div class="form-floating mb-3">
+                        <div class="mb-5">
                             {{ form.username.label(class="form-label") }}
-                            {{ form.username(class="form-control", placeholder="Username") }}
-                            {% for error in form.username.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ error }}
-                                </div>
-                            {% endfor %}
+                            {{ form.username(class="form-control", 
+                                             placeholder="Username (5-10 chars)", 
+                                             title="Username must be between 5 and 10 characters long.") }}
+                            {% if form.username.errors %}
+                                {% for error in form.username.errors %}
+                                <div class="alert alert-danger">{{ error }}</div>
+                                    {% endfor %}   
+                            {% endif %}
                         </div>
-                        <div class="form-floating mb-3">
+                        
+                        <div class="mb-5">
                             {{ form.password.label(class="form-label") }}
-                            {{ form.password(class="form-control", placeholder="Password") }}
-                            {% for error in form.password.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ error }}
-                                </div>
-                            {% endfor %}
+                            {{ form.password(class="form-control", 
+                                             placeholder="Password (8-20 chars)", 
+                                             title="Password must be between 8 and 20 characters long.") }}
+                            {% if form.password.errors %}
+                                {% for error in form.password.errors %}
+                                <div class="alert alert-danger">{{ error }}</div>
+                                    {% endfor %}
+                            {% endif %}
                         </div>
-                        <div class="form-floating mb-4">
+                        
+                        <div class="mb-5">
                             {{ form.token.label(class="form-label") }}
-                            {{ form.token(class="form-control", placeholder="Passkey (Token)") }}
-                            {% for error in form.token.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ error }}
-                                </div>
-                            {% endfor %}
+                            {{ form.token(class="form-control", 
+                                           placeholder="Passkey (10-30 chars)", 
+                                           title="Passkey must be between 10 and 30 characters long.") }}
+                            {% if form.token.errors %}
+                                {% for error in form.token.errors %}
+                                <div class="alert alert-danger">{{ error }}</div>
+                                {% endfor %} 
+                            {% endif %}
                         </div>
-                        <button type="submit" class="btn btn-primary w-100 btn-lg mb-2">Register</button>
+
+                        <button type="submit" class="btn btn-primary w-100 btn-lg mb-3">Register</button>
                         <div class="text-center">
                             <a href="{{ url_for('accounts.login') }}" class="text-muted">Already have an account? Sign in</a>
                         </div>

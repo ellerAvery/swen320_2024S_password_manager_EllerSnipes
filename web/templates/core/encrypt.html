@@ -22,8 +22,8 @@
                         <div class="form-floating mt-4">
                             <textarea class="form-control" id="encryptedText" name="encryptedText" placeholder="Encrypted Text" style="height: 100px;" disabled>{{ encrypted_text }}</textarea>
                             <label for="encryptedText">Encrypted Text</label>
-                            <button type="button" class="btn btn-outline-secondary mt-2" onclick="copyToClipboard('#encryptedText')">Copy</button>
                         </div>
+                        <button type="button" class="btn btn-outline-secondary mt-2 copy-btn" data-copy-target="#encryptedText">Copy</button>
                     </form>
                 </div>
             </div>
@@ -33,14 +33,5 @@
 {% endblock %}
 
 {% block js %}
-<script>
-function copyToClipboard(elementSelector) {
-    var $temp = $("<textarea>");
-    $("body").append($temp);
-    $temp.val($(elementSelector).val()).select();
-    document.execCommand("copy");
-    $temp.remove();
-    alert("Copied to clipboard!"); // Or use Bootstrap Toast for better feedback
-}
-</script>
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 {% endblock %}

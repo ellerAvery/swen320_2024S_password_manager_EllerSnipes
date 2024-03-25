@@ -19,26 +19,28 @@ class RegisterForm(FlaskForm):
 
     def validate(self, extra_validators=None):
         from web.user_management import get_users
-        initial_validation = super(RegisterForm, self).validate(extra_validators=extra_validators)
+        initial_validation = super(RegisterForm, self).validate()
         if not initial_validation:
-            return False
+            return False  # Stop further validation if initial checks fail
 
-        user = get_users(self.username.data)
-        if user:
-            self.username.errors.append("Username already registered")
-            return False
-        
+        valid = True  # Flag to keep track of overall validation success
+        if get_users(self.username.data):
+            self.username.errors.append("Username already registered.")
+            valid = False
+
         if len(self.username.data) < 5 or len(self.username.data) > 10:
             self.username.errors.append("Username must be between 5 and 10 characters long.")
-            return False
+            valid = False
+
         if len(self.password.data) < 8 or len(self.password.data) > 20:
             self.password.errors.append("Password must be between 8 and 20 characters long.")
-            return False
+            valid = False
+
         if len(self.token.data) < 10 or len(self.token.data) > 30:
             self.token.errors.append("Passkey must be between 10 and 30 characters long.")
-            return False
-        
-        return True
+            valid = False
+
+        return valid  # Return the overall validation status
 # Define a form for changing password
 class ChangePasswordForm(FlaskForm):
     old_password = PasswordField("Old Password", validators=[DataRequired()])
