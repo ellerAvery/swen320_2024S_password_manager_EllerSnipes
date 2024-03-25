@@ -9,6 +9,10 @@ Welcome to the SWEN320 2024S Password Manager, a Flask-based web application des
 - User registration and authentication system.
 - Intuitive web interface for easy password management.
 
+## Project Structure
+
+Below is an outline of the key directories and files in this project:
+
 ## Getting Started
 
 ### Prerequisites
