@@ -1,6 +1,10 @@
 # SWEN320 2024S Password Manager
 
-Welcome to the SWEN320 2024S Password Manager, a Flask-based web application designed for securely managing passwords. This project focuses on demonstrating encryption, data storage, and retrieval using Python dictionaries, rather than traditional databases, to keep the architecture simple and understandable.
+Welcome to the SWEN320 2024S Password Manager, a Flask-based web application designed for securely managing passwords.
+
+![Data Flow Diagram](web/static/dataflowswenproject.png)
+
+This project focuses on demonstrating encryption, data storage, and retrieval using Python dictionaries, rather than traditional databases, to keep the architecture simple and understandable.
 
 ## Features
 
@@ -12,6 +16,8 @@ Welcome to the SWEN320 2024S Password Manager, a Flask-based web application des
 ## Project Structure
 
 Below is an outline of the key directories and files in this project:
+
+![Project's directories and files here](web/static/projectstructure.png)
 
 ## Getting Started
 
@@ -75,15 +81,15 @@ This application uses Python dictionaries for data storage, meaning all informat
 
 For production use, consider integrating a database or other persistent storage solution to ensure data integrity and availability.
 
-### License
+## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-#### Authors
+## Authors
 
 - [Cole Snipes](https://www.linkedin.com/in/cole-snipes/)
 - Avery Eller
 
-#### Acknowledgements
+## Acknowledgements
 
 Thank you to [Dr. Chang](https://www.linkedin.com/in/hungfuaaronchang/) and [Ethan Lohman](https://github.com/Ethan-Lohman) for their guidance and support throughout this project.
