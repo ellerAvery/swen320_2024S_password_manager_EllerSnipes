@@ -54,7 +54,8 @@ Below is an outline of the key directories and files in this project:
 3. **Install Dependencies**
 
     ```bash
-    pip install -r requirements.txt
+    make install
+    make setup
     ```
 
 4. **Run the Application**

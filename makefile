@@ -3,7 +3,8 @@
 install:
 	@echo "Installing dependencies..."
 	pip install -r requirements.txt
-
+	docker build -t flask .
+		
 setup: install
 
 run:
