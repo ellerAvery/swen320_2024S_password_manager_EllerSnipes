@@ -1,4 +1,4 @@
-.PHONY: install run test setup coverage check_docker
+.PHONY: install run test setup coverage coverage_html check_docker
 
 # Variables for Docker image name and Flask port
 DOCKER_IMAGE_NAME := flask_app
@@ -10,22 +10,23 @@ check_docker:
 	@python check_docker.py
 
 # Installation tasks including Docker check
-install:
+install: check_docker
 	@echo "Installing Python dependencies from requirements.txt..."
 	@pip install -r requirements.txt
-	@$(MAKE) check_docker && echo "Building Docker image $(DOCKER_IMAGE_NAME)..." && docker build -t $(DOCKER_IMAGE_NAME) .
+	@echo "Building Docker image $(DOCKER_IMAGE_NAME) if it doesn't exist..."
+	@python check_docker_image.py $(DOCKER_IMAGE_NAME)
 
 setup: install
 
 # Run the application
 run:
 	@echo "Starting Flask application on port $(FLASK_PORT)..."
-	@python -m dotenv run python manage.py run -p $(FLASK_PORT)
+	@flask run -p $(FLASK_PORT)
 
 # Run tests
 test:
 	@echo "Running unit tests..."
-	@python manage.py test
+	@flask custom test
 
 # Generate coverage report in command-line and HTML
 coverage:

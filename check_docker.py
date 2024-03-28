@@ -1,12 +1,7 @@
 import subprocess
 import sys
 
-def is_docker_running():
-    try:
-        subprocess.check_output(['docker', 'info'])
-        return True
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        return False
+image_name = sys.argv[1]
 
 def image_exists(name):
     try:
@@ -15,17 +10,13 @@ def image_exists(name):
     except subprocess.CalledProcessError:
         return False
 
-if not is_docker_running():
-    print("Docker is not running. Please start Docker and try again.")
-    sys.exit(1)
-
-if image_exists('flask_app'):
-    print("Docker image flask_app already exists. No need to rebuild.")
-else:
-    print("Docker image flask_app does not exist. Proceeding to build...")
+if not image_exists(image_name):
+    print(f"Docker image {image_name} does not exist. Proceeding to build...")
     try:
-        subprocess.check_call(['docker', 'build', '-t', 'flask_app', '.'])
-        print("Docker image flask_app built successfully.")
+        subprocess.check_call(['docker', 'build', '-t', image_name, '.'])
+        print(f"Docker image {image_name} built successfully.")
     except subprocess.CalledProcessError as e:
-        print("Failed to build Docker image flask_app.")
+        print(f"Failed to build Docker image {image_name}.")
         sys.exit(1)
+else:
+    print(f"Docker image {image_name} already exists. No need to rebuild.")
