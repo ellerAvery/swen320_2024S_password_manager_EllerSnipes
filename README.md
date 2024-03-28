@@ -1,10 +1,6 @@
 # SWEN320 2024S Password Manager
 
-Welcome to the SWEN320 2024S Password Manager, a Flask-based web application designed for securely managing passwords.
-
-![Data Flow Diagram](web/static/dataflowswenproject.png)
-
-This project focuses on demonstrating encryption, data storage, and retrieval using Python dictionaries, rather than traditional databases, to keep the architecture simple and understandable.
+Welcome to the SWEN320 2024S Password Manager, a Flask-based web application designed for securely managing passwords. This project focuses on demonstrating encryption, data storage, and retrieval using Python dictionaries, rather than traditional databases, to keep the architecture simple and understandable.
 
 ## Features
 
@@ -15,9 +11,9 @@ This project focuses on demonstrating encryption, data storage, and retrieval us
 
 ## Project Structure
 
-Below is an outline of the key directories and files in this project:
+The project is structured as follows, with key directories and files:
 
-![Project's directories and files here](web/static/projectstructure.png)
+(Include your project structure here as previously detailed)
 
 ## Getting Started
 
@@ -25,6 +21,7 @@ Below is an outline of the key directories and files in this project:
 
 - Python 3.6 or newer.
 - pip for managing Python packages.
+- Docker (optional for containerization).
 
 ### Installation and Setup
 
@@ -54,11 +51,30 @@ Below is an outline of the key directories and files in this project:
 3. **Install Dependencies**
 
     ```bash
-    make install
-    make setup
+    pip install -r requirements.txt
     ```
 
-4. **Run the Application**
+4. **Setup Environment Variables**
+
+    Delete the current `.env` file if it exists, then create a new `.env` file in the root directory and paste the following contents:
+
+    ```bash
+    # Flask application settings
+    SECRET_KEY=verysecretkey
+    FLASK_APP=web
+    FLASK_DEBUG=True
+    APP_SETTINGS=config.DevelopmentConfig
+    
+    # Passkey for encryption (optional, could be used in Cipher or elsewhere)
+    DEFAULT_PASSKEY=passkey@2021#Jun
+    
+    # Logging configuration (optional, if you want to configure logging levels or formats via .env)
+    # LOGGING_LEVEL=DEBUG
+    ```
+
+    This `.env` file configures your application with necessary environment variables.
+
+5. **Run the Application**
 
     ```bash
     make run
@@ -66,7 +82,7 @@ Below is an outline of the key directories and files in this project:
 
     The application will be accessible at `http://127.0.0.1:5000`.
 
-### Using the Makefile
+## Using the Makefile
 
 The included Makefile simplifies common tasks:
 
@@ -80,17 +96,15 @@ The included Makefile simplifies common tasks:
 
 This application uses Python dictionaries for data storage, meaning all information is stored in memory. To clear session data without restarting the app, consider using an Incognito Window or Private Browsing Mode. This approach is ideal for testing or demonstration purposes.
 
-For production use, consider integrating a database or other persistent storage solution to ensure data integrity and availability.
-
-## License
+### License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Authors
+#### Authors
 
 - [Cole Snipes](https://www.linkedin.com/in/cole-snipes/)
 - Avery Eller
 
-## Acknowledgements
+#### Acknowledgements
 
 Thank you to [Dr. Chang](https://www.linkedin.com/in/hungfuaaronchang/) and [Ethan Lohman](https://github.com/Ethan-Lohman) for their guidance and support throughout this project.

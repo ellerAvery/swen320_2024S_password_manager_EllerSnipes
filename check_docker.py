@@ -1,4 +1,4 @@
-import subprocess
+'''import subprocess
 import sys
 
 def is_docker_running():
@@ -26,3 +26,4 @@ if __name__ == "__main__":
         print(f"Docker image {docker_image_name} already exists.")
     else:
         print(f"Docker image {docker_image_name} does not exist. You may want to build it.")
+'''
