@@ -1,8 +1,8 @@
 import unittest
 from web.accounts.models import User, UserMixin
-from web.user_management import add_users, get_users, check_password, encrypt_password, decrypt_password, load_users, save_users, update_user_password, all_users, users
+from web.user_management import add_users, get_users, check_password, encrypt_password, decrypt_password, load_users, update_user_password, all_users
 import pickle
-import os
+
 class TestUserManagement(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -10,7 +10,6 @@ class TestUserManagement(unittest.TestCase):
         # Ensure we're starting with a known state
         cls.initial_users = {
             "existing_user": {
-                "user": "test"
                 "password": encrypt_password("secure123"),
                 "token": "token456"
             }
@@ -28,31 +27,28 @@ class TestUserManagement(unittest.TestCase):
         self.new_token = "testtoken"
         load_users()  # Reload users from the initial state
 
-    # In test_user_management.py
-    # In test_user_management.py
     def test_add_users(self):
         """Ensure a new user can be added."""
         # Ensure the users dictionary is in the expected state before testing
-        print("Before adding user:", users)
+        #print("Before adding user:", all_users())
 
         # Attempt to add a new user
         result = add_users(self.new_username, self.new_password, self.new_token)
         self.assertTrue(result, "Expected True return value from add_users indicating success.")
 
         # Debugging: Check the state of users after attempting to add
-        print("After adding user:", users)
+        #print("After adding user:", all_users())
 
         # Assert the new user is present in the users dictionary
-        self.assertIn(self.new_username, users, "New user should be in users dictionary")
+        self.assertIn(self.new_username, all_users(), "New user should be in users dictionary")
 
         # Optionally, confirm the details of the added user
-        added_user = users.get(self.new_username)
+        added_user = get_users(self.new_username)
         self.assertIsNotNone(added_user, "Added user details should be retrievable.")
         self.assertEqual(added_user['token'], self.new_token, "Token should match what was added.")
 
         # Debugging: Print the keys of the users dictionary after assertion
-        print("Keys in users dictionary after assertion:", users.keys())
-
+        #print("Keys in users dictionary after assertion:", all_users().keys())
 
     def test_get_users(self):
         """Ensure we can retrieve an existing user."""

@@ -24,14 +24,14 @@ def decrypt_password(encrypted_password):
 
 def load_users():
     """Loads users from a file, initializing with an empty dict if not found."""
-    global users
+    global users  # Declare users as global
     try:
         with open(users_file, 'rb') as f:
             users = pickle.load(f)
     except FileNotFoundError:
-        users = {}
         # Use Flask's logging for consistency
         app.logger.info("Users file not found. Initialized with an empty dictionary.")
+        users = {}
 
 def save_users(users):
     """Saves the current users to a file."""
@@ -41,7 +41,7 @@ def save_users(users):
 
 def add_users(username, password, token):
     """Adds a new user if the username does not already exist."""
-    global users
+    global users  # Declare users as global
     print("Before adding user:", users)
     
     # Validate input (as an example, more thorough validation may be needed)
@@ -64,23 +64,6 @@ def add_users(username, password, token):
         return True
     except Exception as e:
         print(f"Error adding user {username}: {e}")
-        return False
-
-
-    # Check for existing user
-    if username in users:
-        app.logger.warning(f"Attempted to add existing user: {username}")
-        return False
-
-    # Encrypt password and add new user
-    try:
-        encrypted_password = encrypt_password(password)
-        users[username] = {'password': encrypted_password, 'token': token}
-        save_users(users)
-        app.logger.info(f"User added successfully: {username}")
-        return True
-    except Exception as e:
-        app.logger.error(f"Error adding user {username}: {e}")
         return False
 
 def get_users(username=None):
@@ -115,4 +98,4 @@ def all_users():
 #     print("Checking password:", check_password("testuser", "password123"))
 #     print("Updating password:", update_user_password("testuser", "newpassword"))
 #     print("Checking updated password:", check_password("testuser", "newpassword"))
-print("All users:", all_users())
+#print("All users:", all_users())
