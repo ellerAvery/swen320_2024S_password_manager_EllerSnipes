@@ -5,6 +5,7 @@ pyserial==3.5
 Werkzeug>=2.2.2
 itsdangerous==2.1.2
 click==8.1.7
+Flask-CLI
 python-decouple
 Flask-Migrate
 Flask-Login

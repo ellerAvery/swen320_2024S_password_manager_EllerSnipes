@@ -20,7 +20,6 @@ run:
 
 # Running tests
 test:
-	@echo "Running unit tests..."
 	@python manage.py test
 
 # Generating coverage report in command-line

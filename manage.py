@@ -1,17 +1,19 @@
+import sys
 from flask.cli import FlaskGroup
-from flask import app 
-import unittest
+from web.create_app import create_app  # Adjust the import based on your app structure
 
-cli = FlaskGroup(app)
+app = create_app()
+cli = FlaskGroup(create_app=lambda: app)
 
-@cli.command("test")
-def test():
-    """Runs the unit tests without test coverage."""
-    test = unittest.TestLoader().discover("test")
-    result = unittest.TextTestRunner(verbosity=2).run(test)
+@cli.command('test')
+def run_tests():
+    """Runs the unit tests."""
+    import unittest
+    tests = unittest.TestLoader().discover('web/test', pattern='test*.py')
+    result = unittest.TextTestRunner(verbosity=2).run(tests)
     if result.wasSuccessful():
         return 0
-    return 1
+    sys.exit(result)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     cli()

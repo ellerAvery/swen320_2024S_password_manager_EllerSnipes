@@ -2,9 +2,9 @@ from flask import Flask
 from flask_login import LoginManager
 from decouple import config
 import logging
+from web.user_management import get_users
 from logging.handlers import RotatingFileHandler
 from .accounts.models import User
-from .user_management import get_users
 from .accounts.views import accounts_bp
 from .core.views import core_bp
 
