@@ -3,7 +3,13 @@ from flask import current_app as app
 from crypto.Cipher import Cipher
 
 users_file = 'users.pickle'
-users = {}
+# Ensure that 'users' is initialized at the module level
+try:
+    with open(users_file, 'rb') as f:
+        users = pickle.load(f)
+except FileNotFoundError:
+    users = {}
+
 
 # Initialize the cipher once and use it for encryption and decryption
 cipher = Cipher()
@@ -27,18 +33,34 @@ def load_users():
         # Use Flask's logging for consistency
         app.logger.info("Users file not found. Initialized with an empty dictionary.")
 
-def save_users():
+def save_users(users):
     """Saves the current users to a file."""
     with open(users_file, 'wb') as f:
         pickle.dump(users, f)
+    
 
 def add_users(username, password, token):
     """Adds a new user if the username does not already exist."""
+    # Validate input (as an example, more thorough validation may be needed)
+    if not username or not password or not token:
+        app.logger.error("Invalid input provided to add_users.")
+        return False
+
+    # Check for existing user
     if username in users:
-        return False  # User already exists
-    users[username] = {'password': encrypt_password(password), 'token': token}
-    save_users()
-    return True
+        app.logger.warning(f"Attempted to add existing user: {username}")
+        return False
+
+    # Encrypt password and add new user
+    try:
+        encrypted_password = encrypt_password(password)
+        users[username] = {'password': encrypted_password, 'token': token}
+        save_users(users)
+        app.logger.info(f"User added successfully: {username}")
+        return True
+    except Exception as e:
+        app.logger.error(f"Error adding user {username}: {e}")
+        return False
 
 def get_users(username=None):
     """Returns information for a specific user, or all users if no username is provided."""

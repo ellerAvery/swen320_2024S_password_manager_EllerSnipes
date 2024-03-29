@@ -1,0 +1,8 @@
+2024-03-29 12:50:48,191 - web.create_app - ERROR - Error adding user testuser: save_users() takes 0 positional arguments but 1 was given
+2024-03-29 12:50:49,940 - web.create_app - ERROR - Error adding user testuser: save_users() takes 0 positional arguments but 1 was given
+2024-03-29 12:51:52,903 - web.create_app - INFO - User added successfully: testuser
+2024-03-29 12:53:38,971 - web.create_app - INFO - User added successfully: testuser
+2024-03-29 12:55:11,132 - web.create_app - ERROR - Error adding user testuser: maximum recursion depth exceeded
+2024-03-29 12:55:28,421 - web.create_app - INFO - User added successfully: testuser
+2024-03-29 12:55:30,759 - web.create_app - INFO - User added successfully: testuser
+2024-03-29 12:55:57,801 - web.create_app - INFO - User added successfully: testuser

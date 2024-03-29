@@ -26,12 +26,23 @@ class TestUserManagement(unittest.TestCase):
 
     def test_add_users(self):
         """Ensure a new user can be added."""
-        self.assertTrue(add_users(self.new_username, self.new_password, self.new_token),
-                        "User should have been added successfully")
-        # Ensure the 'users' dictionary is refreshed or correctly scoped here
-        self.assertIn(self.new_username, users, "New user should be in users dictionary")
-        # Optionally, assert more details about the added user
+        # Ensure the users dictionary is in the expected state before testing
+        print("Before adding user:", users)
 
+        # Attempt to add a new user
+        result = add_users(self.new_username, self.new_password, self.new_token)
+        self.assertTrue(result, "Expected True return value from add_users indicating success.")
+
+        # Debugging: Check the state of users after attempting to add
+        print("After adding user:", users)
+
+        # Assert the new user is present in the users dictionary
+        self.assertIn(self.new_username, users, "New user should be in users dictionary")
+
+        # Optionally, confirm the details of the added user
+        added_user = users.get(self.new_username)
+        self.assertIsNotNone(added_user, "Added user details should be retrievable.")
+        self.assertEqual(added_user['token'], self.new_token, "Token should match what was added.")
 
     def test_get_users(self):
         """Ensure we can retrieve an existing user."""
