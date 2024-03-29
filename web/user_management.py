@@ -72,7 +72,6 @@ def update_user_password(username, new_password):
     """Updates the password for a specific user."""
     if username in users:
         users[username]['password'] = encrypt_password(new_password)
-        save_users()
         return True
     return False
 
@@ -95,4 +94,4 @@ def all_users():
 #     print("Checking password:", check_password("testuser", "password123"))
 #     print("Updating password:", update_user_password("testuser", "newpassword"))
 #     print("Checking updated password:", check_password("testuser", "newpassword"))
-#     print("All users:", all_users())
+print("All users:", all_users())
