@@ -41,10 +41,31 @@ def save_users(users):
 
 def add_users(username, password, token):
     """Adds a new user if the username does not already exist."""
+    global users
+    print("Before adding user:", users)
+    
     # Validate input (as an example, more thorough validation may be needed)
     if not username or not password or not token:
-        app.logger.error("Invalid input provided to add_users.")
+        print("Invalid input provided to add_users.")
         return False
+
+    # Check for existing user
+    if username in users:
+        print(f"Attempted to add existing user: {username}")
+        return False
+
+    # Encrypt password and add new user
+    try:
+        encrypted_password = encrypt_password(password)
+        users[username] = {'password': encrypted_password, 'token': token}
+        save_users(users)
+        print(f"User added successfully: {username}")
+        print("After adding user:", users)  # Debug print
+        return True
+    except Exception as e:
+        print(f"Error adding user {username}: {e}")
+        return False
+
 
     # Check for existing user
     if username in users:

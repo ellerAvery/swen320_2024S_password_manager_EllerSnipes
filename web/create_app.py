@@ -19,15 +19,6 @@ def create_app():
     login_manager.login_view = "accounts.login"
     login_manager.login_message_category = "danger"
 
-    @login_manager.user_loader
-    def user_loader(user_id):
-        user_info = get_users(user_id)
-        if user_info:
-            user = User(username=user_id)
-            user.id = user_id
-            return user
-        return None
-
     # Register Blueprints
     app.register_blueprint(accounts_bp, url_prefix='/accounts')
     app.register_blueprint(core_bp)

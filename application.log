@@ -12,3 +12,5 @@
 2024-03-29 13:26:53,670 - web.create_app - INFO - User added successfully: testuser
 2024-03-29 13:30:21,355 - web.create_app - INFO - User added successfully: testuser
 2024-03-29 13:31:21,516 - web.create_app - INFO - User added successfully: testuser
+2024-03-29 13:33:47,876 - web.create_app - INFO - User added successfully: testuser
+2024-03-29 13:36:07,166 - web.create_app - INFO - User added successfully: testuser

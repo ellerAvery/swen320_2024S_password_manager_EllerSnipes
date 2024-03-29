@@ -10,12 +10,16 @@ class TestUserManagement(unittest.TestCase):
         # Ensure we're starting with a known state
         cls.initial_users = {
             "existing_user": {
+                "user": "test"
                 "password": encrypt_password("secure123"),
                 "token": "token456"
             }
         }
         with open('users.pickle', 'wb') as f:
             pickle.dump(cls.initial_users, f)
+        
+        # Load the users from the file
+        load_users()
 
     def setUp(self):
         """Set up test variables."""
@@ -24,6 +28,8 @@ class TestUserManagement(unittest.TestCase):
         self.new_token = "testtoken"
         load_users()  # Reload users from the initial state
 
+    # In test_user_management.py
+    # In test_user_management.py
     def test_add_users(self):
         """Ensure a new user can be added."""
         # Ensure the users dictionary is in the expected state before testing
@@ -43,6 +49,10 @@ class TestUserManagement(unittest.TestCase):
         added_user = users.get(self.new_username)
         self.assertIsNotNone(added_user, "Added user details should be retrievable.")
         self.assertEqual(added_user['token'], self.new_token, "Token should match what was added.")
+
+        # Debugging: Print the keys of the users dictionary after assertion
+        print("Keys in users dictionary after assertion:", users.keys())
+
 
     def test_get_users(self):
         """Ensure we can retrieve an existing user."""
