@@ -7,8 +7,11 @@ class User(UserMixin):
         user_info = get_users(username)
         if user_info:
             self.username = username
-            self.id = username  # Flask-Login uses this attribute to keep track of the user
-            self.password_hash = user_info.get('password')
+            self.id = username  # Flask-Login uses this attribute to keep track of the user.
+            # Directly use the password from user_info if hashing is not considered.
+            self.password = user_info.get('password')
+        else:
+            self.id = None
             
     
     # Static method to check if the provided password matches the stored password for the given username

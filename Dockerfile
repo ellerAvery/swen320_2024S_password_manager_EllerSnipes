@@ -16,6 +16,6 @@ EXPOSE 5000
 # Define environment variable
 ENV NAME World
 
-# Run app.py when the container launches
-CMD ["flask", "run", "--host=0.0.0.0"]
-
+# Set the default command to execute
+# when creating a new container to run manage.py
+CMD ["python", "manage.py", "run", "--host=0.0.0.0"]

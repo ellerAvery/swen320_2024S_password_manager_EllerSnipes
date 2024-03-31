@@ -35,7 +35,7 @@
         var listButton = document.getElementById("Listbutton");
         listButton.textContent = 'Loading...';
         listButton.disabled = true;
-
+        
         fetch('/Maketable')
             .then(response => {
                 if (!response.ok) {
@@ -43,7 +43,7 @@
                 }
                 return response.json();
             })
-            .then(data => {
+            .then( => {
                 const tableBody = document.getElementById("passwordTable").querySelector("tbody");
                 tableBody.innerHTML = ""; // Clear existing rows
                 data.forEach(item => {

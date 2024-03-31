@@ -13,8 +13,6 @@ Welcome to the SWEN320 2024S Password Manager, a Flask-based web application des
 
 The project is structured as follows, with key directories and files:
 
-(Include your project structure here as previously detailed)
-
 ## Getting Started
 
 ### Prerequisites
@@ -89,8 +87,7 @@ The included Makefile simplifies common tasks:
 - **Install Dependencies**: `make install`
 - **Run the Application**: `make run`
 - **Run Tests**: `make test`
-- **Generate Coverage Report**: `make coverage`
-- **Generate HTML Coverage Report**: `make coverage_html`
+- **Generate Coverage Report & HTML Coverage Report**: `make coverage`
 
 ## Data Persistence and Privacy
 
