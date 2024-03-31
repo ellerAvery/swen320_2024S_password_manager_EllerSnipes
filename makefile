@@ -11,7 +11,7 @@ install:
 	pip install -r requirements.txt
 
 # Check Docker status, run Docker if needed, and perform installation if Docker isn't set up
-setup:
+setup: install
 	@echo "Checking Docker status and setting up environment..."
 	@python check_docker.py || (echo "Setting up Docker environment..." && make install && docker build -t $(DOCKER_IMAGE_NAME) . && python check_docker.py)
 
