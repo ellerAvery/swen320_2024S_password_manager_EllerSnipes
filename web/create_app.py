@@ -2,7 +2,6 @@ from flask import Flask
 from flask_login import LoginManager
 from decouple import config
 import logging
-from web.user_management import get_users
 from logging.handlers import RotatingFileHandler
 from .accounts.models import User
 from .accounts.views import accounts_bp
@@ -30,5 +29,9 @@ def create_app():
     file_handler.setFormatter(formatter)
     app.logger.addHandler(file_handler)
     app.logger.setLevel(logging.DEBUG)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.get(user_id)
 
     return app
