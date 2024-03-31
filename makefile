@@ -1,4 +1,4 @@
-.PHONY: install run test setup coverage check-docker build-docker run-docker
+.PHONY: install run test setup check-docker
 
 # Set up variables for Docker image name and Flask app port
 DOCKER_IMAGE_NAME := flask_app
@@ -14,6 +14,11 @@ install:
 setup:
 	@echo "Checking Docker status and setting up environment..."
 	@python check_docker.py || (echo "Setting up Docker environment..." && make install && docker build -t $(DOCKER_IMAGE_NAME) . && python check_docker.py)
+
+# Run application without Docker
+run:
+	@echo "Starting Flask application on port $(FLASK_PORT)..."
+	@python -m dotenv run python manage.py run -p $(FLASK_PORT)
 
 # Running tests
 test:
