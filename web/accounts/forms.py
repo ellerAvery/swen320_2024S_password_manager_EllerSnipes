@@ -2,9 +2,6 @@ from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, ValidationError
 from wtforms.validators import DataRequired
 
-
-# Import necessary modules from flask_wtf and wtforms
-
 # Define a form for user login
 class LoginForm(FlaskForm):
     # Define fields for username and password, both are required fields

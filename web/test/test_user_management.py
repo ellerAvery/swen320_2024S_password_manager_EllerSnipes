@@ -30,14 +30,13 @@ class TestUserManagement(unittest.TestCase):
     def test_add_users(self):
         """Ensure a new user can be added."""
         # Ensure the users dictionary is in the expected state before testing
-        #print("Before adding user:", all_users())
+        print("Before adding user:", all_users())
 
         # Attempt to add a new user
         result = add_users(self.new_username, self.new_password, self.new_token)
         self.assertTrue(result, "Expected True return value from add_users indicating success.")
 
-        # Debugging: Check the state of users after attempting to add
-        #print("After adding user:", all_users())
+        print("After adding user:", all_users())
 
         # Assert the new user is present in the users dictionary
         self.assertIn(self.new_username, all_users(), "New user should be in users dictionary")
@@ -69,6 +68,40 @@ class TestUserManagement(unittest.TestCase):
         encrypted = encrypt_password(self.new_password)
         decrypted = decrypt_password(encrypted)
         self.assertEqual(self.new_password, decrypted)
+        
+    def test_add_user_with_short_password(self):
+        """Ensure adding a user with a short password returns an error."""
+        short_password = "short"
+        result = add_users("testuser2", short_password, "validtoken")
+        self.assertFalse(result, "Expected False due to short password.")
+
+    def test_add_user_with_long_username(self):
+        """Ensure adding a user with a long username returns an error."""
+        long_username = "verylongusernameexceedinglimit"
+        result = add_users(long_username, "validpassword", "validtoken")
+        self.assertFalse(result, "Expected False due to long username.")
+
+    def test_add_user_with_short_token(self):
+        """Ensure adding a user with a short token returns an error."""
+        short_token = "short"
+        result = add_users("testuser3", "validpassword", short_token)
+        self.assertFalse(result, "Expected False due to short token.")
+
+    def test_retrieving_nonexistent_user(self):
+        """Ensure that attempting to retrieve a nonexistent user returns None."""
+        self.assertIsNone(get_users("nonexistent_user"), "Expected None for nonexistent user.")
+
+    def test_retrieving_all_users(self):
+        """Ensure that we can retrieve all users."""
+        all_users_dict = all_users()
+        self.assertIsInstance(all_users_dict, dict, "Expected all_users to return a dictionary.")
+        self.assertIn("existing_user", all_users_dict, "Existing user should be in all users dictionary.")
+
+    def test_adding_existing_user(self):
+        """Ensure that adding a user with an existing username returns False."""
+        result = add_users("existing_user", "newpassword", "newtoken")
+        self.assertFalse(result, "Expected False when adding a user with an existing username.")
+
 
     @classmethod
     def tearDownClass(cls):
@@ -78,83 +111,3 @@ class TestUserManagement(unittest.TestCase):
 
     if __name__ == '__main__':
         unittest.main()
-    
-'''          
-    def test_save_users(self):
-        """Ensure that users are saved correctly."""
-        # Create a temporary users dictionary
-        temp_users = {
-            "user1": {
-                "password": encrypt_password("password1"),
-                "token": "token1"
-            },
-            "user2": {
-                "password": encrypt_password("password2"),
-                "token": "token2"
-            }
-        }
-
-        # Save the temporary users
-        save_users(temp_users)
-
-        # Load the users from the file
-        load_users()
-
-        # Assert that the loaded users match the temporary users
-        self.assertEqual(all_users(), temp_users, "Loaded users should match the saved users")
-
-    def test_check_password(self):
-        """Ensure that password checking works correctly."""
-        # Add a new user
-        add_users("testuser", "password123", "token123")
-
-        # Check the password for the added user
-        self.assertTrue(check_password("testuser", "password123"), "Password should match")
-
-        # Check an incorrect password for the added user
-        self.assertFalse(check_password("testuser", "incorrectpassword"), "Password should not match")
-
-    def test_get_users_with_username(self):
-        """Ensure that get_users returns the correct user when a username is provided."""
-        # Add a new user
-        add_users("testuser", "password123", "token123")
-
-        # Get the details of the added user
-        user_info = get_users("testuser")
-
-        # Assert that the user details match the added user
-        self.assertEqual(user_info["password"], encrypt_password("password123"), "Password should match")
-        self.assertEqual(user_info["token"], "token123", "Token should match")
-
-    def test_get_users_without_username(self):
-        """Ensure that get_users returns all users when no username is provided."""
-        # Add multiple users
-        add_users("user1", "password1", "token1")
-        add_users("user2", "password2", "token2")
-        add_users("user3", "password3", "token3")
-
-        # Get all users
-        users_dict = get_users()
-
-        # Assert that the number of users is correct
-        self.assertEqual(len(users_dict), 4, "Number of users should be 4 (including the initial user)")
-
-    def test_update_user_password_nonexistent_user(self):
-        """Ensure that update_user_password returns False for a nonexistent user."""
-        # Update the password for a nonexistent user
-        result = update_user_password("nonexistent_user", "newpassword")
-
-        # Assert that the result is False
-        self.assertFalse(result, "Result should be False for a nonexistent user")
-
-    def test_update_user_password_existing_user(self):
-        """Ensure that update_user_password updates the password for an existing user."""
-        # Add a new user
-        add_users("testuser", "password123", "token123")
-
-        # Update the password for the added user
-        update_user_password("testuser", "newpassword")
-
-        # Check the updated password for the added user
-        self.assertTrue(check_password("testuser", "newpassword"), "Password should match the updated password")
-'''
