@@ -1,6 +1,6 @@
 # user_management.py
 import pickle
-from flask import current_app as app
+from flask import current_app as app, session
 from crypto.Cipher import Cipher
 
 # Path to the users data file
@@ -70,6 +70,20 @@ def add_users(username, password, token):
         print(f"Error adding user '{username}': {e}")
         return False
 
+def save_encrypted_password(encrypted_password, token):
+    if 'encrypted_passwords' not in session:
+        session['encrypted_passwords'] = []
+    
+    session['encrypted_passwords'].append({'password': encrypted_password, 'key': token})
+    session.modified = True
+
+def get_user_token(username):
+    """Retrieve the token for a given username."""
+    user = get_users(username)  # Assuming this returns None if the user doesn't exist
+    if user:
+        return user.get('token')  # Assuming 'token' is the key where the token is stored
+    else:
+        return None  # Or raise an exception, depending on how you want to handle this case
 
 def get_users(username=None):
     """Get a single user by username or all users if no username is specified."""

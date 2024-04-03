@@ -6,7 +6,7 @@ from logging.handlers import RotatingFileHandler
 from .accounts.models import User
 from .accounts.views import accounts_bp
 from .core.views import core_bp
-
+from web.user_management import load_users
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = config('SECRET_KEY')
@@ -31,7 +31,7 @@ def create_app():
     app.logger.setLevel(logging.DEBUG)
 
     @login_manager.user_loader
-    def load_user(user_id):
+    def load_users(user_id):
         return User.get(user_id)
 
     return app

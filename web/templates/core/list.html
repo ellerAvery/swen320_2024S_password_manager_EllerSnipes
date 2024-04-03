@@ -31,7 +31,6 @@
 
 <script>
     document.getElementById("Listbutton").addEventListener("click", function () {
-        // Optionally add loading feedback here
         var listButton = document.getElementById("Listbutton");
         listButton.textContent = 'Loading...';
         listButton.disabled = true;
@@ -43,7 +42,7 @@
                 }
                 return response.json();
             })
-            .then( => {
+            .then(data => { // Corrected: Added missing parameter 'data'
                 const tableBody = document.getElementById("passwordTable").querySelector("tbody");
                 tableBody.innerHTML = ""; // Clear existing rows
                 data.forEach(item => {
@@ -56,14 +55,11 @@
                     row.appendChild(encryptedPasswordCell);
                     tableBody.appendChild(row);
                 });
-                // Restore the button text
                 listButton.textContent = 'Load Encrypted Passwords';
                 listButton.disabled = false;
             })
             .catch(error => {
                 console.error('Error:', error);
-                // Display an error message or handle errors as needed
-                // Restore the button text
                 listButton.textContent = 'Load Encrypted Passwords';
                 listButton.disabled = false;
             });

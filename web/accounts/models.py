@@ -17,7 +17,6 @@ class User(UserMixin):
     # Static method to check if the provided password matches the stored password for the given username
     @staticmethod
     def check_password(username, password):
-        # Ideally, this should verify a password against a hashed version
         return check_password(username, password)
     
     # Static method to get a User object if the user exists
