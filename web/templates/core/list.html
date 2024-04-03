@@ -46,12 +46,13 @@
                 const tableBody = document.getElementById("passwordTable").querySelector("tbody");
                 tableBody.innerHTML = ""; // Clear existing rows
                 data.forEach(item => {
+                    console.log(item);
                     const row = document.createElement("tr");
                     const keyCell = document.createElement("td");
-                    keyCell.textContent = item.key;
+                    keyCell.textContent = String(item.key);
                     row.appendChild(keyCell);
                     const encryptedPasswordCell = document.createElement("td");
-                    encryptedPasswordCell.textContent = item.encrypted_password;
+                    encryptedPasswordCell.textContent = item.password;
                     row.appendChild(encryptedPasswordCell);
                     tableBody.appendChild(row);
                 });
