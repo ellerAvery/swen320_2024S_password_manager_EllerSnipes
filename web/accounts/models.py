@@ -1,6 +1,6 @@
 from flask_login import UserMixin, login_manager
 from web.user_management import get_users, check_password
-
+from .forms import LoginForm, RegisterForm, ChangePasswordForm
 
 class User(UserMixin):
     def __init__(self, username):

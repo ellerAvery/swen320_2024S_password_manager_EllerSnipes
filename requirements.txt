@@ -21,3 +21,6 @@ docker
 selenium
 chromedriver
 webdriver_manager
+requests
+fastapi
+asyncio
