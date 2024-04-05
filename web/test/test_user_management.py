@@ -24,7 +24,7 @@ class TestUserManagement(unittest.TestCase):
         """Set up test variables."""
         self.new_username = "testuser"
         self.new_password = "testpass"
-        self.new_token = "testtoken"
+        self.new_token = "testtoken122shdcfbdh"
         load_users()  # Reload users from the initial state
 
     def test_add_users(self):
