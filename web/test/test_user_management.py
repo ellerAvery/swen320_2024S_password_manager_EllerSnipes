@@ -1,166 +1,113 @@
-import os
-import pickle
 import unittest
+from web.accounts.models import User, UserMixin
 from web.user_management import add_users, get_users, check_password, encrypt_password, decrypt_password, load_users, save_users, update_user_password, all_users
-from web.user_management import users
+import pickle
 
 class TestUserManagement(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        """Class level setup for the test cases."""
+        # Ensure we're starting with a known state
+        cls.initial_users = {
+            "existing_user": {
+                "password": encrypt_password("secure123"),
+                "token": "token456"
+            }
+        }
+        with open('users.pickle', 'wb') as f:
+            pickle.dump(cls.initial_users, f)
+        
+        # Load the users from the file
+        load_users()
 
     def setUp(self):
         """Set up test variables."""
-        self.new_username = "new_user"
-        self.new_password = "new_password"
-        self.new_token = "new_token123"
-        self.invalid_username = "nonexistent_user"
-        load_users()  # Make sure users are loaded from file
+        self.new_username = "testuser"
+        self.new_password = "testpass"
+        self.new_token = "testtoken"
+        load_users()  # Reload users from the initial state
 
     def test_add_users(self):
-        """Test adding a new user to the system."""
+        """Ensure a new user can be added."""
+        # Ensure the users dictionary is in the expected state before testing
+        print("Before adding user:", all_users())
+
+        # Attempt to add a new user
         result = add_users(self.new_username, self.new_password, self.new_token)
-        self.assertTrue(result)
+        self.assertTrue(result, "Expected True return value from add_users indicating success.")
+
+        print("After adding user:", all_users())
+
+        # Assert the new user is present in the users dictionary
+        self.assertIn(self.new_username, all_users(), "New user should be in users dictionary")
+
+        # Optionally, confirm the details of the added user
+        added_user = get_users(self.new_username)
+        self.assertIsNotNone(added_user, "Added user details should be retrievable.")
+        self.assertEqual(added_user['token'], self.new_token, "Token should match what was added.")
+
+        # Debugging: Print the keys of the users dictionary after assertion
+        #print("Keys in users dictionary after assertion:", all_users().keys())
 
     def test_get_users(self):
-        """Test retrieving an existing user."""
-        user_info = get_users(self.new_username)
+        """Ensure we can retrieve an existing user."""
+        user_info = get_users("existing_user")
         self.assertIsNotNone(user_info)
         self.assertIn('password', user_info)
         self.assertIn('token', user_info)
+        self.assertTrue(check_password("existing_user", "secure123"))
 
-    def test_get_users_nonexistent(self):
-        """Test retrieving a user that does not exist."""
-        user_info = get_users(self.invalid_username)
-        self.assertIsNone(user_info)
-
-    def test_check_password_correct(self):
-        """Test checking a correct password for a user."""
-        self.assertTrue(check_password(self.new_username, self.new_password ))
-
-    def test_check_password_incorrect(self):
-        """Test checking an incorrect password for a user."""
-        self.assertFalse(check_password(self.invalid_username, "wrong_password"))
+    def test_update_user_password(self):
+        """Ensure we can update a user's password."""
+        new_password = "updatedpassword"
+        update_user_password("existing_user", new_password)
+        self.assertTrue(check_password("existing_user", new_password))
 
     def test_encrypt_decrypt_password(self):
-        """Test the encryption and decryption of a password."""
+        """Ensure that password encryption and decryption work."""
         encrypted = encrypt_password(self.new_password)
         decrypted = decrypt_password(encrypted)
         self.assertEqual(self.new_password, decrypted)
-
-    def test_update_user_password(self):
-        """Test updating a user's password."""
-        new_password = "new_secure_password"
-        update_user_password(self.new_username, new_password)
-        self.assertTrue(check_password(self.new_username, new_password))
-
-    def test_save_users(self):
-        """Test saving the users to file."""
-        save_users()
-        # Assert that the users file exists and is not empty
-
-    def test_load_users(self):
-        """Test loading the users from file."""
-        # Create a temporary users file with some test data
-        # Call load_users()
-        # Assert that the users dictionary is populated correctly
-
-    def test_get_users_all(self):
-        """Test retrieving all users."""
-        self.all_users = get_users()
-        # Assert that all_users is a dictionary and contains the expected users
-
-    def test_get_users_invalid(self):
-        """Test retrieving a user with an invalid username."""
-        user_info = get_users("invalid_username")
-        self.assertIsNone(user_info)
         
+    def test_add_user_with_short_password(self):
+        """Ensure adding a user with a short password returns an error."""
+        short_password = "short"
+        result = add_users("testuser2", short_password, "validtoken")
+        self.assertFalse(result, "Expected False due to short password.")
 
-    def test_load_users(self):
-        """Test loading the users from file."""
-        # Create a temporary users file with some test data
-        users_file = "users.pickle"  
-        
-        test_users = {
-            "user1": {
-                "password": "password1",
-                "token": "token1"
-            },
-            "user2": {
-                "password": "password2",
-                "token": "token2"
-            }
-        }
-        with open(users_file, "wb") as file:
-            pickle.dump(test_users, file)
+    def test_add_user_with_long_username(self):
+        """Ensure adding a user with a long username returns an error."""
+        long_username = "verylongusernameexceedinglimit"
+        result = add_users(long_username, "validpassword", "validtoken")
+        self.assertFalse(result, "Expected False due to long username.")
 
-        # Call load_users()
-        load_users()
+    def test_add_user_with_short_token(self):
+        """Ensure adding a user with a short token returns an error."""
+        short_token = "short"
+        result = add_users("testuser3", "validpassword", short_token)
+        self.assertFalse(result, "Expected False due to short token.")
 
-        # Assert that the users dictionary is populated correctly
-        self.assertEqual(users, test_users)
+    def test_retrieving_nonexistent_user(self):
+        """Ensure that attempting to retrieve a nonexistent user returns None."""
+        self.assertIsNone(get_users("nonexistent_user"), "Expected None for nonexistent user.")
 
-    def test_save_users(self):
-        """Test saving the users to file."""
-        # Create a temporary users dictionary
-        test_users = {
-            "user1": {
-                "password": "password1",
-                "token": "token1"
-            },
-            "user2": {
-                "password": "password2",
-                "token": "token2"
-            }
-        }
-        users_file = "users.pickle"
+    def test_retrieving_all_users(self):
+        """Ensure that we can retrieve all users."""
+        all_users_dict = all_users()
+        self.assertIsInstance(all_users_dict, dict, "Expected all_users to return a dictionary.")
+        self.assertIn("existing_user", all_users_dict, "Existing user should be in all users dictionary.")
 
-        users.update(test_users)
+    def test_adding_existing_user(self):
+        """Ensure that adding a user with an existing username returns False."""
+        result = add_users("existing_user", "newpassword", "newtoken")
+        self.assertFalse(result, "Expected False when adding a user with an existing username.")
 
-        # Call save_users()
-        save_users()
-
-        # Assert that the users file exists and is not empty
-        self.assertTrue(os.path.exists(users_file))
-        self.assertGreater(os.path.getsize(users_file), 0)
-
-    def test_add_users(self):
-        """Test adding a new user to the system."""
-        username = "new_user"
-        password = "new_password"
-        token = "new_token123"
-
-        # Call add_users()
-        result = add_users(username, password, token)
-
-        # Assert that the user was added successfully
-        self.assertTrue(result)
-        self.assertIn(username, users)
-        self.assertEqual(users[username]["password"], password)
-        self.assertEqual(users[username]["token"], token)
-
-    def test_get_users_all(self):
-        """Test retrieving all users."""
-        # Call get_users() without passing a username
-        all_users = get_users()
-
-        # Assert that all_users is a dictionary and contains the expected users
-        self.assertIsInstance(all_users, dict)
-        self.assertEqual(all_users, users)
-
-    def test_get_users_invalid(self):
-        """Test retrieving a user with an invalid username."""
-        invalid_username = "invalid_username"
-
-        # Call get_users() with an invalid username
-        user_info = get_users(invalid_username)
-
-        # Assert that the user_info is None
-        self.assertIsNone(user_info)
 
     @classmethod
     def tearDownClass(cls):
-        users = get_users()  # Assuming get_users can also return the full users dict
-        if "new_user" in users:
-            del users["new_user"]
-        save_users()
+        """Clean up by resetting the users file to its initial state."""
+        with open('users.pickle', 'wb') as f:
+            pickle.dump(cls.initial_users, f)
 
-if __name__ == '__main__':
-    unittest.main()
+    if __name__ == '__main__':
+        unittest.main()

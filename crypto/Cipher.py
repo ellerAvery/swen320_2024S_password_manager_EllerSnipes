@@ -4,7 +4,7 @@ import base64
 
 class Cipher():
     
-    def __init__(self):
+    def __init__(self, passkey = None):
         self.toMapStr  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.@#$%*!-_+:='
         self.mappedStr = 'TUVW@#$XYZA6789.BCwxyzabcNOP%*!-QRSdef345ghijkl_+:mDEFGH012IJK=LMnopqrstuv'
         self.defaultPassKey = "passkey@2021#Jun"

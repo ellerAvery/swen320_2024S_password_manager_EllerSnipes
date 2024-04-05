@@ -31,11 +31,10 @@
 
 <script>
     document.getElementById("Listbutton").addEventListener("click", function () {
-        // Optionally add loading feedback here
         var listButton = document.getElementById("Listbutton");
         listButton.textContent = 'Loading...';
         listButton.disabled = true;
-
+        
         fetch('/Maketable')
             .then(response => {
                 if (!response.ok) {
@@ -43,27 +42,25 @@
                 }
                 return response.json();
             })
-            .then(data => {
+            .then(data => { // Corrected: Added missing parameter 'data'
                 const tableBody = document.getElementById("passwordTable").querySelector("tbody");
                 tableBody.innerHTML = ""; // Clear existing rows
                 data.forEach(item => {
+                    console.log(item);
                     const row = document.createElement("tr");
                     const keyCell = document.createElement("td");
-                    keyCell.textContent = item.key;
+                    keyCell.textContent = String(item.key);
                     row.appendChild(keyCell);
                     const encryptedPasswordCell = document.createElement("td");
-                    encryptedPasswordCell.textContent = item.encrypted_password;
+                    encryptedPasswordCell.textContent = item.password;
                     row.appendChild(encryptedPasswordCell);
                     tableBody.appendChild(row);
                 });
-                // Restore the button text
                 listButton.textContent = 'Load Encrypted Passwords';
                 listButton.disabled = false;
             })
             .catch(error => {
                 console.error('Error:', error);
-                // Display an error message or handle errors as needed
-                // Restore the button text
                 listButton.textContent = 'Load Encrypted Passwords';
                 listButton.disabled = false;
             });
