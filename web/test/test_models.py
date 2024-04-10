@@ -17,3 +17,5 @@ class TestUser(TestCase):
         mock_get_users.return_value = None
         user = User('nonexistent')
         self.assertIsNone(user.id)
+
+##Avery continue tests

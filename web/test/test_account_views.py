@@ -48,3 +48,5 @@ class TestViews(TestCase):
         # response = self.client.post('/update_password', data = {'current_user': user, 'old_password': user.password, 'new_password': newPassword})
 
         self.assertTrue(False)
+
+##Avery continue tests
