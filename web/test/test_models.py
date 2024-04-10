@@ -1,5 +1,7 @@
 from unittest import TestCase, mock
+from unittest.mock import patch
 from web.accounts.models import User
+from web.user_management import get_users
 
 class TestUser(TestCase):
 
