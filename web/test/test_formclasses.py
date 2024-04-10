@@ -17,3 +17,15 @@ class TestRegisterForm(TestCase):
         mock_get_users.return_value = None
         form = RegisterForm(data={'username': 'newuser', 'password': 'validpassword123', 'token': 'validtoken1234567890'})
         self.assertTrue(form.validate())
+
+    def test_invalid_password(self):
+        form = RegisterForm(data={'username': 'newuser', 'password': 'pass', 'token': 'validtoken1234567890'})
+        self.assertFalse(form.validate())
+
+    def test_invalid_token(self):
+        form = RegisterForm(data={'username': 'newuser', 'password': 'validpassword123', 'token': 'token'})
+        self.assertFalse(form.validate())
+
+    def test_invalid_username(self):
+        form = RegisterForm(data={'username': 'new', 'password': 'validpassword123', 'token': 'validtoken1234567890'})
+        self.assertFalse(form.validate())
