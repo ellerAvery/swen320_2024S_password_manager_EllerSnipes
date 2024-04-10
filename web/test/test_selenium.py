@@ -32,17 +32,18 @@ class TestPasswordManager(unittest.TestCase):
         success_message = "Account created successfully"
         self.assertIn(success_message, driver.page_source)
 
-    def test_registration_password_length_error(self):
-        # Test for Requirement 2
-        driver = self.driver
-        driver.find_element(By.ID, "username").send_keys("testuser")
-        driver.find_element(By.ID, "password").send_keys("short")
-        driver.find_element(By.ID, "passkey").send_keys("validpasskey")
-        driver.find_element(By.ID, "register").click()
-        
-        # Check for error message
-        error_message = "Password length is incorrect"
-        self.assertIn(error_message, driver.page_source)
+    def test_various_password_lengths(self):
+        test_cases = [("short", False), ("validpassword", True)]
+        for password, expected in test_cases:
+            with self.subTest(password=password):
+                self.driver.find_element(By.ID, "password").clear()
+                self.driver.find_element(By.ID, "password").send_keys(password)
+                self.driver.find_element(By.ID, "submit").click()
+            if expected:
+                self.assertIn("Success", self.driver.page_source)
+            else:
+                self.assertIn("Password length is incorrect", self.driver.page_source)
+
 
     # Additional test methods for other requirements...
     
@@ -53,7 +54,13 @@ class TestPasswordManager(unittest.TestCase):
         driver.find_element(By.ID, "encrypt_button").click()
         
         # Wait for encryption to complete and check if the result is base64 encoded
-        time.sleep(10)  # Adjust time according to application response time
+        try:
+            element = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.ID, "unique_element_id"))
+            )
+        except NoSuchElementException:
+            self.fail("Element not found within the time limit.")
+
         encrypted_text = driver.find_element(By.ID, "encrypted_text").text
         # A simple check that the encoded text doesn't contain non-base64 characters
         self.assertFalse(any(c not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/' for c in encrypted_text.strip('=')))
