@@ -16,3 +16,5 @@ class TestRegisterForm(TestCase):
         mock_get_users.return_value = None
         form = RegisterForm(data={'username': 'newuser', 'password': 'validpassword123', 'token': 'validtoken1234567890'})
         self.assertTrue(form.validate())
+
+##Avery continue tests

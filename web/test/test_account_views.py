@@ -24,3 +24,6 @@ class TestViews(TestCase):
         mock_get_users.return_value = {'username': 'existinguser', 'password': 'hashedpassword'}
         # You would need to mock check_password as well, assuming it verifies password correctness
         # Perform login request and verify response
+
+
+##Avery continue tests
