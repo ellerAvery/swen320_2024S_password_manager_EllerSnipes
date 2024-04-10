@@ -28,7 +28,7 @@ class TestViews(TestCase):
     def test_logout(self):
         response = self.client.post('/logout')
 
-        self.assertEquals(response, self.app.url_for('accounts.login'))
+        self.assertEqual(response, self.app.url_for('accounts.login'))
 
 
 
