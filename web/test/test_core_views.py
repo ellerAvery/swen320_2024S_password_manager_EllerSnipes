@@ -20,4 +20,8 @@ class TestViews(TestCase):
 
         response = self.client.post('/decrypt', data={'passwordTextD': password})
 
-        self.assertEqual(response, "password") '''
+        self.assertEqual(response, "password")
+
+    def test_save_encrypted_passwords(self):
+        password = "savePassword"
+        response = self.client.post('/saveEncryptedPassword', data={'passwordTextD': password}) '''
