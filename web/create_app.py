@@ -8,10 +8,11 @@ from .accounts.views import accounts_bp
 from .core.views import core_bp
 from web.user_management import load_users
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder='web/templates')
     app.config['SECRET_KEY'] = config('SECRET_KEY')
     app.config.from_object(config("APP_SETTINGS"))
-
+    app.config['SERVER_NAME'] = '127.0.0.1:8080'
+    app.config['APPLICATION_ROOT'] = '/'
     # Initialize Flask-Login
     login_manager = LoginManager()
     login_manager.init_app(app)

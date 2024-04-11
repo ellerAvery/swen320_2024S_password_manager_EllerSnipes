@@ -3,7 +3,6 @@ from flask_login import logout_user, login_required, current_user, login_user
 from web.accounts.models import User
 from .forms import LoginForm, RegisterForm, ChangePasswordForm
 from web.user_management import add_users, get_users, check_password, encrypt_password, decrypt_password, update_user_password
-
 # Create a Blueprint for accounts
 accounts_bp = Blueprint('accounts', __name__)
 

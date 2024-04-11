@@ -10,6 +10,7 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.service import Service
 
 # selenium version 4
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install())) # type: ignore
