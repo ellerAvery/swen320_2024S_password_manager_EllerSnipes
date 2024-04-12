@@ -7,7 +7,7 @@ from web.accounts.models import User
 class TestViews(TestCase):
 
     def setUp(self):
-        self.app = Flask(__name__,  template_folder='template')
+        self.app = Flask(__name__,  template_folder='templates')
         self.app.config['SECRET_KEY'] = 'fejwifaosdIEWJFnfiwefnowe'
 
         self.app.register_blueprint(accounts_bp)

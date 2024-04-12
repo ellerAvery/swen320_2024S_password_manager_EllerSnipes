@@ -19,7 +19,7 @@ def register():
             return redirect(url_for('accounts.login'))
         else:
             flash('User already exists.', 'danger')
-    return render_template('register.html', form=form)
+    return render_template('accounts/register.html', form=form)
 
 # Route for user login
 @accounts_bp.route('/login', methods=['GET', 'POST'])
