@@ -2,7 +2,7 @@ from decouple import config
 
 class Config(object):
     DEBUG = False
-    TESTING = False
+    TESTING = True
     CSRF_ENABLED = True
     #SECRET_KEY = config("SECRET_KEY", default="guess-me")
     WTF_CSRF_ENABLED = True

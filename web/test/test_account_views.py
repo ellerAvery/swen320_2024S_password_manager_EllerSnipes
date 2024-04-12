@@ -7,7 +7,7 @@ from web.accounts.models import User
 class TestViews(TestCase):
 
     def setUp(self):
-        self.app = Flask(__name__,  template_folder='templates')
+        self.app = Flask(__name__,  template_folder='template')
         self.app.config['SECRET_KEY'] = 'fejwifaosdIEWJFnfiwefnowe'
 
         self.app.register_blueprint(accounts_bp)
@@ -18,7 +18,7 @@ class TestViews(TestCase):
     def test_register_new_user(self, mock_add_users, mock_get_users):
         mock_get_users.return_value = None
         mock_add_users.return_value = True
-        response = self.client.post('/register', data={'username': 'newuser', 'password': 'vpassword', 'token': 'validtoken123'})
+        response = self.client.post('/register', data={'username': 'newuser', 'password': 'vpassword', 'token': 'validtken123'})
         
         self.assertEqual(response.status_code, 200)
         # Check for successful registration response

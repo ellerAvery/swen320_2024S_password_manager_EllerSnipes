@@ -3,7 +3,7 @@ from web.user_management import get_users, check_password
 from .forms import LoginForm, RegisterForm, ChangePasswordForm
 
 class User(UserMixin):
-    def __init__(self, username):
+    def __init__(self, username, password):
         user_info = get_users(username)
         if user_info:
             self.username = username

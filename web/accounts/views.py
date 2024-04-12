@@ -3,6 +3,7 @@ from flask_login import logout_user, login_required, current_user, login_user
 from web.accounts.models import User
 from .forms import LoginForm, RegisterForm, ChangePasswordForm
 from web.user_management import add_users, get_users, check_password, encrypt_password, decrypt_password, update_user_password
+
 # Create a Blueprint for accounts
 accounts_bp = Blueprint('accounts', __name__)
 
@@ -18,7 +19,7 @@ def register():
             return redirect(url_for('accounts.login'))
         else:
             flash('User already exists.', 'danger')
-    return render_template('accounts/register.html', form=form)
+    return render_template('register.html', form=form)
 
 # Route for user login
 @accounts_bp.route('/login', methods=['GET', 'POST'])

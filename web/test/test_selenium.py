@@ -18,7 +18,7 @@ assignLinkList = []
 allData = {}  
 
 #login the zybook portal
-driver.get("http://127.0.0.1:8080/accounts/login")
+driver.get("http://127.0.0.1:8080")
 
 username = driver.find_element(By.CSS_SELECTOR, "div.user-email input.zb-input")
 username.send_keys("test")

@@ -22,7 +22,6 @@ def encrypt():
         session.modified = True
         
         flash("Encryption successful!", "success")
-    
     return render_template("core/encrypt.html", encrypted_text=encrypted_text)
 
 @core_bp.route("/decrypt", methods=["GET", "POST"])
