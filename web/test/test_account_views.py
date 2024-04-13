@@ -7,7 +7,7 @@ from web.accounts.models import User
 class TestViews(TestCase):
 
     def setUp(self):
-        self.app = Flask(__name__,  template_folder='templates')
+        self.app = Flask(__name__,  template_folder='web/templates')
         self.app.config['SECRET_KEY'] = 'fejwifaosdIEWJFnfiwefnowe'
 
         self.app.register_blueprint(accounts_bp)
@@ -26,9 +26,12 @@ class TestViews(TestCase):
         
 
     def test_logout(self):
-        response = self.client.post('/logout')
-
-        self.assertEqual(response, self.app.url_for('accounts.login'))
+    # Simulate login possibly required before logout depending on implementation
+        with self.client:
+            self.client.post('/login', data={'username': 'testuser', 'password': 'testpass'})
+            response = self.client.get('/logout')  # Ensure this is the correct method
+            self.assertEqual(response.status_code, 302)  # Assuming redirect to login page
+            self.assertTrue('location' in response.headers and 'login' in response.headers['location'])
 
 
 
