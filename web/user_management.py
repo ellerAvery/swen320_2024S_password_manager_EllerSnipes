@@ -1,20 +1,33 @@
-# user_management.py
 import pickle
-from flask import current_app as app, session
+from flask import current_app as app
 from crypto.Cipher import Cipher
 
-# Path to the users data file
-users_file = 'users.pickle'
+# Constants for the file path and user constraints
+USERS_FILE = 'users.pickle'
+USERNAME_MIN_LEN, USERNAME_MAX_LEN = 5, 10
+PASSWORD_MIN_LEN, PASSWORD_MAX_LEN = 8, 20
+TOKEN_MIN_LEN, TOKEN_MAX_LEN = 10, 30
 
-# Attempt to load existing users from the file or initialize an empty dict
-try:
-    with open(users_file, 'rb') as f:
-        users = pickle.load(f)
-except FileNotFoundError:
-    users = {}
+# Global users dictionary
+users = {}
 
 # Initialize the cipher for password encryption and decryption
 cipher = Cipher()
+
+def load_users():
+    """Load users from a pickle file or initialize as an empty dictionary if not found."""
+    global users
+    try:
+        with open(USERS_FILE, 'rb') as f:
+            users = pickle.load(f)
+    except FileNotFoundError:
+        app.logger.info("No users file found. Initializing an empty user base.")
+        users = {}
+
+def save_users():
+    """Save the current users dictionary to a pickle file."""
+    with open(USERS_FILE, 'wb') as f:
+        pickle.dump(users, f)
 
 def encrypt_password(password):
     """Encrypt a plaintext password."""
@@ -24,59 +37,6 @@ def decrypt_password(encrypted_password):
     """Decrypt an encrypted password."""
     return cipher.decrypt(encrypted_password)
 
-def load_users():
-    """Load users from a pickle file."""
-    global users
-    try:
-        with open(users_file, 'rb') as f:
-            users = pickle.load(f)
-    except FileNotFoundError:
-        app.logger.info("No users file found. Starting with an empty user base.")
-        users = {}
-
-def save_users():
-    """Save the current users to a pickle file."""
-    with open(users_file, 'wb') as f:
-        pickle.dump(users, f)
-
-def add_users(username, password, token):
-    """Adds a new user if the username does not already exist."""
-    global users  # Ensure users is accessible globally
-    print(f"Attempting to add user: Username={username}, Password={password}, Token={token}")
-
-    # Validate input parameters
-    if len(username) < 5 or len(username) > 10:
-        print("Error: Username must be between 5 and 10 characters long.")
-        return False
-    if len(password) < 8 or len(password) > 20:
-        print("Error: Password must be between 8 and 20 characters long.")
-        return False
-    if len(token) < 10 or len(token) > 30:
-        print("Error: Token must be between 10 and 30 characters long.")
-        return False
-
-    # Check for existing user
-    if username in users:
-        print(f"Error: User '{username}' already exists.")
-        return False
-
-    # Add the new user
-    try:
-        encrypted_password = encrypt_password(password)
-        users[username] = {'password': encrypted_password, 'token': token}
-        print(f"User '{username}' added successfully.")
-        return True
-    except Exception as e:
-        print(f"Error adding user '{username}': {e}")
-        return False
-
-def save_encrypted_password(encrypted_password, token):
-    if 'encrypted_passwords' not in session:
-        session['encrypted_passwords'] = []
-    
-    session['encrypted_passwords'].append({'password': encrypted_password, 'key': token})
-    session.modified = True
-
 def get_user_token(username):
     """Retrieve the token for a given username."""
     user = get_users(username)  # Assuming this returns None if the user doesn't exist
@@ -85,31 +45,56 @@ def get_user_token(username):
     else:
         return None  # Or raise an exception, depending on how you want to handle this case
 
-def get_users(username=None):
-    """Get a single user by username or all users if no username is specified."""
-    if username:
-        return users.get(username)
-    else:
-        return users
+
+def add_users(username, password, token):
+    """Attempt to add a new user if the username does not already exist."""
+    # Validate input parameters
+    if not (USERNAME_MIN_LEN <= len(username) <= USERNAME_MAX_LEN):
+        app.logger.error(f"Username length error: {username}")
+        return False
+    if not (PASSWORD_MIN_LEN <= len(password) <= PASSWORD_MAX_LEN):
+        app.logger.error("Password length error")
+        return False
+    if not (TOKEN_MIN_LEN <= len(token) <= TOKEN_MAX_LEN):
+        app.logger.error("Token length error")
+        return False
+
+    # Check if the username already exists
+    if username in users:
+        app.logger.error(f"Attempt to add existing user: {username}")
+        return False
+
+    # Add new user with encrypted password
+    try:
+        users[username] = {'password': encrypt_password(password), 'token': token}
+        save_users()  # Ensure data is saved to file
+        app.logger.info(f"New user added: {username}")
+        return True
+    except Exception as e:
+        app.logger.error(f"Failed to add user {username}: {e}")
+        return False
 
 def update_user_password(username, new_password):
-    """Update the password for a specific user."""
+    """Update the password for an existing user."""
     if username in users:
         users[username]['password'] = encrypt_password(new_password)
         save_users()
         return True
+    app.logger.error(f"Password update failed: User {username} not found")
     return False
 
 def check_password(username, password):
-    """Check if the provided password matches the stored encrypted password."""
-    user = get_users(username)
+    """Verify if the provided password matches the stored password for a user."""
+    user = users.get(username)
     if user and decrypt_password(user['password']) == password:
         return True
     return False
 
-def all_users():
-    """Return all user data."""
+def get_users(username=None):
+    """Retrieve user information by username, or all users if no username is provided."""
+    if username:
+        return users.get(username)
     return users
 
-# Ensure users are loaded when this module is imported
+# Load user data from file on module import
 load_users()

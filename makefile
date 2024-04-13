@@ -1,4 +1,4 @@
-.PHONY: install run test setup check-docker
+.PHONY: install run test setup 
 
 # Set up variables for Docker image name and Flask app port
 DOCKER_IMAGE_NAME := flask_app
