@@ -1,0 +1,10 @@
+{
+    "username1": {
+        "password": "password",
+        "token": "sometoken12345"
+    },
+    "username2": {
+        "password": "password",
+        "token": "sometoken12345"
+    }
+}

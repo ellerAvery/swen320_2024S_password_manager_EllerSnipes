@@ -3,12 +3,11 @@ from web.user_management import get_users, check_password
 from .forms import LoginForm, RegisterForm, ChangePasswordForm
 
 class User(UserMixin):
-    def __init__(self, username, password):
+    def __init__(self, username):
         user_info = get_users(username)
         if user_info:
             self.username = username
             self.id = username  # Flask-Login uses this attribute to keep track of the user.
-            # Directly use the password from user_info if hashing is not considered.
             self.password = user_info.get('password')
         else:
             self.id = None

@@ -1,34 +1,27 @@
-.PHONY: install run test setup 
+.PHONY: install run test setup coverage coverage_html
 
-# Set up variables for Docker image name and Flask app port
-DOCKER_IMAGE_NAME := flask_app
-CONTAINER_NAME := flask_app_container
-FLASK_PORT := 8080
-
-# Installation tasks for Python dependencies and Docker setup
 install:
-	@echo "Installing Python dependencies from requirements.txt..."
+	@echo "Installing dependencies..."
 	pip install -r requirements.txt
-
-# Check Docker status, run Docker if needed, and perform installation if Docker isn't set up
+	docker build -t flask .
+		
 setup: install
-	@echo "Checking Docker status and setting up environment..."
-	@python check_docker.py || (echo "Setting up Docker environment..." && make install && docker build -t $(DOCKER_IMAGE_NAME) . && python check_docker.py)
 
-# Run application without Docker
 run:
-	@echo "Starting Flask application on port $(FLASK_PORT)..."
-	@python -m dotenv run python manage.py run -p $(FLASK_PORT)
+	@echo "Starting application..."
+	python -m dotenv run python manage.py run -p 8080
 
-# Running tests
 test:
-	@python manage.py test
+	@echo "Running tests..."
+	python manage.py test # Adjust if you have a specific Flask command for tests
 
-# Generating coverage report
 coverage:
 	@echo "Generating coverage report..."
-	@coverage run -m unittest discover -v web/test
-	@coverage report -m
-	@coverage html
-	@echo "HTML coverage report generated."
+	coverage run -m unittest discover -v web/test # Specify your test directory if not the default
+	coverage report -m
 
+coveragehtml:
+	@echo "Generating HTML coverage report..."
+	coverage run -m unittest discover -v web/test 
+	coverage html
+	@echo "Open htmlcov/index.html in your browser to view the report."

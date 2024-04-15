@@ -1,0 +1,28 @@
+# Version Control
+.git/
+.gitignore
+
+# Configuration and Environment Files
+.env
+
+# Python Environment and Bytecode
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Development Tools Configuration
+.vscode/
+
+# Log Files
+*.log
+
+# Coverage Reports
+.coverage
+
+# Docker Configuration
+docker-compose.yml
+
+# Miscellaneous
+*.db
+node_modules/

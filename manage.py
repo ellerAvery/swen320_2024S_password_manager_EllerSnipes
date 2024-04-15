@@ -1,6 +1,6 @@
 import sys
 from flask.cli import FlaskGroup
-from web.create_app import create_app  
+from web.create_app import create_app  # Adjust the import based on your app structure
 
 app = create_app()
 cli = FlaskGroup(create_app=lambda: app)

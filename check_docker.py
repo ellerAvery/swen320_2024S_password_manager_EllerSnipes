@@ -1,4 +1,4 @@
-# check_docker.py
+'''# check_docker.py
 import subprocess
 import sys
 
@@ -31,8 +31,8 @@ def run_container(image_name, container_name):
         print(f"Failed to start container {container_name}: {e}")
 
 if __name__ == "__main__":
-    docker_image_name = 'flask_app'
-    container_name = 'flask_app_container'
+    docker_image_name = 'flask'
+    container_name = 'flask_container'
     
     if not is_docker_running():
         print("Docker is not running. Please start Docker and try again.")
@@ -47,3 +47,4 @@ if __name__ == "__main__":
         run_container(docker_image_name, container_name)
     else:
         print(f"Container {container_name} is already running.")
+''' 

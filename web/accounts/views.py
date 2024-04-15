@@ -1,6 +1,6 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import logout_user, login_required, current_user, login_user
-from web.accounts.models import User
+from web.accounts.models import User, UserMixin
 from .forms import LoginForm, RegisterForm, ChangePasswordForm
 from web.user_management import add_users, get_users, check_password, encrypt_password, decrypt_password, update_user_password
 
