@@ -1,0 +1,6 @@
+2024-04-15 21:11:20,082 - web.create_app - DEBUG - Attempting to add user: Username=c4snipes, Password=password, Token=aqoq9103982oi8uoq2039ehujnedsi
+2024-04-15 21:11:20,084 - web.create_app - INFO - User 'c4snipes' added successfully.
+2024-04-15 21:11:51,501 - web.create_app - DEBUG - Attempting to add user: Username=snipesc, Password=password, Token=csnqpwos294
+2024-04-15 21:11:51,504 - web.create_app - INFO - User 'snipesc' added successfully.
+2024-04-15 21:20:01,690 - web.create_app - DEBUG - Attempting to add user: Username=ethan1234, Password=password, Token=jqd294ms25qjdi3
+2024-04-15 21:20:01,692 - web.create_app - INFO - User 'ethan1234' added successfully.

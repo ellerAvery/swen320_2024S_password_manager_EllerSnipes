@@ -1,6 +1,5 @@
 import unittest
 import json
-
 from flask import Flask
 from crypto.Cipher import Cipher
 from create_app import accounts_bp, core_bp

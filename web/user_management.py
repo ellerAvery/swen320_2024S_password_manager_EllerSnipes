@@ -1,8 +1,8 @@
 import json
 from flask import current_app as app
 from crypto.Cipher import Cipher
-# Constants for the file path and user constraints
 
+# Constants for the file path and user constraints
 USERNAME_MIN_LEN, USERNAME_MAX_LEN = 5, 10
 PASSWORD_MIN_LEN, PASSWORD_MAX_LEN = 8, 20
 TOKEN_MIN_LEN, TOKEN_MAX_LEN = 10, 30
@@ -12,7 +12,7 @@ users_file = 'users.json'
 
 # Attempt to load existing users from the file or initialize an empty dict
 try:
-    with open(users_file, 'rb') as f:
+    with open(users_file, 'r') as f:
         users = json.load(f)
 except FileNotFoundError:
     users = {}
@@ -29,49 +29,47 @@ def decrypt_password(encrypted_password):
     return cipher.decrypt(encrypted_password)
 
 def load_users():
-    """Load users from a pickle file."""
+    """Load users from a JSON file."""
     global users
     try:
-        with open(users_file, 'rb') as f:
+        with open(users_file, 'r') as f:
             users = json.load(f)
     except FileNotFoundError:
         app.logger.info("No users file found. Starting with an empty user base.")
         users = {}
 
 def save_users():
-    """Save the current users to a pickle file."""
-    with open(users_file, 'wb') as f:
-        json.dump(users, f)
+    """Save the current users to a JSON file."""
+    with open(users_file, 'w') as f:
+        json.dump(users, f, indent=4)
 
 def add_users(username, password, token):
     """Adds a new user if the username does not already exist."""
     global users  # Ensure users is accessible globally
-    print(f"Attempting to add user: Username={username}, Password={password}, Token={token}")
+    app.logger.debug(f"Attempting to add user: Username={username}, Password={password}, Token={token}")
 
-    # Validate input parameters
-    if len(username) < 5 or len(username) > 10:
-        print("Error: Username must be between 5 and 10 characters long.")
+    if len(username) < USERNAME_MIN_LEN or len(username) > USERNAME_MAX_LEN:
+        app.logger.error("Error: Username must be between 5 and 10 characters long.")
         return False
-    if len(password) < 8 or len(password) > 20:
-        print("Error: Password must be between 8 and 20 characters long.")
+    if len(password) < PASSWORD_MIN_LEN or len(password) > PASSWORD_MAX_LEN:
+        app.logger.error("Error: Password must be between 8 and 20 characters long.")
         return False
-    if len(token) < 10 or len(token) > 30:
-        print("Error: Token must be between 10 and 30 characters long.")
+    if len(token) < TOKEN_MIN_LEN or len(token) > TOKEN_MAX_LEN:
+        app.logger.error("Error: Token must be between 10 and 30 characters long.")
         return False
 
-    # Check for existing user
     if username in users:
-        print(f"Error: User '{username}' already exists.")
+        app.logger.error(f"Error: User '{username}' already exists.")
         return False
 
-    # Add the new user
     try:
         encrypted_password = encrypt_password(password)
         users[username] = {'password': encrypted_password, 'token': token}
-        print(f"User '{username}' added successfully.")
+        save_users()
+        app.logger.info(f"User '{username}' added successfully.")
         return True
     except Exception as e:
-        print(f"Error adding user '{username}': {e}")
+        app.logger.error(f"Error adding user '{username}': {e}")
         return False
 
 

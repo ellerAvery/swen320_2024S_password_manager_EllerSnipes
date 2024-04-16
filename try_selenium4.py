@@ -1,24 +1,26 @@
-import requests
-import zipfile
-import os
-from webdriver_manager.chrome import ChromeDriverManager
+'''
+Created on May 26, 2021
+
+@author: hchang
+'''
+
+import os.path
+from os import path
 from selenium import webdriver
-import unittest
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException
+import sys
 import time
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+
 
 # selenium version 4
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install())) # type: ignore
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 assignLinkList = []
 allData = {}  
 
 #login the zybook portal
-driver.get("http://127.0.0.1:8080")
+driver.get("")
 
 username = driver.find_element(By.CSS_SELECTOR, "div.user-email input.zb-input")
 username.send_keys("test")
@@ -38,3 +40,6 @@ driver.implicitly_wait(20)
 
 print ("execuation done")
 driver.quit()
+
+
+

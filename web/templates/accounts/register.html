@@ -26,21 +26,25 @@
                             {% if form.username.errors %}
                                 {% for error in form.username.errors %}
                                 <div class="alert alert-danger">{{ error }}</div>
-                                    {% endfor %}   
+                                {% endfor %}   
                             {% endif %}
                         </div>
                         
                         <div class="mb-5">
                             {{ form.password.label(class="form-label") }}
-                            {{ form.password(class="form-control", 
-                                             placeholder="Password (8-20 chars)", 
-                                             title="Password must be between 8 and 20 characters long.") }}
+                            <div style="position: relative;">
+                                <input id="password" type="password" class="form-control" name="password" required
+                                       placeholder="Password (8-20 chars)" title="Password must be between 8 and 20 characters long."
+                                       autocomplete="new-password">
+                                <i id="togglePassword" class="bi bi-eye" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;"></i>
+                            </div>
                             {% if form.password.errors %}
                                 {% for error in form.password.errors %}
                                 <div class="alert alert-danger">{{ error }}</div>
-                                    {% endfor %}
+                                {% endfor %}
                             {% endif %}
                         </div>
+                        
                         
                         <div class="mb-5">
                             {{ form.token.label(class="form-label") }}
@@ -53,15 +57,24 @@
                                 {% endfor %} 
                             {% endif %}
                         </div>
-
                         <button type="submit" class="btn btn-primary w-100 btn-lg mb-3">Register</button>
-                        <div class="text-center">
-                            <a href="{{ url_for('accounts.login') }}" class="text-muted">Already have an account? Sign in</a>
-                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const passwordInput = document.querySelector('#password');
+
+    togglePassword.addEventListener('click', () => {
+        // Toggle the type attribute to show/hide the password
+        const isPasswordVisible = passwordInput.type === 'password';
+        passwordInput.type = isPasswordVisible ? 'text' : 'password';
+        // Toggle the icon class
+        togglePassword.classList.toggle('bi-eye-slash', isPasswordVisible);
+        togglePassword.classList.toggle('bi-eye', !isPasswordVisible);
+    });
+</script>
 {% endblock %}
