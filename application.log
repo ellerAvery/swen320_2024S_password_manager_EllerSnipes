@@ -46,3 +46,5 @@
 2024-04-17 20:27:07,867 - web.create_app - INFO - User 'usr15gu' added successfully.
 2024-04-17 20:56:28,140 - web.create_app - DEBUG - Attempting to add user: Username=usreos, Password=validPass123!, Token=token1234567890
 2024-04-17 20:56:28,143 - web.create_app - INFO - User 'usreos' added successfully.
+2024-04-17 21:16:55,579 - web.create_app - DEBUG - Attempting to add user: Username=usryxmw, Password=validPass123!, Token=token1234567890
+2024-04-17 21:16:55,582 - web.create_app - INFO - User 'usryxmw' added successfully.

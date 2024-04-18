@@ -78,5 +78,9 @@
     "usreos": {
         "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
         "token": "token1234567890"
+    },
+    "usryxmw": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
     }
 }
