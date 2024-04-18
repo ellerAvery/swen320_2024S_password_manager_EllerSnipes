@@ -7,16 +7,76 @@
         "password": "password",
         "token": "sometoken12345"
     },
-    "c4snipes": {
-        "password": "Z09qais1aSpnT2pqZSFtTEdFR0ZNWmw0",
-        "token": "aqoq9103982oi8uoq2039ehujnedsi"
+    "testuser": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
     },
-    "snipesc": {
-        "password": "Z09qais1aSpnT2pqZSFtTEdFR0ZNWmw0",
-        "token": "csnqpwos294"
+    "testuser3": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
     },
-    "ethan1234": {
-        "password": "Z09qais1aSpnT2pqZSFtTEdFR0ZNWmw0",
-        "token": "jqd294ms25qjdi3"
+    "testuser5": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "testuser9": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usrky0": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usrfb6": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usr7v9t": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usrvu8c": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usriut7": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usr095r": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usrfgjp": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usr165": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usr3hky4d": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usrwr": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usro9": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usrohb": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usr15gu": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
+    },
+    "usreos": {
+        "password": "X09mUyouT2pqRkdIcWdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1234567890"
     }
 }
