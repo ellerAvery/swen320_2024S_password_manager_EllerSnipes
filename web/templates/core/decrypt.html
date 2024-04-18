@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-5" id="decryptPage">
     <div class="row justify-content-center">
         <div class="col-lg-6">
             <h2 class="text-center mb-4">Decrypt Your Text</h2>
@@ -17,7 +17,7 @@
                             <label for="encryptedTextD">Encrypted Text</label>
                         </div>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary" type="submit">Decrypt</button>
+                            <button class="btn btn-primary" type="submit" id="decryptButton">Decrypt</button>
                         </div>
                         <div class="form-floating mt-4">
                             <textarea class="form-control" id="decryptedText" name="decryptedText" placeholder="Decrypted Text" style="height: 100px;" disabled>{{ decrypted_text }}</textarea>
