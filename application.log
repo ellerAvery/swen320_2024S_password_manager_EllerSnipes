@@ -1,52 +1,50 @@
-2024-04-15 21:11:20,082 - web.create_app - DEBUG - Attempting to add user: Username=c4snipes, Password=password, Token=aqoq9103982oi8uoq2039ehujnedsi
-2024-04-15 21:11:20,084 - web.create_app - INFO - User 'c4snipes' added successfully.
-2024-04-15 21:11:51,501 - web.create_app - DEBUG - Attempting to add user: Username=snipesc, Password=password, Token=csnqpwos294
-2024-04-15 21:11:51,504 - web.create_app - INFO - User 'snipesc' added successfully.
-2024-04-15 21:20:01,690 - web.create_app - DEBUG - Attempting to add user: Username=ethan1234, Password=password, Token=jqd294ms25qjdi3
-2024-04-15 21:20:01,692 - web.create_app - INFO - User 'ethan1234' added successfully.
-2024-04-17 15:48:14,355 - web.create_app - DEBUG - Attempting to add user: Username=validuser, Password=ValidPass123!, Token=validtoken1234567890
-2024-04-17 15:48:14,358 - web.create_app - INFO - User 'validuser' added successfully.
-2024-04-17 16:49:12,607 - web.create_app - DEBUG - Attempting to add user: Username=testuser, Password=validPass123!, Token=token1234567890
-2024-04-17 16:49:12,610 - web.create_app - INFO - User 'testuser' added successfully.
-2024-04-17 17:44:05,030 - web.create_app - DEBUG - Attempting to add user: Username=csnipes, Password=password, Token=jqd294ms25qjdi31
-2024-04-17 17:44:05,037 - web.create_app - INFO - User 'csnipes' added successfully.
-2024-04-17 17:54:46,026 - web.create_app - DEBUG - Attempting to add user: Username=testuser, Password=validPass123!, Token=token1234567890
-2024-04-17 17:54:46,032 - web.create_app - INFO - User 'testuser' added successfully.
-2024-04-17 18:04:12,709 - web.create_app - DEBUG - Attempting to add user: Username=testuser3, Password=validPass123!, Token=token1234567890
-2024-04-17 18:04:12,711 - web.create_app - INFO - User 'testuser3' added successfully.
-2024-04-17 19:23:13,314 - web.create_app - DEBUG - Attempting to add user: Username=testuser5, Password=validPass123!, Token=token1234567890
-2024-04-17 19:23:13,317 - web.create_app - INFO - User 'testuser5' added successfully.
-2024-04-17 19:23:46,647 - web.create_app - DEBUG - Attempting to add user: Username=testuser9, Password=validPass123!, Token=token1234567890
-2024-04-17 19:23:46,648 - web.create_app - INFO - User 'testuser9' added successfully.
-2024-04-17 20:01:27,591 - web.create_app - DEBUG - Attempting to add user: Username=usrky0, Password=validPass123!, Token=token1234567890
-2024-04-17 20:01:27,616 - web.create_app - INFO - User 'usrky0' added successfully.
-2024-04-17 20:02:18,978 - web.create_app - DEBUG - Attempting to add user: Username=usrfb6, Password=validPass123!, Token=token1234567890
-2024-04-17 20:02:18,982 - web.create_app - INFO - User 'usrfb6' added successfully.
-2024-04-17 20:08:57,389 - web.create_app - DEBUG - Attempting to add user: Username=usr7v9t, Password=validPass123!, Token=token1234567890
-2024-04-17 20:08:57,390 - web.create_app - INFO - User 'usr7v9t' added successfully.
-2024-04-17 20:09:34,135 - web.create_app - DEBUG - Attempting to add user: Username=usrvu8c, Password=validPass123!, Token=token1234567890
-2024-04-17 20:09:34,138 - web.create_app - INFO - User 'usrvu8c' added successfully.
-2024-04-17 20:15:05,909 - web.create_app - DEBUG - Attempting to add user: Username=usriut7, Password=validPass123!, Token=token1234567890
-2024-04-17 20:15:05,911 - web.create_app - INFO - User 'usriut7' added successfully.
-2024-04-17 20:20:15,536 - web.create_app - DEBUG - Attempting to add user: Username=usr095r, Password=validPass123!, Token=token1234567890
-2024-04-17 20:20:15,538 - web.create_app - INFO - User 'usr095r' added successfully.
-2024-04-17 20:23:00,708 - web.create_app - DEBUG - Attempting to add user: Username=usrfgjp, Password=validPass123!, Token=token1234567890
-2024-04-17 20:23:00,724 - web.create_app - INFO - User 'usrfgjp' added successfully.
-2024-04-17 20:23:42,577 - web.create_app - DEBUG - Attempting to add user: Username=usr165, Password=validPass123!, Token=token1234567890
-2024-04-17 20:23:42,578 - web.create_app - INFO - User 'usr165' added successfully.
-2024-04-17 20:24:44,516 - web.create_app - DEBUG - Attempting to add user: Username=usr3hky4d, Password=validPass123!, Token=token1234567890
-2024-04-17 20:24:44,518 - web.create_app - INFO - User 'usr3hky4d' added successfully.
-2024-04-17 20:25:36,082 - web.create_app - DEBUG - Attempting to add user: Username=usrwr, Password=validPass123!, Token=token1234567890
-2024-04-17 20:25:36,084 - web.create_app - INFO - User 'usrwr' added successfully.
-2024-04-17 20:25:53,921 - web.create_app - DEBUG - Attempting to add user: Username=usro9, Password=validPass123!, Token=token1234567890
-2024-04-17 20:25:53,923 - web.create_app - INFO - User 'usro9' added successfully.
-2024-04-17 20:26:21,467 - web.create_app - DEBUG - Attempting to add user: Username=usrohb, Password=validPass123!, Token=token1234567890
-2024-04-17 20:26:21,469 - web.create_app - INFO - User 'usrohb' added successfully.
-2024-04-17 20:27:07,866 - web.create_app - DEBUG - Attempting to add user: Username=usr15gu, Password=validPass123!, Token=token1234567890
-2024-04-17 20:27:07,867 - web.create_app - INFO - User 'usr15gu' added successfully.
-2024-04-17 20:56:28,140 - web.create_app - DEBUG - Attempting to add user: Username=usreos, Password=validPass123!, Token=token1234567890
-2024-04-17 20:56:28,143 - web.create_app - INFO - User 'usreos' added successfully.
-2024-04-17 21:16:55,579 - web.create_app - DEBUG - Attempting to add user: Username=usryxmw, Password=validPass123!, Token=token1234567890
-2024-04-17 21:16:55,582 - web.create_app - INFO - User 'usryxmw' added successfully.
-2024-04-17 21:52:18,424 - web.create_app - DEBUG - Attempting to add user: Username=c4snipes04, Password=password, Token=jqd294ms25qjdi3
-2024-04-17 21:52:18,429 - web.create_app - INFO - User 'c4snipes04' added successfully.
+2024-04-19 20:22:36,217 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newerpass, Token=newertokening
+2024-04-19 20:22:36,219 - web.create_app - INFO - User 'newuser' added successfully.
+2024-04-19 20:27:51,148 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newtoken1234567890dejkejdwfendnwekfr
+2024-04-19 20:27:51,148 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newtoken1234567890dejkejdwfendnwekfr
+2024-04-19 20:27:51,148 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:27:51,148 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:27:51,149 - web.create_app - DEBUG - Attempting to add user: Username=newuser1234567890, Password=newpass, Token=newtoken
+2024-04-19 20:27:51,149 - web.create_app - DEBUG - Attempting to add user: Username=newuser1234567890, Password=newpass, Token=newtoken
+2024-04-19 20:27:51,149 - web.create_app - ERROR - Error: Username must be between 5 and 10 characters long.
+2024-04-19 20:27:51,149 - web.create_app - ERROR - Error: Username must be between 5 and 10 characters long.
+2024-04-19 20:27:51,150 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newertokening
+2024-04-19 20:27:51,150 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newertokening
+2024-04-19 20:27:51,150 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:27:51,150 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:27:51,155 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newerpass, Token=newertokening
+2024-04-19 20:27:51,155 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newerpass, Token=newertokening
+2024-04-19 20:27:51,156 - web.create_app - INFO - User 'newuser' added successfully.
+2024-04-19 20:27:51,156 - web.create_app - INFO - User 'newuser' added successfully.
+2024-04-19 20:29:05,429 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newtoken1234567890dejkejdwfendnwekfr
+2024-04-19 20:29:05,429 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newtoken1234567890dejkejdwfendnwekfr
+2024-04-19 20:29:05,430 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:29:05,430 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:29:05,430 - web.create_app - DEBUG - Attempting to add user: Username=newuser1234567890, Password=newpass, Token=newtoken
+2024-04-19 20:29:05,430 - web.create_app - DEBUG - Attempting to add user: Username=newuser1234567890, Password=newpass, Token=newtoken
+2024-04-19 20:29:05,431 - web.create_app - ERROR - Error: Username must be between 5 and 10 characters long.
+2024-04-19 20:29:05,431 - web.create_app - ERROR - Error: Username must be between 5 and 10 characters long.
+2024-04-19 20:29:05,431 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newertokening
+2024-04-19 20:29:05,431 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newertokening
+2024-04-19 20:29:05,432 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:29:05,432 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:29:05,436 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newerpass, Token=newertokening
+2024-04-19 20:29:05,436 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newerpass, Token=newertokening
+2024-04-19 20:29:05,437 - web.create_app - INFO - User 'newuser' added successfully.
+2024-04-19 20:29:05,437 - web.create_app - INFO - User 'newuser' added successfully.
+2024-04-19 20:32:31,081 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newtoken1234567890dejkejdwfendnwekfr
+2024-04-19 20:32:31,081 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newtoken1234567890dejkejdwfendnwekfr
+2024-04-19 20:32:31,082 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:32:31,082 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:32:31,082 - web.create_app - DEBUG - Attempting to add user: Username=newuser1234567890, Password=newpass, Token=newtoken
+2024-04-19 20:32:31,082 - web.create_app - DEBUG - Attempting to add user: Username=newuser1234567890, Password=newpass, Token=newtoken
+2024-04-19 20:32:31,083 - web.create_app - ERROR - Error: Username must be between 5 and 10 characters long.
+2024-04-19 20:32:31,083 - web.create_app - ERROR - Error: Username must be between 5 and 10 characters long.
+2024-04-19 20:32:31,083 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newertokening
+2024-04-19 20:32:31,083 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newpass, Token=newertokening
+2024-04-19 20:32:31,083 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:32:31,083 - web.create_app - ERROR - Error: Password must be between 8 and 20 characters long.
+2024-04-19 20:32:31,088 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newerpass, Token=newertokening
+2024-04-19 20:32:31,088 - web.create_app - DEBUG - Attempting to add user: Username=newuser, Password=newerpass, Token=newertokening
+2024-04-19 20:32:31,089 - web.create_app - INFO - User 'newuser' added successfully.
+2024-04-19 20:32:31,089 - web.create_app - INFO - User 'newuser' added successfully.

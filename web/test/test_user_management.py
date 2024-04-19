@@ -2,8 +2,8 @@ import unittest
 import json
 from flask import Flask
 from crypto.Cipher import Cipher
-from create_app import accounts_bp, core_bp
-from user_management import load_users, save_users, users, update_user_password, add_users, check_password, decrypt_password, encrypt_password, TOKEN_MAX_LEN, TOKEN_MIN_LEN, PASSWORD_MAX_LEN, PASSWORD_MIN_LEN, USERNAME_MAX_LEN, USERNAME_MIN_LEN
+from web.create_app import accounts_bp, core_bp
+from web.user_management import load_users, save_users, users, update_user_password, add_users, check_password, decrypt_password, encrypt_password, TOKEN_MAX_LEN, TOKEN_MIN_LEN, PASSWORD_MAX_LEN, PASSWORD_MIN_LEN, USERNAME_MAX_LEN, USERNAME_MIN_LEN
 
 class TestUserManagement(unittest.TestCase):
 
@@ -47,7 +47,7 @@ class TestUserManagement(unittest.TestCase):
         # Test updating a user's password with valid input
         users['existing_user'] = {'password': 'existingpass', 'token': 'existingtoken'}
         update_user_password('existing_user', 'newerpass')
-        self.assertEqual(users['existing_user']['password'], 'newerpass')
+        self.assertTrue(check_password('existing_user','newerpass'))
 
     def test_update_user_password_invalid_input(self):
         # Test updating a user's password with invalid input

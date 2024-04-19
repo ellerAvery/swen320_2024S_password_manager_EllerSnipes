@@ -17,11 +17,11 @@ test:
 
 coverage:
 	@echo "Generating coverage report..."
-	coverage run -m unittest discover -v web/test # Specify your test directory if not the default
+	coverage run manage.py test # Specify your test directory if not the default
 	coverage report -m
 
 coveragehtml:
 	@echo "Generating HTML coverage report..."
-	coverage run -m unittest discover -v web/test 
+	coverage run manage.py test
 	coverage html
 	@echo "Open htmlcov/index.html in your browser to view the report."
