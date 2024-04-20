@@ -1,0 +1,22 @@
+{
+    "existing_user": {
+        "password": "existingpass",
+        "token": "existingtoken"
+    },
+    "user1": {
+        "password": "NCErIWlnT2pqKzVpKmdPamplIW1MR0VHRk1abDQ=",
+        "token": "token1283744893"
+    },
+    "usher123": {
+        "password": "Z09qais1aSpGZ09qamUhbUxHRUdGTVpsNA==",
+        "token": "token12345678910"
+    },
+    "llcoolj": {
+        "password": "Z09qais1aSpHZ09qamUhbUxHRUdGTVpsNA==",
+        "token": "hitdaclub12345"
+    },
+    "user1234": {
+        "password": "Z09qais1aSpGZ09qamUhbUxHRUdGTVpsNA==",
+        "token": "token12345678910"
+    }
+}
