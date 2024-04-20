@@ -28,9 +28,14 @@ class TestViews(TestCase):
     def test_logout(self):
     # Simulate login possibly required before logout depending on implementation
         with self.client:
+        # Simulate login
             self.client.post('/login', data={'username': 'testuser', 'password': 'testpass'})
+            # Simulate logout
             response = self.client.get('/logout')  # Ensure this is the correct method
-            self.assertEqual(response.status_code, 302)  # Assuming redirect to login page
+            # Check if the response status code is 302 (assuming redirect to login page)
+            self.assertEqual(response.status_code, 302)
+
+            # Check if the response contains a 'location' header with 'login'
             self.assertTrue('location' in response.headers and 'login' in response.headers['location'])
 
 

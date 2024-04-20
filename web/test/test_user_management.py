@@ -38,7 +38,7 @@ class TestUsers(unittest.TestCase):
 
     @patch('web.user_management', 'test_users.json')
     def test_load_users_existing_file(self):
-        users = {'user1': {'password': 'encrypted_password1', 'token': 'token127348392'}, 'user2': {'password': 'encrypted_password2', 'token': 'token27284945'}}
+        users = {'user1': {'password': 'password1', 'token': 'token127348392'}, 'user2': {'password': 'password2', 'token': 'token27284945'}}
         with open('test_users.json', 'w') as f:
             json.dump(users, f)
         loaded_users = load_users()
@@ -49,7 +49,7 @@ class TestUsers(unittest.TestCase):
         self.assertEqual(loaded_users, {})
 
     def test_save_users(self):
-        users = {'user1': {'password': 'encrypted_password1', 'token': 'token1283744893'}, 'user2': {'password': 'encrypted_password2', 'token': 'hitdaclub247'}}
+        users = {'user1': {'password': 'password1', 'token': 'token1283744893'}, 'user2': {'password': 'password2', 'token': 'token27284945'}}
         save_users(users)
         with open('test_users.json', 'r') as f:
             saved_users = json.load(f)
@@ -61,7 +61,7 @@ class TestUsers(unittest.TestCase):
 
     def test_add_users_non_existing_username(self):
         add_users('user1', 'password1', 'token1283744893')
-        self.assertEqual(get_users(), {'user1': {'password': 'encrypted_password1', 'token': 'token1283744893'}})
+        self.assertEqual(get_users(), {'user1': {'password': 'password1', 'token': 'token1283744893'}})
 
     def test_update_user_password_existing_username(self):
         add_users('user1', 'password1', 'token138474292')

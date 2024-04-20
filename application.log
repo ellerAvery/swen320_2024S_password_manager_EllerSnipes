@@ -1,59 +1,67 @@
-2024-04-20 14:01:33,653 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-04-20 14:01:33,655 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-04-20 14:01:33,655 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:01:36,988 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-04-20 14:01:36,988 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-04-20 14:01:36,988 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:01:36,988 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:01:36,988 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-04-20 14:01:36,988 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-04-20 14:01:36,988 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:01:36,988 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:01:36,989 - web.create_app - DEBUG - Attempting to add user: Username=usher123, Password=password1, Token=token12345678910
-2024-04-20 14:01:36,989 - web.create_app - DEBUG - Attempting to add user: Username=usher123, Password=password1, Token=token12345678910
-2024-04-20 14:01:36,989 - web.create_app - ERROR - Error: User 'usher123' already exists.
-2024-04-20 14:01:36,989 - web.create_app - ERROR - Error: User 'usher123' already exists.
-2024-04-20 14:01:36,989 - web.create_app - DEBUG - Attempting to add user: Username=llcoolj, Password=password2, Token=hitdaclub12345
-2024-04-20 14:01:36,989 - web.create_app - DEBUG - Attempting to add user: Username=llcoolj, Password=password2, Token=hitdaclub12345
-2024-04-20 14:01:36,989 - web.create_app - ERROR - Error: User 'llcoolj' already exists.
-2024-04-20 14:01:36,989 - web.create_app - ERROR - Error: User 'llcoolj' already exists.
-2024-04-20 14:01:36,989 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token12932934
-2024-04-20 14:01:36,989 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token12932934
-2024-04-20 14:01:36,989 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:01:36,989 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:01:36,989 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-04-20 14:01:36,989 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-04-20 14:01:36,990 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-04-20 14:01:36,990 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-04-20 14:01:36,990 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-04-20 14:01:36,990 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-04-20 14:01:36,990 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:01:36,990 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:06:37,402 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-04-20 14:06:37,402 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-04-20 14:06:37,402 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:06:37,402 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:06:37,403 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-04-20 14:06:37,403 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-04-20 14:06:37,403 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:06:37,403 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:06:37,403 - web.create_app - DEBUG - Attempting to add user: Username=usher123, Password=password1, Token=token12345678910
-2024-04-20 14:06:37,403 - web.create_app - DEBUG - Attempting to add user: Username=usher123, Password=password1, Token=token12345678910
-2024-04-20 14:06:37,403 - web.create_app - ERROR - Error: User 'usher123' already exists.
-2024-04-20 14:06:37,403 - web.create_app - ERROR - Error: User 'usher123' already exists.
-2024-04-20 14:06:37,404 - web.create_app - DEBUG - Attempting to add user: Username=llcoolj, Password=password2, Token=hitdaclub12345
-2024-04-20 14:06:37,404 - web.create_app - DEBUG - Attempting to add user: Username=llcoolj, Password=password2, Token=hitdaclub12345
-2024-04-20 14:06:37,404 - web.create_app - ERROR - Error: User 'llcoolj' already exists.
-2024-04-20 14:06:37,404 - web.create_app - ERROR - Error: User 'llcoolj' already exists.
-2024-04-20 14:06:37,404 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token12932934
-2024-04-20 14:06:37,404 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token12932934
-2024-04-20 14:06:37,404 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:06:37,404 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:06:37,404 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-04-20 14:06:37,404 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-04-20 14:06:37,404 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-04-20 14:06:37,404 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-04-20 14:06:37,405 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-04-20 14:06:37,405 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-04-20 14:06:37,405 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-04-20 14:06:37,405 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:18:49,740 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:18:49,742 - web.create_app - DEBUG - Attempting to add user: Username=usher123, Password=password1, Token=token12345678910
+2024-04-20 14:18:49,742 - web.create_app - ERROR - Error: User 'usher123' already exists.
+2024-04-20 14:18:49,742 - web.create_app - DEBUG - Attempting to add user: Username=llcoolj, Password=password2, Token=hitdaclub12345
+2024-04-20 14:18:49,742 - web.create_app - ERROR - Error: User 'llcoolj' already exists.
+2024-04-20 14:18:49,743 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token12932934
+2024-04-20 14:18:49,743 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:18:49,744 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-04-20 14:18:49,744 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-04-20 14:18:49,745 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-04-20 14:18:49,745 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:18:54,842 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-04-20 14:18:54,842 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-04-20 14:18:54,843 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:18:54,843 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:18:54,843 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-04-20 14:18:54,843 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-04-20 14:18:54,843 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:18:54,843 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:18:54,844 - web.create_app - DEBUG - Attempting to add user: Username=usher123, Password=password1, Token=token12345678910
+2024-04-20 14:18:54,844 - web.create_app - DEBUG - Attempting to add user: Username=usher123, Password=password1, Token=token12345678910
+2024-04-20 14:18:54,844 - web.create_app - ERROR - Error: User 'usher123' already exists.
+2024-04-20 14:18:54,844 - web.create_app - ERROR - Error: User 'usher123' already exists.
+2024-04-20 14:18:54,844 - web.create_app - DEBUG - Attempting to add user: Username=llcoolj, Password=password2, Token=hitdaclub12345
+2024-04-20 14:18:54,844 - web.create_app - DEBUG - Attempting to add user: Username=llcoolj, Password=password2, Token=hitdaclub12345
+2024-04-20 14:18:54,844 - web.create_app - ERROR - Error: User 'llcoolj' already exists.
+2024-04-20 14:18:54,844 - web.create_app - ERROR - Error: User 'llcoolj' already exists.
+2024-04-20 14:18:54,844 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token12932934
+2024-04-20 14:18:54,844 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token12932934
+2024-04-20 14:18:54,844 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:18:54,844 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:18:54,844 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-04-20 14:18:54,844 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-04-20 14:18:54,844 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-04-20 14:18:54,844 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-04-20 14:18:54,845 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-04-20 14:18:54,845 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-04-20 14:18:54,845 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:18:54,845 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:19:01,015 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-04-20 14:19:01,015 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-04-20 14:19:01,015 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:19:01,015 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:19:01,016 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-04-20 14:19:01,016 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-04-20 14:19:01,016 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:19:01,016 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:19:01,017 - web.create_app - DEBUG - Attempting to add user: Username=usher123, Password=password1, Token=token12345678910
+2024-04-20 14:19:01,017 - web.create_app - DEBUG - Attempting to add user: Username=usher123, Password=password1, Token=token12345678910
+2024-04-20 14:19:01,017 - web.create_app - ERROR - Error: User 'usher123' already exists.
+2024-04-20 14:19:01,017 - web.create_app - ERROR - Error: User 'usher123' already exists.
+2024-04-20 14:19:01,017 - web.create_app - DEBUG - Attempting to add user: Username=llcoolj, Password=password2, Token=hitdaclub12345
+2024-04-20 14:19:01,017 - web.create_app - DEBUG - Attempting to add user: Username=llcoolj, Password=password2, Token=hitdaclub12345
+2024-04-20 14:19:01,017 - web.create_app - ERROR - Error: User 'llcoolj' already exists.
+2024-04-20 14:19:01,017 - web.create_app - ERROR - Error: User 'llcoolj' already exists.
+2024-04-20 14:19:01,018 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token12932934
+2024-04-20 14:19:01,018 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token12932934
+2024-04-20 14:19:01,018 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:19:01,018 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:19:01,018 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-04-20 14:19:01,018 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-04-20 14:19:01,018 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-04-20 14:19:01,018 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-04-20 14:19:01,020 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-04-20 14:19:01,020 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-04-20 14:19:01,020 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-04-20 14:19:01,020 - web.create_app - ERROR - Error: User 'user1' already exists.

@@ -1,1 +1,1 @@
-{"user1": {"password": "encrypted_password1", "token": "token127348392"}, "user2": {"password": "encrypted_password2", "token": "token27284945"}}
+{"user1": {"password": "password1", "token": "token127348392"}, "user2": {"password": "password2", "token": "token27284945"}}
