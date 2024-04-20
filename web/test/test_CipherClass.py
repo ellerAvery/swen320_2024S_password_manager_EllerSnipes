@@ -9,7 +9,7 @@ class TestUserManagement(TestCase):
         input = "test"
         result = cipher.encrypt("test")
 
-        self.assertNotEquals(result, input)
-        self.assertEquals(cipher.decrypt(result), input)
+        self.assertNotEqual(result, input)
+        self.assertEqual(cipher.decrypt(result), input)
 
     
