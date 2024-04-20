@@ -18,7 +18,7 @@ class TestViews(TestCase):
     def test_register_new_user(self, mock_add_users, mock_get_users):
         mock_get_users.return_value = None
         mock_add_users.return_value = True
-        response = self.client.post('/register', data={'username': 'newuser', 'password': 'vpassword', 'token': 'validtken123'})
+        response = self.client.post('/register', data={'username': 'newuser', 'password': 'vpassword', 'token': 'validtoken123'})
         
         self.assertEqual(response.status_code, 200)
         # Check for successful registration response

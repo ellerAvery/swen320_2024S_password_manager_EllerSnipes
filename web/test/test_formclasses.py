@@ -7,8 +7,8 @@ class TestRegisterForm(TestCase):
     
     @patch('web.user_management.get_users')
     def test_username_already_registered(self, mock_get_users):
-        mock_get_users.return_value = {'username': 'existuser'}
-        form = RegisterForm(data={'username': 'existuser', 'password': 'vpassword', 'token': 'validtoken123'})
+        mock_get_users.return_value = {'username': 'users1'}
+        form = RegisterForm(data={'username': 'user1', 'password': 'encrypted_password1', 'token': 'token127348392'})
         self.assertFalse(form.validate())
         self.assertIn("Username already registered.", form.username.errors)
 
