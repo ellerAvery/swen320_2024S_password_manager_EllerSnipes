@@ -7,6 +7,7 @@ from .accounts.models import User
 from .accounts.views import accounts_bp
 from .core.views import core_bp
 from web.user_management import load_users
+
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = config('SECRET_KEY')
