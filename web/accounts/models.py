@@ -4,7 +4,7 @@ from .forms import LoginForm, RegisterForm, ChangePasswordForm
 
 class User(UserMixin):
     def __init__(self, username):
-        user_info = get_users(username)
+        user_info = (get_users(username))[0]
         if user_info:
             self.username = username
             self.id = username  # Flask-Login uses this attribute to keep track of the user.

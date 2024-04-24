@@ -13,10 +13,9 @@ class TestViews(TestCase):
         self.app.register_blueprint(accounts_bp)
         self.client = self.app.test_client()
 
-    @patch('web.accounts.views.get_users')
-    @patch('web.accounts.views.add_users')
-    def test_register_new_user(self, mock_add_users, mock_get_users):
-        mock_get_users.return_value = None
+
+    @patch('web.user_management.add_users')
+    def test_register_new_user(self, mock_add_users):
         mock_add_users.return_value = True
         response = self.client.post('/register', data={'username': 'newuser', 'password': 'vpassword', 'token': 'validtoken123'})
         

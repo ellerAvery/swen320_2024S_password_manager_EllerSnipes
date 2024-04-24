@@ -12,6 +12,6 @@ class TestUser(unittest.TestCase):
         user = User('testuser')
         self.assertEqual(user.username, 'testuser')
         self.assertTrue(user.is_authenticated)
-        mock_get_users.assert_called_once_with()
+        mock_get_users.assert_called_once_with('testuser')
     if __name__ == '__main__':
         unittest.main()
