@@ -30,6 +30,7 @@
 </div>
 
 <script>
+
     document.getElementById("Listbutton").addEventListener("click", function () {
         var listButton = document.getElementById("Listbutton");
         listButton.textContent = 'Loading...';
@@ -49,7 +50,7 @@
                     console.log(item);
                     const row = document.createElement("tr");
                     const keyCell = document.createElement("td");
-                    keyCell.textContent = String(item.key);
+                    keyCell.textContent = item.password;
                     row.appendChild(keyCell);
                     const encryptedPasswordCell = document.createElement("td");
                     encryptedPasswordCell.textContent = item.password;
