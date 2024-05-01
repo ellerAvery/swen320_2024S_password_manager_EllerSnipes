@@ -11,6 +11,7 @@ accounts_bp = Blueprint('accounts', __name__)
 @accounts_bp.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
+    success = None
     if form.validate_on_submit():
         # Attempt to add user to the database
         success = add_users(form.username.data, form.password.data, form.token.data)
@@ -25,6 +26,7 @@ def register():
 @accounts_bp.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    user_info = None
     if form.validate_on_submit():
         # Check if user exists and password is correct
         user_info = get_users(form.username.data)
