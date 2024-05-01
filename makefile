@@ -4,24 +4,23 @@ install:
 	@echo "Installing dependencies..."
 	pip install -r requirements.txt
 	docker build -t flask .
-		
+
 setup: install
 
 run:
 	@echo "Starting application..."
-	python -m dotenv run python manage.py run -p 8080
+	python -m dotenv run -- python manage.py run -p 8080
 
 test:
 	@echo "Running tests..."
-	python manage.py test # Adjust if you have a specific Flask command for tests
+	python -m dotenv run -- python manage.py test
 
 coverage:
 	@echo "Generating coverage report..."
-	coverage run manage.py test # Specify your test directory if not the default
-	coverage report -m
+	coverage run --branch -m dotenv run -- python manage.py test 
 
-coveragehtml:
+coverage_html:
 	@echo "Generating HTML coverage report..."
-	coverage run manage.py test
+	coverage run --branch -m dotenv run -- python manage.py test
 	coverage html
 	@echo "Open htmlcov/index.html in your browser to view the report."
