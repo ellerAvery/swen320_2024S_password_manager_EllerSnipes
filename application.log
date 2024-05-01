@@ -18,3 +18,19 @@
 2024-04-24 14:07:21,414 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
 2024-04-24 14:07:21,414 - web.create_app - ERROR - Error: User 'user1' already exists.
 2024-04-24 14:07:21,414 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-01 16:01:14,862 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-01 16:01:14,862 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-01 16:01:14,863 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-01 16:01:14,863 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-01 16:01:14,864 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-01 16:01:14,864 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-01 16:01:14,865 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-01 16:01:14,865 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-01 16:01:14,871 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-01 16:01:14,871 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-01 16:01:14,871 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-01 16:01:14,871 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-01 16:01:14,874 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-01 16:01:14,874 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-01 16:01:14,874 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-01 16:01:14,874 - web.create_app - ERROR - Error: User 'user1' already exists.
