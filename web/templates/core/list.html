@@ -30,23 +30,39 @@
 </div>
 <script>
     document.getElementById("Listbutton").addEventListener("click", function () {
-        fetch("/Maketable")
-            .then((response) => response.json())
-            .then((data) => {
-                const tableBody = document.querySelector("#passwordTable tbody");
-                tableBody.innerHTML = ""; // Clear existing table rows
-                data.forEach((item) => {
+        var listButton = document.getElementById("Listbutton");
+        listButton.textContent = 'Loading...';
+        listButton.disabled = true;
+        
+        fetch('/Maketable')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => { // Corrected: Added missing parameter 'data'
+                const tableBody = document.getElementById("passwordTable").querySelector("tbody");
+                tableBody.innerHTML = ""; // Clear existing rows
+                data.forEach(item => {
+                    console.log(item);
                     const row = document.createElement("tr");
-    
-                    // Encrypted Password Cell
+                    const keyCell = document.createElement("td");
+                    keyCell.textContent = item.password;
+                    row.appendChild(keyCell);
                     const encryptedPasswordCell = document.createElement("td");
-                    encryptedPasswordCell.textContent = item.encrypted; // Display encrypted password
+                    encryptedPasswordCell.textContent = item.password;
                     row.appendChild(encryptedPasswordCell);
-    
                     tableBody.appendChild(row);
                 });
+                listButton.textContent = 'Load Encrypted Passwords';
+                listButton.disabled = false;
             })
-            .catch((error) => console.error("Error loading the passwords:", error));
+            .catch(error => {
+                console.error('Error:', error);
+                listButton.textContent = 'Load Encrypted Passwords';
+                listButton.disabled = false;
+            });
     });
 </script>
 {% endblock %}

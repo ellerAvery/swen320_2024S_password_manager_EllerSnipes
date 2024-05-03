@@ -8,7 +8,7 @@ class User(UserMixin):
         if user_info:
             self.username = username
             self.id = username  # Flask-Login uses this attribute to keep track of the user.
-            self.password = user_info.get('password')
+            self.password = user_info['password']
         else:
             self.id = None
             

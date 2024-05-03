@@ -1,74 +1,84 @@
-2024-05-01 16:13:34,408 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-05-01 16:13:34,408 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-05-01 16:13:34,408 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:13:34,408 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:13:34,409 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
-2024-05-01 16:13:34,409 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
-2024-05-01 16:13:34,409 - web.create_app - INFO - User 'Addeduser' added successfully.
-2024-05-01 16:13:34,409 - web.create_app - INFO - User 'Addeduser' added successfully.
-2024-05-01 16:13:34,415 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-05-01 16:13:34,415 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-05-01 16:13:34,415 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-05-01 16:13:34,415 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-05-01 16:13:34,419 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-05-01 16:13:34,419 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-05-01 16:13:34,419 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:13:34,419 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:14:57,285 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-05-01 16:14:57,285 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-05-01 16:14:57,286 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:14:57,286 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:14:57,287 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
-2024-05-01 16:14:57,287 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
-2024-05-01 16:14:57,288 - web.create_app - INFO - User 'Addeduser' added successfully.
-2024-05-01 16:14:57,288 - web.create_app - INFO - User 'Addeduser' added successfully.
-2024-05-01 16:14:57,293 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-05-01 16:14:57,293 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-05-01 16:14:57,293 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-05-01 16:14:57,293 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-05-01 16:14:57,297 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-05-01 16:14:57,297 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-05-01 16:14:57,297 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:14:57,297 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:17:24,099 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-05-01 16:17:24,099 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-05-01 16:17:24,100 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:17:24,100 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:17:24,102 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
-2024-05-01 16:17:24,102 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
-2024-05-01 16:17:24,102 - web.create_app - INFO - User 'Addeduser' added successfully.
-2024-05-01 16:17:24,102 - web.create_app - INFO - User 'Addeduser' added successfully.
-2024-05-01 16:17:24,108 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-05-01 16:17:24,108 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-05-01 16:17:24,109 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-05-01 16:17:24,109 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-05-01 16:17:24,112 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-05-01 16:17:24,112 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-05-01 16:17:24,112 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:17:24,112 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:17:54,424 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-05-01 16:17:54,424 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
-2024-05-01 16:17:54,425 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:17:54,425 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:17:54,425 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
-2024-05-01 16:17:54,425 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
-2024-05-01 16:17:54,426 - web.create_app - INFO - User 'Addeduser' added successfully.
-2024-05-01 16:17:54,426 - web.create_app - INFO - User 'Addeduser' added successfully.
-2024-05-01 16:17:54,432 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-05-01 16:17:54,432 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
-2024-05-01 16:17:54,432 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-05-01 16:17:54,432 - web.create_app - ERROR - Error: User 'user1234' already exists.
-2024-05-01 16:17:54,436 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-05-01 16:17:54,436 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
-2024-05-01 16:17:54,436 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:17:54,436 - web.create_app - ERROR - Error: User 'user1' already exists.
-2024-05-01 16:47:11,455 - web.create_app - DEBUG - Attempting to add user: Username=snipesc, Password=password, Token=jqd294ms25qjdi3
-2024-05-01 16:47:11,460 - web.create_app - INFO - User 'snipesc' added successfully.
-2024-05-01 16:58:33,095 - web.create_app - DEBUG - Attempting to add user: Username=ethan1234, Password=password, Token=csnqpwos294
-2024-05-01 16:58:33,101 - web.create_app - INFO - User 'ethan1234' added successfully.
-2024-05-01 17:20:42,739 - web.create_app - DEBUG - Attempting to add user: Username=snipesc2, Password=password, Token=aqoq9103982oi8uoq2039ehujnedsi
-2024-05-01 17:20:42,744 - web.create_app - INFO - User 'snipesc2' added successfully.
-2024-05-01 17:32:08,468 - web.create_app - DEBUG - Attempting to add user: Username=c4snipes12, Password=password, Token=jqd294ms25qjdi3
-2024-05-01 17:32:08,474 - web.create_app - INFO - User 'c4snipes12' added successfully.
-2024-05-01 17:43:38,547 - web.create_app - DEBUG - Attempting to add user: Username=c4snipes04, Password=password, Token=aqoq9103982oi8uoq2039ehujnedsi
-2024-05-01 17:43:38,552 - web.create_app - INFO - User 'c4snipes04' added successfully.
+2024-05-03 20:08:15,895 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-03 20:08:15,896 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-03 20:08:15,901 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-03 20:08:15,901 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:09:31,600 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-03 20:09:31,600 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-03 20:09:31,601 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:09:31,601 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:09:31,603 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-03 20:09:31,603 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-03 20:09:31,604 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-03 20:09:31,604 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-03 20:09:31,609 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-03 20:09:31,609 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-03 20:09:31,609 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-03 20:09:31,609 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-03 20:09:31,614 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-03 20:09:31,614 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-03 20:09:31,614 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:09:31,614 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:10:51,252 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-03 20:10:51,252 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-03 20:10:51,252 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:10:51,252 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:10:51,253 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-03 20:10:51,253 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-03 20:10:51,255 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-03 20:10:51,255 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-03 20:10:51,259 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-03 20:10:51,259 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-03 20:10:51,260 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-03 20:10:51,260 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-03 20:10:51,264 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-03 20:10:51,264 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-03 20:10:51,265 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:10:51,265 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:12:35,925 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-03 20:12:35,925 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-03 20:12:35,926 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:12:35,926 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:12:35,927 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-03 20:12:35,927 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-03 20:12:35,928 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-03 20:12:35,928 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-03 20:12:35,934 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-03 20:12:35,934 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-03 20:12:35,934 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-03 20:12:35,934 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-03 20:12:35,939 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-03 20:12:35,939 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-03 20:12:35,940 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:12:35,940 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:31:58,419 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-03 20:31:58,419 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-03 20:31:58,420 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:31:58,420 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:31:58,422 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-03 20:31:58,422 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-03 20:31:58,424 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-03 20:31:58,424 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-03 20:31:58,434 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-03 20:31:58,434 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-03 20:31:58,434 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-03 20:31:58,434 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-03 20:31:58,444 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-03 20:31:58,444 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-03 20:31:58,445 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 20:31:58,445 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 21:30:10,000 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-03 21:30:10,000 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token1283744893
+2024-05-03 21:30:10,001 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 21:30:10,001 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 21:30:10,004 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-03 21:30:10,004 - web.create_app - DEBUG - Attempting to add user: Username=Addeduser, Password=password1, Token=token1283744893
+2024-05-03 21:30:10,006 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-03 21:30:10,006 - web.create_app - INFO - User 'Addeduser' added successfully.
+2024-05-03 21:30:10,016 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-03 21:30:10,016 - web.create_app - DEBUG - Attempting to add user: Username=user1234, Password=password1, Token=token12345678910
+2024-05-03 21:30:10,017 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-03 21:30:10,017 - web.create_app - ERROR - Error: User 'user1234' already exists.
+2024-05-03 21:30:10,028 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-03 21:30:10,028 - web.create_app - DEBUG - Attempting to add user: Username=user1, Password=password1, Token=token138474292
+2024-05-03 21:30:10,028 - web.create_app - ERROR - Error: User 'user1' already exists.
+2024-05-03 21:30:10,028 - web.create_app - ERROR - Error: User 'user1' already exists.

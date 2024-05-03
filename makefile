@@ -17,10 +17,17 @@ test:
 
 coverage:
 	@echo "Generating coverage report..."
-	coverage run --branch -m dotenv run -- python manage.py test 
+	coverage run manage.py test # Specify your test directory if not the default
+	coverage report -m
 
 coverage_html:
 	@echo "Generating HTML coverage report..."
-	coverage run --branch -m dotenv run -- python manage.py test
+	coverage run manage.py test
+	coverage html
+	@echo "Open htmlcov/index.html in your browser to view the report."
+
+coverage_branch:
+	@echo "Generating HTML coverage report..."
+	coverage run --branch manage.py test
 	coverage html
 	@echo "Open htmlcov/index.html in your browser to view the report."
