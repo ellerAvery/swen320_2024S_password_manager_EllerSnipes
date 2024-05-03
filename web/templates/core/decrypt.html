@@ -24,14 +24,18 @@
                             <label for="decryptedText">Decrypted Text</label>
                         </div>
                         <button type="button" class="btn btn-outline-secondary mt-2 copy-btn" data-copy-target="#decryptedText">Copy</button>
+                        <button type="button" class="btn btn-outline-secondary mt-2 save-btn" data-save-target="#decryptedText" password-input="encryptedTextD">Save</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+    
+{% block js %}
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 {% endblock %}
 
-{% block js %}
-<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
 {% endblock %}
+

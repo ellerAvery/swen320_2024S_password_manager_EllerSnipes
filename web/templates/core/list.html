@@ -1,70 +1,52 @@
-{% extends "template.html" %}
-
-{% block custom_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/custom_style.css') }}">
-{% endblock %}
-
-{% block content %}
+{% extends "template.html" %} {% block custom_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/custom_style.css') }}"
+/>
+{% endblock %} {% block content %}
 <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <h2 class="text-center mb-4">List of Encrypted Passwords</h2>
-            <div class="d-grid gap-2 mb-4">
-                <button id="Listbutton" class="btn btn-primary">Load Encrypted Passwords</button>
-            </div>
-            <div class="table-responsive">
-                <table id="passwordTable" class="table">
-                    <thead class="table-light">
-                        <tr>
-                            <th scope="col">Key</th>
-                            <th scope="col">Encrypted Password</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Rows will be added here by JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h2 class="text-center mb-4">Password Manager</h2>
+      <div class="d-grid gap-2 mb-4">
+        <button id="Listbutton" class="btn btn-primary">
+          Load Encrypted Passwords
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table id="passwordTable" class="table">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">Encrypted Password</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be added here by JavaScript -->
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </div>
-
 <script>
-
     document.getElementById("Listbutton").addEventListener("click", function () {
-        var listButton = document.getElementById("Listbutton");
-        listButton.textContent = 'Loading...';
-        listButton.disabled = true;
-        
-        fetch('/Maketable')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => { // Corrected: Added missing parameter 'data'
-                const tableBody = document.getElementById("passwordTable").querySelector("tbody");
-                tableBody.innerHTML = ""; // Clear existing rows
-                data.forEach(item => {
-                    console.log(item);
+        fetch("/Maketable")
+            .then((response) => response.json())
+            .then((data) => {
+                const tableBody = document.querySelector("#passwordTable tbody");
+                tableBody.innerHTML = ""; // Clear existing table rows
+                data.forEach((item) => {
                     const row = document.createElement("tr");
-                    const keyCell = document.createElement("td");
-                    keyCell.textContent = item.password;
-                    row.appendChild(keyCell);
+    
+                    // Encrypted Password Cell
                     const encryptedPasswordCell = document.createElement("td");
-                    encryptedPasswordCell.textContent = item.password;
+                    encryptedPasswordCell.textContent = item.encrypted; // Display encrypted password
                     row.appendChild(encryptedPasswordCell);
+    
                     tableBody.appendChild(row);
                 });
-                listButton.textContent = 'Load Encrypted Passwords';
-                listButton.disabled = false;
             })
-            .catch(error => {
-                console.error('Error:', error);
-                listButton.textContent = 'Load Encrypted Passwords';
-                listButton.disabled = false;
-            });
+            .catch((error) => console.error("Error loading the passwords:", error));
     });
 </script>
 {% endblock %}

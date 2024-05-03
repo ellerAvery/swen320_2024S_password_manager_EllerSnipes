@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
             copyToClipboard(elementSelector);
         });
     });
-    
+
     function copyToClipboard(elementSelector) {
         const textArea = document.querySelector(elementSelector);
         if (!textArea) {
@@ -18,43 +18,37 @@ document.addEventListener("DOMContentLoaded", function() {
             .catch(err => console.error("Copy failed", err));
     }
 
-    document.querySelectorAll('.save-btn').forEach(button => {
+    // Adjusted to handle saving encrypted passwords
+    document.querySelectorAll('.save-encrypted-btn').forEach(button => {
         button.addEventListener("click", function() {
             const elementSelector = this.getAttribute('data-save-target');
-            const passwordInput = "#" + this.getAttribute('password-input');
-            saveToList(elementSelector, passwordInput);
+            saveEncryptedPassword(elementSelector);
         });
-    });    
-    
-    function saveToList(elementSelector, password) {
+    });
+
+    // Adjusted to handle saving decrypted passwords
+    document.querySelectorAll('.save-decrypted-btn').forEach(button => {
+        button.addEventListener("click", function() {
+            const elementSelector = this.getAttribute('data-save-target');
+            saveDecryptedPassword(elementSelector);
+        });
+    });
+
+    function saveEncryptedPassword(elementSelector) {
         const textArea = document.querySelector(elementSelector);
         if (!textArea) {
             console.error("Save target not found: ", elementSelector);
             return;
         }
-    
-        const passInput = document.querySelector(password);
-        if (!passInput) {
-            console.error("Password input not found: ", password);
-            return;
-        }
-    
+
         const encryptedPassword = textArea.value;
-        const key = passInput.value;
-    
-        // Construct the request payload
-        const payload = {
-            key: key,
-            encrypted_password: encryptedPassword
-        };
-    
-        // Send the request to the backend
+
         fetch('/saveEncryptedPassword', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(payload),
+            body: JSON.stringify({ encryptedPassword: encryptedPassword }),
         })
         .then(response => response.json())
         .then(data => {
@@ -68,4 +62,33 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error:', error);
         });
     }
-})    
+
+    function saveDecryptedPassword(elementSelector) {
+        const passInput = document.querySelector(elementSelector);
+        if (!passInput) {
+            console.error("Password input not found: ", elementSelector);
+            return;
+        }
+
+        const decryptedPassword = passInput.value;
+
+        fetch('/saveDecryptedPassword', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ decryptedPassword: decryptedPassword }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+            } else if (data.error) {
+                alert(data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+});

@@ -72,3 +72,18 @@ def save_encrypted_password():
     session.modified = True
     
     return jsonify({'message': 'Encrypted password saved', 'receivedData': data}), 200
+
+@core_bp.route('/saveDecryptedPassword', methods=['POST'])
+def save_decrypted_password():
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'Invalid or missing JSON data'}), 400
+    
+    # Implement the logic to save the decrypted data
+    # For now, let's just simulate by adding to session
+    if 'decrypted_passwords' not in session:
+        session['decrypted_passwords'] = []
+    session['decrypted_passwords'].append(data)
+    session.modified = True
+
+    return jsonify({'message': 'Decrypted password saved successfully'}), 200
